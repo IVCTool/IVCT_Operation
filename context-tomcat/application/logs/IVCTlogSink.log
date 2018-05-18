@@ -1,0 +1,24 @@
+2018-05-16 14:39:34,220 INFO [n.i.c.CmdStartTestResultListener] [CmdStartTestResultListener.java:51] : subsribing the CmdStartTestResultListener
+2018-05-16 14:39:34,248 INFO [nato.ivct.commander.Factory] [CmdQuitListener.java:66] : subsribing the commands listener
+2018-05-16 14:39:34,272 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:60] : Topic Cnx Factory found
+2018-05-16 14:39:34,274 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:62] : Topic found: LogTopic.jms
+2018-05-16 14:39:34,277 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:65] : Topic Connection created
+2018-05-16 14:39:34,302 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:71] : Topic Connection started
+2018-05-16 15:16:48,854 INFO [n.i.c.CmdStartTestResultListener] [CmdStartTestResultListener.java:51] : subsribing the CmdStartTestResultListener
+2018-05-16 15:16:48,885 INFO [nato.ivct.commander.Factory] [CmdQuitListener.java:66] : subsribing the commands listener
+2018-05-16 15:16:48,914 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:60] : Topic Cnx Factory found
+2018-05-16 15:16:48,916 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:62] : Topic found: LogTopic.jms
+2018-05-16 15:16:48,921 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:65] : Topic Connection created
+2018-05-16 15:16:48,976 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:71] : Topic Connection started
+2018-05-16 15:18:27,621 INFO [n.i.c.CmdStartTestResultListener] [CmdStartTestResultListener.java:51] : subsribing the CmdStartTestResultListener
+2018-05-16 15:18:27,644 INFO [nato.ivct.commander.Factory] [CmdQuitListener.java:66] : subsribing the commands listener
+2018-05-16 15:18:27,662 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:60] : Topic Cnx Factory found
+2018-05-16 15:18:27,664 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:62] : Topic found: LogTopic.jms
+2018-05-16 15:18:27,669 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:65] : Topic Connection created
+2018-05-16 15:18:27,689 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:71] : Topic Connection started
+2018-05-16 15:18:37,669 INFO [n.i.c.CmdStartTestResultListener] [CmdStartTestResultListener.java:51] : subsribing the CmdStartTestResultListener
+2018-05-16 15:18:37,688 INFO [nato.ivct.commander.Factory] [CmdQuitListener.java:66] : subsribing the commands listener
+2018-05-16 15:18:37,710 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:60] : Topic Cnx Factory found
+2018-05-16 15:18:37,712 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:62] : Topic found: LogTopic.jms
+2018-05-16 15:18:37,717 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:65] : Topic Connection created
+2018-05-16 15:18:37,743 INFO [c.q.logback.classic.net.JMSTopicSink] [JMSLogSink.java:71] : Topic Connection started

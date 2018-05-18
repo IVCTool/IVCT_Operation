@@ -1,0 +1,522 @@
+mei 16, 2018 2:39:28 PM org.apache.catalina.startup.Catalina initDirs
+SEVERE: Cannot find specified temporary folder at C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\temp
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.78
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          May 10 2017 15:02:19 UTC
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.78.0
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Windows 10
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.0
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             C:\Program Files\Java\jdk1.8.0_111\jre
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.8.0_111-b14
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\conf\logging.properties
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xdebug
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\endorsed
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\temp
+mei 16, 2018 2:39:29 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.8.0_111\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\prti1516e\lib\vc140_64;C:\Program Files\prti1516e\lib;C:\Program Files\prti1516e\jre\bin\server;C:\Program Files\Docker\Docker\Resources\bi%;C:\Program Files\Common Files\Microsoft Shared\Microsoft Online Services;C:\Program Files (x86)\Common Files\Microsoft Shared\Microsoft Online Services;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\PuTTY\;C:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Java\jdk1.8.0_111\bin;C:\apache-maven-3.5.2\bin;C:\gradle\bin;C:\sqlite-tools;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\PostgreSQL\pg10\bin;C:\Users\hameetepa\AppData\Local\Microsoft\WindowsApps;C:\Users\hameetepa\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\GitExtensions\;.
+mei 16, 2018 2:39:29 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 2:39:29 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 820 ms
+mei 16, 2018 2:39:29 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+mei 16, 2018 2:39:29 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.78
+mei 16, 2018 2:39:29 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\docs
+mei 16, 2018 2:39:30 PM org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [303] milliseconds.
+mei 16, 2018 2:39:30 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\docs has finished in 757 ms
+mei 16, 2018 2:39:30 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\examples
+mei 16, 2018 2:39:31 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\examples has finished in 1,296 ms
+mei 16, 2018 2:39:31 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\host-manager
+mei 16, 2018 2:39:31 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\host-manager has finished in 137 ms
+mei 16, 2018 2:39:31 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\LogSink.webApp-1.0.0
+mei 16, 2018 2:39:32 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\LogSink.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 2:39:33 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 2:39:34 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\LogSink.webApp-1.0.0 has finished in 2,456 ms
+mei 16, 2018 2:39:34 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\manager
+mei 16, 2018 2:39:34 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\manager has finished in 96 ms
+mei 16, 2018 2:39:34 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\nato.ivct.gui.nato.ivct.gui.server
+mei 16, 2018 2:39:36 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\nato.ivct.gui.nato.ivct.gui.server\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 2:39:36 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 2:39:37 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 2:39:38 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\nato.ivct.gui.nato.ivct.gui.server has finished in 4,506 ms
+mei 16, 2018 2:39:38 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\nato.ivct.gui.nato.ivct.gui.ui.html
+mei 16, 2018 2:39:39 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\nato.ivct.gui.nato.ivct.gui.ui.html\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 2:39:39 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 2:39:41 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 2:40:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\nato.ivct.gui.nato.ivct.gui.ui.html has finished in 24,282 ms
+mei 16, 2018 2:40:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\ROOT
+mei 16, 2018 2:40:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\ROOT has finished in 69 ms
+mei 16, 2018 2:40:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\TC.webApp-1.0.0
+mei 16, 2018 2:40:04 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\TC.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 2:40:07 PM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: josqltaglib is already defined
+mei 16, 2018 2:40:07 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 2:40:07 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Runtime\apache-tomcat-7.0.78\webapps\TC.webApp-1.0.0 has finished in 4,600 ms
+mei 16, 2018 2:40:07 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 2:40:07 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 2:40:07 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 38308 ms
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.78
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          May 10 2017 15:02:19 UTC
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.78.0
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Windows 10
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.0
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             C:\Program Files\Java\jdk1.8.0_111\jre
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.8.0_111-b14
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\conf\logging.properties
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xdebug
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\endorsed
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\temp
+mei 16, 2018 3:16:46 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.8.0_111\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\prti1516e\lib\vc140_64;C:\Program Files\prti1516e\lib;C:\Program Files\prti1516e\jre\bin\server;C:\Program Files\Docker\Docker\Resources\bi%;C:\Program Files\Common Files\Microsoft Shared\Microsoft Online Services;C:\Program Files (x86)\Common Files\Microsoft Shared\Microsoft Online Services;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\PuTTY\;C:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Java\jdk1.8.0_111\bin;C:\apache-maven-3.5.2\bin;C:\gradle\bin;C:\sqlite-tools;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\PostgreSQL\pg10\bin;C:\Users\hameetepa\AppData\Local\Microsoft\WindowsApps;C:\Users\hameetepa\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\GitExtensions\;.
+mei 16, 2018 3:16:46 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:16:46 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 684 ms
+mei 16, 2018 3:16:46 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+mei 16, 2018 3:16:46 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.78
+mei 16, 2018 3:16:46 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\docs
+mei 16, 2018 3:16:46 PM org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [219] milliseconds.
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\docs has finished in 562 ms
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\examples
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\examples has finished in 421 ms
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\host-manager
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\host-manager has finished in 74 ms
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0
+mei 16, 2018 3:16:47 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:16:47 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:16:48 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0 has finished in 1,474 ms
+mei 16, 2018 3:16:48 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\manager
+mei 16, 2018 3:16:49 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\manager has finished in 77 ms
+mei 16, 2018 3:16:49 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server
+mei 16, 2018 3:16:49 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:16:49 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 3:16:50 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:16:51 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server has finished in 2,541 ms
+mei 16, 2018 3:16:51 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html
+mei 16, 2018 3:16:51 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:16:51 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 3:16:52 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:17:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html has finished in 18,103 ms
+mei 16, 2018 3:17:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\ROOT
+mei 16, 2018 3:17:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\ROOT has finished in 55 ms
+mei 16, 2018 3:17:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\TC.webApp-1.0.0
+mei 16, 2018 3:17:09 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\TC.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:17:12 PM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: josqltaglib is already defined
+mei 16, 2018 3:17:12 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:17:12 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\TC.webApp-1.0.0 has finished in 3,222 ms
+mei 16, 2018 3:17:12 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:17:13 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:17:13 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 26617 ms
+mei 16, 2018 3:18:16 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:18:16 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:18:16 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+mei 16, 2018 3:18:16 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ InactivityMonitor ReadCheckTimer] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:16 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ Transport: tcp://activemq/127.0.0.1:61616@57130] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:16 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ InactivityMonitor WriteCheckTimer] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:16 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ Transport: tcp://localhost/127.0.0.1:61616@57131] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:16 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ InactivityMonitor Worker] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:16 PM org.apache.catalina.core.StandardWrapper unload
+INFO: Waiting for 1 instance(s) to be deallocated for Servlet [process]
+mei 16, 2018 3:18:17 PM org.apache.catalina.core.StandardWrapper unload
+INFO: Waiting for 1 instance(s) to be deallocated for Servlet [process]
+mei 16, 2018 3:18:18 PM org.apache.catalina.core.StandardWrapper unload
+INFO: Waiting for 1 instance(s) to be deallocated for Servlet [process]
+mei 16, 2018 3:18:18 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/nato.ivct.gui.nato.ivct.gui.server] appears to have started a thread named [http-bio-8080-exec-1] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:18 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ InactivityMonitor ReadCheckTimer] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:18 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ Transport: tcp://activemq/127.0.0.1:61616@57137] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:18 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ InactivityMonitor WriteCheckTimer] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:18 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ Transport: tcp://activemq/127.0.0.1:61616@57138] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:18 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ InactivityMonitor Worker] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:18:18 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:18:18 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:18:18 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:18:18 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.78
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          May 10 2017 15:02:19 UTC
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.78.0
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Windows 10
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.0
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             C:\Program Files\Java\jdk1.8.0_111\jre
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.8.0_111-b14
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\conf\logging.properties
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xdebug
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\endorsed
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\temp
+mei 16, 2018 3:18:25 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.8.0_111\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\prti1516e\lib\vc140_64;C:\Program Files\prti1516e\lib;C:\Program Files\prti1516e\jre\bin\server;C:\Program Files\Docker\Docker\Resources\bi%;C:\Program Files\Common Files\Microsoft Shared\Microsoft Online Services;C:\Program Files (x86)\Common Files\Microsoft Shared\Microsoft Online Services;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\PuTTY\;C:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Java\jdk1.8.0_111\bin;C:\apache-maven-3.5.2\bin;C:\gradle\bin;C:\sqlite-tools;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\PostgreSQL\pg10\bin;C:\Users\hameetepa\AppData\Local\Microsoft\WindowsApps;C:\Users\hameetepa\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\GitExtensions\;.
+mei 16, 2018 3:18:25 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:18:25 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 774 ms
+mei 16, 2018 3:18:25 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+mei 16, 2018 3:18:25 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.78
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\docs
+mei 16, 2018 3:18:25 PM org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [225] milliseconds.
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\docs has finished in 588 ms
+mei 16, 2018 3:18:25 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\examples
+mei 16, 2018 3:18:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\examples has finished in 451 ms
+mei 16, 2018 3:18:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\host-manager
+mei 16, 2018 3:18:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\host-manager has finished in 82 ms
+mei 16, 2018 3:18:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0
+mei 16, 2018 3:18:26 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:18:26 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:18:27 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0 has finished in 1,285 ms
+mei 16, 2018 3:18:27 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\manager
+mei 16, 2018 3:18:27 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\manager has finished in 70 ms
+mei 16, 2018 3:18:27 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server
+mei 16, 2018 3:18:27 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:18:27 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 3:18:29 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:18:30 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server has finished in 2,671 ms
+mei 16, 2018 3:18:30 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html
+mei 16, 2018 3:18:30 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:18:30 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.78
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          May 10 2017 15:02:19 UTC
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.78.0
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Windows 10
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.0
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             C:\Program Files\Java\jdk1.8.0_111\jre
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.8.0_111-b14
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\conf\logging.properties
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xdebug
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\endorsed
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\temp
+mei 16, 2018 3:18:35 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.8.0_111\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\prti1516e\lib\vc140_64;C:\Program Files\prti1516e\lib;C:\Program Files\prti1516e\jre\bin\server;C:\Program Files\Docker\Docker\Resources\bi%;C:\Program Files\Common Files\Microsoft Shared\Microsoft Online Services;C:\Program Files (x86)\Common Files\Microsoft Shared\Microsoft Online Services;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\PuTTY\;C:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Java\jdk1.8.0_111\bin;C:\apache-maven-3.5.2\bin;C:\gradle\bin;C:\sqlite-tools;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\PostgreSQL\pg10\bin;C:\Users\hameetepa\AppData\Local\Microsoft\WindowsApps;C:\Users\hameetepa\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\GitExtensions\;.
+mei 16, 2018 3:18:35 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:18:35 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 667 ms
+mei 16, 2018 3:18:35 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+mei 16, 2018 3:18:35 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.78
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\docs
+mei 16, 2018 3:18:35 PM org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [217] milliseconds.
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\docs has finished in 572 ms
+mei 16, 2018 3:18:35 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\examples
+mei 16, 2018 3:18:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\examples has finished in 444 ms
+mei 16, 2018 3:18:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\host-manager
+mei 16, 2018 3:18:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\host-manager has finished in 80 ms
+mei 16, 2018 3:18:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0
+mei 16, 2018 3:18:36 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:18:36 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:18:37 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\LogSink.webApp-1.0.0 has finished in 1,282 ms
+mei 16, 2018 3:18:37 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\manager
+mei 16, 2018 3:18:37 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\manager has finished in 72 ms
+mei 16, 2018 3:18:37 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server
+mei 16, 2018 3:18:37 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:18:37 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 3:18:39 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:18:40 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.server has finished in 2,366 ms
+mei 16, 2018 3:18:40 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html
+mei 16, 2018 3:18:40 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html\WEB-INF\lib\javax.servlet-api-3.1.0.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:18:40 PM org.apache.catalina.deploy.WebXml setVersion
+WARNING: Unknown version string [3.1]. Default version will be used.
+mei 16, 2018 3:18:41 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:18:58 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\nato.ivct.gui.nato.ivct.gui.ui.html has finished in 17,880 ms
+mei 16, 2018 3:18:58 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\ROOT
+mei 16, 2018 3:18:58 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\ROOT has finished in 65 ms
+mei 16, 2018 3:18:58 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\TC.webApp-1.0.0
+mei 16, 2018 3:18:58 PM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\TC.webApp-1.0.0\WEB-INF\lib\javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+mei 16, 2018 3:19:00 PM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: josqltaglib is already defined
+mei 16, 2018 3:19:00 PM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+mei 16, 2018 3:19:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory C:\Users\hameetepa\Projects\IVCT-AAS\IVCT_Docker\context-tomcat\application\webapps\TC.webApp-1.0.0 has finished in 2,960 ms
+mei 16, 2018 3:19:01 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:19:01 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:19:01 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 25807 ms
+mei 16, 2018 3:22:36 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:22:36 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:22:36 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+mei 16, 2018 3:22:36 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ Connection Executor: tcp://localhost/127.0.0.1:61616@57164] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:22:36 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/LogSink.webApp-1.0.0] appears to have started a thread named [ActiveMQ Connection Executor: tcp://activemq/127.0.0.1:61616@57163] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:22:36 PM org.apache.catalina.core.StandardWrapper unload
+INFO: Waiting for 1 instance(s) to be deallocated for Servlet [process]
+mei 16, 2018 3:22:37 PM org.apache.catalina.core.StandardWrapper unload
+INFO: Waiting for 1 instance(s) to be deallocated for Servlet [process]
+mei 16, 2018 3:22:38 PM org.apache.catalina.core.StandardWrapper unload
+INFO: Waiting for 1 instance(s) to be deallocated for Servlet [process]
+mei 16, 2018 3:22:38 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/nato.ivct.gui.nato.ivct.gui.server] appears to have started a thread named [http-bio-8080-exec-1] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:22:38 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ Connection Executor: tcp://activemq/127.0.0.1:61616@57171] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:22:38 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/TC.webApp-1.0.0] appears to have started a thread named [ActiveMQ Connection Executor: tcp://activemq/127.0.0.1:61616@57170] but has failed to stop it. This is very likely to create a memory leak.
+mei 16, 2018 3:22:38 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:22:38 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-8009"]
+mei 16, 2018 3:22:38 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-8080"]
+mei 16, 2018 3:22:38 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-8009"]

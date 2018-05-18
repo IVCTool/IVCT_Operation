@@ -1,0 +1,120 @@
+2018-05-16 14:39:38,127 INFO  [Thread-4] org.eclipse.scout.rt.platform.config.PropertiesHelper - Reading properties from file:/C:/Users/hameetepa/Projects/IVCT-AAS/IVCT_Runtime/apache-tomcat-7.0.78/webapps/nato.ivct.gui.nato.ivct.gui.server/WEB-INF/classes/config.properties using org.eclipse.scout.rt.platform.config.DefaultConfigFileLoader - MDC[]
+2018-05-16 14:39:38,277 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Headless mode: scout.headless=true, java.awt.headless=true (automatically set by Scout), GraphicsEnvironment.isHeadless()=true - MDC[]
+2018-05-16 14:39:38,297 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Building jandex class inventory using rebuild strategy IF_MISSING... - MDC[]
+2018-05-16 14:39:38,420 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Finished building jandex class inventory in 137.618661 ms. Total class count: 1459 - MDC[]
+2018-05-16 14:39:38,771 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Collected 252 beans in 347.991406 ms - MDC[]
+2018-05-16 14:39:38,815 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Registered 252 beans in 43.807800 ms - MDC[]
+2018-05-16 14:39:38,835 INFO  [Thread-4] org.eclipse.scout.rt.platform.logger.LoggerPlatformListener - Registered logger support org.eclipse.scout.rt.platform.logger.LogbackLoggerSupport - MDC[]
+2018-05-16 14:39:38,848 INFO  [Thread-4] org.eclipse.scout.rt.shared.services.common.code.CodeTypeRegistrator - 2 code type classes registered. - MDC[]
+2018-05-16 14:39:38,872 INFO  [Thread-4] org.eclipse.scout.rt.mom.api.AbstractMomTransport - +++ Using 'NullMomImplementor' for transport 'ClusterMom'. No messages are published and received. - MDC[]
+2018-05-16 14:42:08,064 INFO  [http-bio-8080-exec-9] nato.ivct.gui.server.ServerSession - created a new session for admin - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:08,470 INFO  [http-bio-8080-exec-9] nato.ivct.gui.server.ServerSession - load SuT Information - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:08,517 INFO  [http-bio-8080-exec-9] nato.ivct.gui.server.ServerSession - load Badge Descriptions - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:08,519 INFO  [http-bio-8080-exec-9] nato.ivct.gui.server.ServerSession - start test case Result Listener - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:08,522 INFO  [http-bio-8080-exec-9] nato.ivct.gui.server.ServerSession - start test case Status Listener - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:08,528 INFO  [http-bio-8080-exec-9] nato.ivct.commander.CmdTcStatusListener - subsribing the CmdTcStatusListener - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:08,529 INFO  [scout-thread-23] nato.ivct.commander.Factory - Factory.IVCT_BADGE_HOME_ID IVCT_BADGE_HOME_ID - MDC[jobName=nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions]
+2018-05-16 14:42:08,529 INFO  [scout-thread-22] nato.ivct.commander.CmdStartTestResultListener - subsribing the CmdStartTestResultListener - MDC[jobName=nato.ivct.gui.server.ServerSession$TestResultListener]
+2018-05-16 14:42:08,530 INFO  [scout-thread-23] nato.ivct.commander.Factory - Read Badge descriptions from C:\root\application\Badge_Home - MDC[jobName=nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions]
+2018-05-16 14:42:08,538 ERROR [scout-thread-23] org.eclipse.scout.rt.platform.exception.ExceptionHandler - NullPointerException:n/a - MDC[jobName=nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions]
+java.lang.NullPointerException: null
+	at nato.ivct.commander.CmdListBadges.execute(CmdListBadges.java:64)
+	at nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions.call(ServerSession.java:69)
+	at nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions.call(ServerSession.java:1)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:227)
+	at org.eclipse.scout.rt.platform.job.internal.ExceptionProcessor.intercept(ExceptionProcessor.java:41)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.job.internal.CallableChainExceptionHandler.intercept(CallableChainExceptionHandler.java:21)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain.call(CallableChain.java:170)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask$1.call(JobFutureTask.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask.run(JobFutureTask.java:159)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.eclipse.scout.rt.platform.job.internal.NamedThreadFactory$1.run(NamedThreadFactory.java:55)
+2018-05-16 14:42:08,538 ERROR [scout-thread-24] org.eclipse.scout.rt.platform.exception.ExceptionHandler - NullPointerException:n/a - MDC[jobName=nato.ivct.gui.server.ServerSession$LoadSuTdescriptions]
+java.lang.NullPointerException: null
+	at nato.ivct.commander.CmdListSuT.execute(CmdListSuT.java:45)
+	at nato.ivct.gui.server.ServerSession$LoadSuTdescriptions.call(ServerSession.java:54)
+	at nato.ivct.gui.server.ServerSession$LoadSuTdescriptions.call(ServerSession.java:1)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:227)
+	at org.eclipse.scout.rt.platform.job.internal.ExceptionProcessor.intercept(ExceptionProcessor.java:41)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.job.internal.CallableChainExceptionHandler.intercept(CallableChainExceptionHandler.java:21)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain.call(CallableChain.java:170)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask$1.call(JobFutureTask.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask.run(JobFutureTask.java:159)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.eclipse.scout.rt.platform.job.internal.NamedThreadFactory$1.run(NamedThreadFactory.java:55)
+2018-05-16 14:42:08,552 INFO  [http-bio-8080-exec-9] org.eclipse.scout.rt.server.AbstractServerSession - Server session started [session=nato.ivct.gui.server.ServerSession@193a550[id = 18e9d1d9-7014-45fb-b499-09df25c93290], user=admin] - MDC[principal=admin, cid=yY7eH3dM9Sk/1]
+2018-05-16 14:42:10,831 INFO  [http-bio-8080-exec-9] nato.ivct.gui.server.ServerSession - getSuTTableData - MDC[principal=admin, scoutSession=18e9d1d9-7014-45fb-b499-09df25c93290, cid=tQ3Ca5MN4Ry/3]
+2018-05-16 14:42:10,834 ERROR [http-bio-8080-exec-9] org.eclipse.scout.rt.platform.exception.ExceptionHandler - NullPointerException:n/a - MDC[principal=admin, cid=tQ3Ca5MN4Ry/3]
+java.lang.NullPointerException: null
+	at nato.ivct.commander.CmdListSuT.execute(CmdListSuT.java:45)
+	at nato.ivct.gui.server.ServerSession$LoadSuTdescriptions.call(ServerSession.java:54)
+	at nato.ivct.gui.server.ServerSession$LoadSuTdescriptions.call(ServerSession.java:1)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:227)
+	at org.eclipse.scout.rt.platform.job.internal.ExceptionProcessor.intercept(ExceptionProcessor.java:41)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.job.internal.CallableChainExceptionHandler.intercept(CallableChainExceptionHandler.java:21)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain.call(CallableChain.java:170)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask$1.call(JobFutureTask.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask.run(JobFutureTask.java:159)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.eclipse.scout.rt.platform.job.internal.NamedThreadFactory$1.run(NamedThreadFactory.java:55)
+2018-05-16 14:42:31,011 INFO  [http-bio-8080-exec-5] nato.ivct.gui.server.ServerSession - getCbTableData - MDC[principal=admin, scoutSession=18e9d1d9-7014-45fb-b499-09df25c93290, cid=Gv2bB8TM6EB/3]
+2018-05-16 14:42:31,013 ERROR [http-bio-8080-exec-5] org.eclipse.scout.rt.platform.exception.ExceptionHandler - NullPointerException:n/a - MDC[principal=admin, cid=Gv2bB8TM6EB/3]
+java.lang.NullPointerException: null
+	at nato.ivct.commander.CmdListBadges.execute(CmdListBadges.java:64)
+	at nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions.call(ServerSession.java:69)
+	at nato.ivct.gui.server.ServerSession$LoadBadgeDescriptions.call(ServerSession.java:1)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:227)
+	at org.eclipse.scout.rt.platform.job.internal.ExceptionProcessor.intercept(ExceptionProcessor.java:41)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.job.internal.CallableChainExceptionHandler.intercept(CallableChainExceptionHandler.java:21)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain$Chain.continueChain(CallableChain.java:222)
+	at org.eclipse.scout.rt.platform.chain.callable.CallableChain.call(CallableChain.java:170)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask$1.call(JobFutureTask.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.eclipse.scout.rt.platform.job.internal.JobFutureTask.run(JobFutureTask.java:159)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.eclipse.scout.rt.platform.job.internal.NamedThreadFactory$1.run(NamedThreadFactory.java:55)
+2018-05-16 15:16:50,848 INFO  [Thread-4] org.eclipse.scout.rt.platform.config.PropertiesHelper - Reading properties from file:/C:/Users/hameetepa/Projects/IVCT-AAS/IVCT_Docker/context-tomcat/application/webapps/nato.ivct.gui.nato.ivct.gui.server/WEB-INF/classes/config.properties using org.eclipse.scout.rt.platform.config.DefaultConfigFileLoader - MDC[]
+2018-05-16 15:16:50,991 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Headless mode: scout.headless=true, java.awt.headless=true (automatically set by Scout), GraphicsEnvironment.isHeadless()=true - MDC[]
+2018-05-16 15:16:51,010 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Building jandex class inventory using rebuild strategy IF_MISSING... - MDC[]
+2018-05-16 15:16:51,103 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Finished building jandex class inventory in 105.816492 ms. Total class count: 1459 - MDC[]
+2018-05-16 15:16:51,466 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Collected 252 beans in 361.439825 ms - MDC[]
+2018-05-16 15:16:51,511 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Registered 252 beans in 44.807781 ms - MDC[]
+2018-05-16 15:16:51,530 INFO  [Thread-4] org.eclipse.scout.rt.platform.logger.LoggerPlatformListener - Registered logger support org.eclipse.scout.rt.platform.logger.LogbackLoggerSupport - MDC[]
+2018-05-16 15:16:51,541 INFO  [Thread-4] org.eclipse.scout.rt.shared.services.common.code.CodeTypeRegistrator - 2 code type classes registered. - MDC[]
+2018-05-16 15:16:51,561 INFO  [Thread-4] org.eclipse.scout.rt.mom.api.AbstractMomTransport - +++ Using 'NullMomImplementor' for transport 'ClusterMom'. No messages are published and received. - MDC[]
+2018-05-16 15:18:29,593 INFO  [Thread-4] org.eclipse.scout.rt.platform.config.PropertiesHelper - Reading properties from file:/C:/Users/hameetepa/Projects/IVCT-AAS/IVCT_Docker/context-tomcat/application/webapps/nato.ivct.gui.nato.ivct.gui.server/WEB-INF/classes/config.properties using org.eclipse.scout.rt.platform.config.DefaultConfigFileLoader - MDC[]
+2018-05-16 15:18:29,751 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Headless mode: scout.headless=true, java.awt.headless=true (automatically set by Scout), GraphicsEnvironment.isHeadless()=true - MDC[]
+2018-05-16 15:18:29,774 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Building jandex class inventory using rebuild strategy IF_MISSING... - MDC[]
+2018-05-16 15:18:29,881 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Finished building jandex class inventory in 123.757859 ms. Total class count: 1459 - MDC[]
+2018-05-16 15:18:30,282 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Collected 252 beans in 398.262790 ms - MDC[]
+2018-05-16 15:18:30,341 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Registered 252 beans in 58.822538 ms - MDC[]
+2018-05-16 15:18:30,361 INFO  [Thread-4] org.eclipse.scout.rt.platform.logger.LoggerPlatformListener - Registered logger support org.eclipse.scout.rt.platform.logger.LogbackLoggerSupport - MDC[]
+2018-05-16 15:18:30,377 INFO  [Thread-4] org.eclipse.scout.rt.shared.services.common.code.CodeTypeRegistrator - 2 code type classes registered. - MDC[]
+2018-05-16 15:18:30,401 INFO  [Thread-4] org.eclipse.scout.rt.mom.api.AbstractMomTransport - +++ Using 'NullMomImplementor' for transport 'ClusterMom'. No messages are published and received. - MDC[]
+2018-05-16 15:18:39,412 INFO  [Thread-4] org.eclipse.scout.rt.platform.config.PropertiesHelper - Reading properties from file:/C:/Users/hameetepa/Projects/IVCT-AAS/IVCT_Docker/context-tomcat/application/webapps/nato.ivct.gui.nato.ivct.gui.server/WEB-INF/classes/config.properties using org.eclipse.scout.rt.platform.config.DefaultConfigFileLoader - MDC[]
+2018-05-16 15:18:39,562 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Headless mode: scout.headless=true, java.awt.headless=true (automatically set by Scout), GraphicsEnvironment.isHeadless()=true - MDC[]
+2018-05-16 15:18:39,584 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Building jandex class inventory using rebuild strategy IF_MISSING... - MDC[]
+2018-05-16 15:18:39,679 INFO  [Thread-4] org.eclipse.scout.rt.platform.inventory.ClassInventory - Finished building jandex class inventory in 111.199086 ms. Total class count: 1459 - MDC[]
+2018-05-16 15:18:40,042 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Collected 252 beans in 359.988240 ms - MDC[]
+2018-05-16 15:18:40,094 INFO  [Thread-4] org.eclipse.scout.rt.platform.internal.PlatformImplementor - Registered 252 beans in 52.565695 ms - MDC[]
+2018-05-16 15:18:40,113 INFO  [Thread-4] org.eclipse.scout.rt.platform.logger.LoggerPlatformListener - Registered logger support org.eclipse.scout.rt.platform.logger.LogbackLoggerSupport - MDC[]
+2018-05-16 15:18:40,123 INFO  [Thread-4] org.eclipse.scout.rt.shared.services.common.code.CodeTypeRegistrator - 2 code type classes registered. - MDC[]
+2018-05-16 15:18:40,145 INFO  [Thread-4] org.eclipse.scout.rt.mom.api.AbstractMomTransport - +++ Using 'NullMomImplementor' for transport 'ClusterMom'. No messages are published and received. - MDC[]

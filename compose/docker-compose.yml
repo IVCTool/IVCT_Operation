@@ -1,0 +1,65 @@
+---
+version: '3'
+services:
+  activemq:
+    image: rmohr/activemq:5.14.5-alpine
+    hostname: activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+      
+  crc:
+    image: app-docker136.hex.tno.nl/tno/crc:5.3.2.1L
+    hostname: crc
+    ports:
+      - "8989:8989"
+    environment:
+      - DISPLAY=xserver:0
+      
+  xserver:
+    image: app-docker136.hex.tno.nl/library/xserver
+    ports:
+      - "8081:8080"
+
+  ivct:
+    image: tno/ivct-tomcat:latest
+    hostname: ivct
+    ports:
+      - "8080:8080"
+    depends_on:
+      - crc
+      - activemq
+    volumes:
+      - sut-config:/root/application/SUT_Home
+      - ts-helloworld:/root/application/TS_Home/TS_HelloWorld-1.0.0
+      - ts-hla-encoding:/root/application/TS_Home/TS_HLA_EncodingRulesTester-1.0.0
+      - badges:/root/application/Badge_Home
+    environment:
+      PITCH_CRCADDRESS: 'crc:8989'
+      LRC_MINSLEEP: 10
+      
+  badges:
+    image: tno/ivct-badges:latest
+    volumes: 
+      - badges:/badges
+      
+  testsuite-helloworld:
+    image: tno/ts-helloworld:latest
+    volumes:
+      - ts-helloworld:/testsuites/TS_HelloWorld-1.0.0
+       
+  testsuite-hlaencoding:
+    image: tno/ts-hla-encoding:latest
+    volumes:
+      - ts-hla-encoding:/testsuites/TS_HLA_EncodingRulesTester-1.0.0
+      
+  sutconfig:
+    image: tno/ivct-sutconfig:latest
+    volumes:
+      - sut-config:/sutconfig
+      
+volumes:
+  ts-hla-encoding:
+  ts-helloworld:
+  sut-config:
+  badges:
