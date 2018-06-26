@@ -13,6 +13,7 @@ services:
     hostname: crc
     ports:
       - "8989:8989"
+    mac_address: "00:18:8B:0D:4F:0B"
     environment:
       - DISPLAY=xserver:0
       
@@ -20,46 +21,69 @@ services:
     image: app-docker136.hex.tno.nl/library/xserver
     ports:
       - "8081:8080"
-
-  ivct:
-    image: tno/ivct-tomcat:latest
-    hostname: ivct
-    ports:
-      - "8080:8080"
+      
+  tc-runner:
+    image: msg134/tc-runner
     depends_on:
-      - crc
       - activemq
+      - crc
+      - runtime-config
+      - ts-helloworld
+      - ts-hla-encoding-rules-tester
     volumes:
-      - sut-config:/root/application/SUT_Home
-      - ts-helloworld:/root/application/TS_Home/TS_HelloWorld-1.0.0
-      - ts-hla-encoding:/root/application/TS_Home/TS_HLA_EncodingRulesTester-1.0.0
-      - badges:/root/application/Badge_Home
+      - runtime-config:/root/conf:nocopy
+      - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
+      - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
     environment:
       PITCH_CRCADDRESS: 'crc:8989'
       LRC_MINSLEEP: 10
-      
-  badges:
-    image: tno/ivct-badges:latest
-    volumes: 
-      - badges:/badges
-      
-  testsuite-helloworld:
-    image: tno/ts-helloworld:latest
+      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_PORT: 61616
+      IVCT_CONF: '/root/conf/'
+    
+  logsink:
+    image: msg134/logsink
+    depends_on:
+      - activemq
+      - runtime-config
     volumes:
-      - ts-helloworld:/testsuites/TS_HelloWorld-1.0.0
-       
-  testsuite-hlaencoding:
-    image: tno/ts-hla-encoding:latest
+      - runtime-config:/root/conf:nocopy
+    environment:
+      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_PORT: 61616
+      IVCT_CONF: '/root/conf/'
+    
+  gui:
+    image: msg134/ivct-gui
+    ports:
+      - "8080:8080"
+    depends_on:
+      - activemq
+      - runtime-config
     volumes:
-      - ts-hla-encoding:/testsuites/TS_HLA_EncodingRulesTester-1.0.0
+      - runtime-config:/root/conf:nocopy
+    environment:
+      IVCT_CONF: '/root/conf/'
+      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_PORT: 61616
       
-  sutconfig:
-    image: tno/ivct-sutconfig:latest
+  runtime-config:
+    image: msg134/runtime-config
     volumes:
-      - sut-config:/sutconfig
+      - runtime-config:/root/conf
+      
+  ts-helloworld:
+    image: msg134/ts-helloworld
+    volumes:
+      - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0
+      
+  ts-hla-encoding-rules-tester:
+    image: msg134/ts-hla-encoding-rules-tester
+    volumes:
+      - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0
       
 volumes:
-  ts-hla-encoding:
+  runtime-config:
   ts-helloworld:
-  sut-config:
-  badges:
+  ts-hla-encoding-rules-tester:
+    

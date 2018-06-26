@@ -1,6 +1,3 @@
-FROM alpine
+FROM tianon/true
 
-#Install testsuite
-ADD ./TS_HelloWorld-1.0.0 /testsuites/TS_HelloWorld-1.0.0
-
-CMD ["/bin/true"]
+ADD ./TS_HelloWorld-1.0.0 /root/conf/TestSuites/TS_HelloWorld-1.0.0

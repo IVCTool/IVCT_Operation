@@ -1,6 +1,3 @@
-FROM alpine
+FROM tianon/true
 
-#Install testsuite
-ADD ./TS_HLA_EncodingRulesTester-1.0.0 /testsuites/TS_HLA_EncodingRulesTester-1.0.0
-
-CMD ["/bin/true"]
+ADD ./TS_HLA_EncodingRulesTester-1.0.0 /root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0
