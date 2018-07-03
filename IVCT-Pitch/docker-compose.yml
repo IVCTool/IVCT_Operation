@@ -1,0 +1,89 @@
+---
+version: '3'
+services:
+  activemq:
+    image: rmohr/activemq:5.14.5-alpine
+    hostname: activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+      
+  crc:
+    image: app-docker136.hex.tno.nl/tno/crc:5.3.2.1L
+    hostname: crc
+    ports:
+      - "8989:8989"
+    mac_address: "00:18:8B:0D:4F:0B"
+    environment:
+      - DISPLAY=xserver:0
+      
+  xserver:
+    image: app-docker136.hex.tno.nl/library/xserver
+    ports:
+      - "8081:8080"
+      
+  tc-runner:
+    image: msg134/tc-runner
+    depends_on:
+      - activemq
+      - crc
+      - runtime-config
+      - ts-helloworld
+      - ts-hla-encoding-rules-tester
+    volumes:
+      - runtime-config:/root/conf:nocopy
+      - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
+      - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
+    environment:
+      PITCH_CRCADDRESS: 'crc:8989'
+      LRC_MINSLEEP: 10
+      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_PORT: 61616
+      IVCT_CONF: '/root/conf/'
+    
+  logsink:
+    image: msg134/logsink
+    depends_on:
+      - activemq
+      - runtime-config
+    volumes:
+      - runtime-config:/root/conf:nocopy
+    environment:
+      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_PORT: 61616
+      IVCT_CONF: '/root/conf/'
+    
+  gui:
+    image: msg134/ivct-gui
+    ports:
+      - "8080:8080"
+    depends_on:
+      - activemq
+      - runtime-config
+    volumes:
+      - runtime-config:/root/conf:nocopy
+    environment:
+      IVCT_CONF: '/root/conf/'
+      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_PORT: 61616
+      
+  runtime-config:
+    image: msg134/runtime-config
+    volumes:
+      - runtime-config:/root/conf
+      
+  ts-helloworld:
+    image: msg134/ts-helloworld
+    volumes:
+      - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0
+      
+  ts-hla-encoding-rules-tester:
+    image: msg134/ts-hla-encoding-rules-tester
+    volumes:
+      - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0
+      
+volumes:
+  runtime-config:
+  ts-helloworld:
+  ts-hla-encoding-rules-tester:
+    
