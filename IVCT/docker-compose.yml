@@ -24,11 +24,15 @@ services:
     image: msg134/tc-runner
     depends_on:
       - activemq
+    ports:
+      - "6100-6110:6100-6110"
     volumes:
       - runtime-config:/root/conf:nocopy
       - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
       - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
     environment:
+      PITCH_ADVERTISE_ADDRESS=app-docker00.hex.tno.nl:6100-6110
+      PITCH_CRCADDRESS=app-docker00.hex.tno.nl:8989
       LRC_MINSLEEP: 10
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
