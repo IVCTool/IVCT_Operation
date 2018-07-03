@@ -1,5 +1,6 @@
 ---
 version: '3'
+
 services:
   activemq:
     image: rmohr/activemq:5.14.5-alpine
@@ -10,7 +11,6 @@ services:
       
   crc:
     image: app-docker136.hex.tno.nl/tno/crc:5.3.2.1L
-    hostname: crc
     ports:
       - "8989:8989"
     mac_address: "00:18:8B:0D:4F:0B"
@@ -35,11 +35,11 @@ services:
       - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
       - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
     environment:
-      PITCH_CRCADDRESS: 'crc:8989'
+      PITCH_CRCADDRESS: crc:8989
       LRC_MINSLEEP: 10
-      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
-      IVCT_CONF: '/root/conf/'
+      IVCT_CONF: /root/conf/
     
   logsink:
     image: msg134/logsink
@@ -49,9 +49,9 @@ services:
     volumes:
       - runtime-config:/root/conf:nocopy
     environment:
-      ACTIVEMQ_HOST: 'activemq'
+      ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
-      IVCT_CONF: '/root/conf/'
+      IVCT_CONF: /root/conf/
     
   gui:
     image: msg134/ivct-gui
@@ -63,8 +63,8 @@ services:
     volumes:
       - runtime-config:/root/conf:nocopy
     environment:
-      IVCT_CONF: '/root/conf/'
-      ACTIVEMQ_HOST: 'activemq'
+      IVCT_CONF: /root/conf/
+      ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       
   runtime-config:
@@ -86,4 +86,3 @@ volumes:
   runtime-config:
   ts-helloworld:
   ts-hla-encoding-rules-tester:
-    
