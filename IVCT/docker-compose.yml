@@ -25,10 +25,6 @@ services:
     image: msg134/tc-runner
     depends_on:
       - activemq
-      - crc
-      - runtime-config
-      - ts-helloworld
-      - ts-hla-encoding-rules-tester
     volumes:
       - runtime-config:/root/conf:nocopy
       - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
@@ -43,7 +39,6 @@ services:
     image: msg134/logsink
     depends_on:
       - activemq
-      - runtime-config
     volumes:
       - runtime-config:/root/conf:nocopy
     environment:
@@ -57,7 +52,6 @@ services:
       - "8080:8080"
     depends_on:
       - activemq
-      - runtime-config
     volumes:
       - runtime-config:/root/conf:nocopy
     environment:
