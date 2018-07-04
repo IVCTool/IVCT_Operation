@@ -1,12 +1,9 @@
 version: '3'
 
 services:
-  activemq:
-    image: rmohr/activemq:5.14.5-alpine
-    ports:
-      - "61616:61616"
-      - "8161:8161"
-      
+# The Pitch CRC
+# The CRC exposes its port on the Docker Host so that non-containerize federare applications can connect.
+# Check the CRC wiki page for more options.
   crc:
     image: app-docker136.hex.tno.nl/tno/crc:5.3.2.1L
     ports:
@@ -14,13 +11,28 @@ services:
     mac_address: "00:18:8B:0D:4F:0B"
     environment:
       - DISPLAY=xserver:0
-      - CRC_REJECT_MISMATCHED_VERSIONS=false
-      
+
+# General X Server
+# The X Server is in this composition used for displaying the Pitch CRC GUI.
+# Instead of the X Server the Pitch Web UI can be used also.
   xserver:
     image: app-docker136.hex.tno.nl/library/xserver
     ports:
       - "8081:8080"
+      
+# Apache Active Message Queue
+# Just get this image from the Docker Hub. The MQ is used for communication between the different IVCT components.
+  activemq:
+    image: rmohr/activemq:5.14.5-alpine
+    ports:
+      - "61616:61616"
+      - "8161:8161"
 
+# IVCT Test Case Runner
+# This is an HLA federate application. By default it waits for the CRC to be up (check LRC wiki page for other options).
+# Since non-containerized federate applications (outside the VPN of this composition) can connect to the federation,
+# it is necessary that this federate application exposes its LRC port to the Docker Host, using the PITCH_ADVERTISE_ADDRESS.
+# The DOCKERHOST value is set in the .env file.
   tc-runner:
     image: msg134/tc-runner
     depends_on:
@@ -32,12 +44,13 @@ services:
       - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
       - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
     environment:
-      - PITCH_ADVERTISE_ADDRESS=${DOCKER_HOST}:6100-6110
-      - LRC_MINSLEEP=10
-      - ACTIVEMQ_HOST=activemq
-      - ACTIVEMQ_PORT=61616
-      - IVCT_CONF=/root/conf/
-    
+      PITCH_ADVERTISE_ADDRESS: ${DOCKERHOST}:6100-6110
+      LRC_MINSLEEP: 10
+      ACTIVEMQ_HOST: activemq
+      ACTIVEMQ_PORT: 61616
+      IVCT_CONF: /root/conf/
+
+# IVCT Logsink component
   logsink:
     image: msg134/logsink
     depends_on:
@@ -49,10 +62,11 @@ services:
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
     
+# IVCT GUI component
   gui:
     image: msg134/ivct-gui
     ports:
-      - "8080:8080"
+      - "8180:8080"
     depends_on:
       - activemq
     volumes:
@@ -61,25 +75,27 @@ services:
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
-
-# IVCT RUNTIME CONFIGURATION DATA
+      
+# IVCT runtime configuration data
   runtime-config:
     image: msg134/runtime-config
     volumes:
       - runtime-config:/root/conf
-      
-# IVCT TESTSUITES
+
+# IVCT Test Suite data for Helloworld
   ts-helloworld:
     image: msg134/ts-helloworld
     volumes:
       - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0
       
+# IVCT Test Suite data for Encoding Rules 
   ts-hla-encoding-rules-tester:
     image: msg134/ts-hla-encoding-rules-tester
     volumes:
       - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0
-      
+
 volumes:
   runtime-config:
   ts-helloworld:
   ts-hla-encoding-rules-tester:
+
