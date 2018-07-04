@@ -20,46 +20,23 @@ services:
     image: app-docker136.hex.tno.nl/library/xserver
     ports:
       - "8081:8080"
-      
-  start1:
-    image: app-docker136.hex.tno.nl/msaas-nld/start:pi-alpine
-    ports:
-      - "6200-6299:6200-6299"
-    environment:
-      - PITCH_ADVERTISE_ADDRESS=134.221.44.80:6200-6210
-      - PITCH_CRCADDRESS=app-docker00.hex.tno.nl:8989
-      - FEDERATIONNAME=HelloWorld
-      - DISPLAY=xserver:0
-      - LRC_MINSLEEP=120 
 
-  start2:
-    image: app-docker136.hex.tno.nl/msaas-nld/start:pi-alpine
-    ports:
-      - "6300-6399:6300-6399"
-    environment:
-      - PITCH_ADVERTISE_ADDRESS=134.221.44.80:6300-6310
-      - PITCH_CRCADDRESS=app-docker00.hex.tno.nl:8989
-      - FEDERATIONNAME=HelloWorld
-      - DISPLAY=xserver:0
-      - LRC_MINSLEEP=120 
-
-      tc-runner:
+  tc-runner:
     image: msg134/tc-runner
     depends_on:
       - activemq
-#    ports:
-#      - "6100-6110:6100-6110"
+    ports:
+      - "6100-6110:6100-6110"
     volumes:
       - runtime-config:/root/conf:nocopy
       - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
       - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
     environment:
-#      PITCH_ADVERTISE_ADDRESS: app-docker00.hex.tno.nl:6100-6110
-#      PITCH_CRCADDRESS: app-docker00.hex.tno.nl:8989
-      LRC_MINSLEEP: 10
-      ACTIVEMQ_HOST: activemq
-      ACTIVEMQ_PORT: 61616
-      IVCT_CONF: /root/conf/
+      - PITCH_ADVERTISE_ADDRESS=${DOCKER_HOST}:6100-6110
+      - LRC_MINSLEEP=10
+      - ACTIVEMQ_HOST=activemq
+      - ACTIVEMQ_PORT=61616
+      - IVCT_CONF=/root/conf/
     
   logsink:
     image: msg134/logsink
@@ -84,12 +61,14 @@ services:
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
-      
+
+# IVCT RUNTIME CONFIGURATION DATA
   runtime-config:
     image: msg134/runtime-config
     volumes:
       - runtime-config:/root/conf
       
+# IVCT TESTSUITES
   ts-helloworld:
     image: msg134/ts-helloworld
     volumes:
