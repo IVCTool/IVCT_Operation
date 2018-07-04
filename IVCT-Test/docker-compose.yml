@@ -37,7 +37,7 @@ services:
     ports:
       - "6300-6399:6300-6399"
     environment:
-      - PITCH_ADVERTISE_ADDRESS=134.221.44.80:6300-6310
+      - PITCH_ADVERTISE_ADDRESS=134.221.44.80:6300-6310 
       - PITCH_CRCADDRESS=app-docker00.hex.tno.nl:8989
       - FEDERATIONNAME=HelloWorld
       - DISPLAY=xserver:0
