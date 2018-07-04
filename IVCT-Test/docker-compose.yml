@@ -14,6 +14,7 @@ services:
     mac_address: "00:18:8B:0D:4F:0B"
     environment:
       - DISPLAY=xserver:0
+      - CRC_REJECT_MISMATCHED_VERSIONS=false
       
   xserver:
     image: app-docker136.hex.tno.nl/library/xserver
