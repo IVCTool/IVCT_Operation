@@ -24,7 +24,7 @@ services:
   start:
     image: app-docker136.hex.tno.nl/msaas-nld/start:pi-alpine
     ports:
-      - "6200-6210:6200-6210"
+      - "6200-6300:6200-6300"
     environment:
       - PITCH_ADVERTISE_ADDRESS=134.221.44.80:6200-6210
       - PITCH_CRCADDRESS=app-docker00.hex.tno.nl:8989
