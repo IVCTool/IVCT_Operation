@@ -13,7 +13,11 @@ For simplicity we assume that the composition runs on a single Docker Host.
 
 Steps to get going:
 
-1. Edit the `.env` file to set the ``DOCKERHOST`` to the hostname or IP address of the Docker Host.
+1. Edit the `.env` file and set:
+
+   - ``DOCKERHOST`` to the hostname or IP address of the Docker Host.
+   - ``LICENSE_IMAGE`` to your license image with your license key in it.
+   - ``MAC_ADDRESS``to the MAC address value associated with the license key.
 
 2. Start the composition with ``docker-compose up``.
 
