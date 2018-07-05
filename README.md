@@ -25,6 +25,6 @@ Other files               -- optional
 
 ## Container image descriptions
 
-Descriptions of container images are maintained under the Wiki of this repository, one page per container image. A general structure is provided in the wiki home page.
+Descriptions of container images are maintained under the Wiki of this repository, one page per container image. A general structure is provided in the wiki home page: https://github.com/MSG134/IVCT_Images/wiki.
 
 Several image descriptions (such as CRC, LRC) are copied from the MSG-164 (MSaaS-2) repository. This is indicated on the subsequent wiki pages. Changes on these pages will not be reflected back to the original wiki pages in the MSG-164 repository and the changes will be lost in later updates.
