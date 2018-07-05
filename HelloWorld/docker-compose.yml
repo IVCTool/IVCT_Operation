@@ -1,101 +1,155 @@
 version: '3'
 
-services:
-# The Pitch CRC
-# The CRC exposes its port on the Docker Host so that non-containerize federare applications can connect.
-# Check the CRC wiki page for more options.
-  crc:
-    image: app-docker136.hex.tno.nl/tno/crc:5.3.2.1L
-    ports:
-      - "8989:8989"
-    mac_address: "00:18:8B:0D:4F:0B"
-    environment:
-      - DISPLAY=xserver:0
+# ==============================================================================
+# HelloWorld IVCT composition
+#
+# This composition consists of various container images to test the HelloWorld
+# federate application.
+#
+# In this composition the Pitch CRC is started with a license container.
+# The license key in the license container is tight to a Pitch license agreement
+# and must remain proprietary to the licensee. Therefore the license container
+# cannot be stored in the MSaaS Docker Registry. The container image used is an
+# example.
+# ==============================================================================
 
+services:
+# ==============================================================================
+# Pitch CRC
+# The CRC publishes its port on the Docker Host so that the non-containerized
+# federate application "HelloWorld" can connect to the CRC. The value of
+# MAC_ADDRESS is related to the license key in the license container.
+# Check the CRC wiki page for more options.
+# ==============================================================================
+  crc:
+    image: app-docker136.hex.tno.nl/pitch/crc:5.3.2.1
+    ports:
+    - "8989:8989"
+    mac_address: ${MAC_ADDRESS}
+    environment:
+      DISPLAY: xserver:0
+      CRC_REJECT_MISMATCHED_VERSIONS: "false"
+    volumes:
+    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
+
+# ==============================================================================
+# Pitch CRC license container
+# The image used here is for example purposes only.
+# ==============================================================================
+  license:
+    image: ${LICENSE_IMAGE}
+    volumes:
+    - license_volume:/license-key
+
+# ==============================================================================
 # General X Server
 # The X Server is in this composition used for displaying the Pitch CRC GUI.
 # Instead of the X Server the Pitch Web UI can be used also.
+# ==============================================================================
   xserver:
     image: app-docker136.hex.tno.nl/library/xserver
     ports:
-      - "8081:8080"
+    - "${XSERVER_PORT}:8080"
       
+# ==============================================================================
 # Apache Active Message Queue
-# Just get this image from the Docker Hub. The MQ is used for communication between the different IVCT components.
+# Just get this image from the Docker Hub.
+# The MQ is used for communication between the different IVCT components.
+# ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
     ports:
-      - "61616:61616"
-      - "8161:8161"
+    - "61616:61616"
+    - "8161:8161"
 
+# ==============================================================================
 # IVCT Test Case Runner
-# This is an HLA federate application. By default it waits for the CRC to be up (check LRC wiki page for other options).
-# Since non-containerized federate applications (outside the VPN of this composition) can connect to the federation,
-# it is necessary that this federate application exposes its LRC port to the Docker Host, using the PITCH_ADVERTISE_ADDRESS.
-# The DOCKERHOST value is set in the .env file.
+# The TC Runner is an HLA federate application based on the Pitch LRC base
+# image. By default the container waits for the CRC to be up.
+# Since the non-containerized federate application "HelloWorld" runs outside the
+# VPN of this composition and must be able to connect to the federation, it is
+# necessary to publish the LRC ports of this application to the Docker Host,
+# using the PITCH_ADVERTISE_ADDRESS. Both a TCP and a UDP port range are
+# published for reliable and best effort communication.
+# Check the LRC wiki page for more LRC options.
+# ==============================================================================
   tc-runner:
     image: msg134/tc-runner
     depends_on:
-      - activemq
+    - activemq
     ports:
-      - "6100-6110:6100-6110"
+    - "6100-6109:6100-6109/tcp"
+    - "6110-6119:6110-6119/udp"
     volumes:
-      - runtime-config:/root/conf:nocopy
-      - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
-      - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0:nocopy
+    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0:nocopy
     environment:
-      PITCH_ADVERTISE_ADDRESS: ${DOCKERHOST}:6100-6110
+      PITCH_ADVERTISE_ADDRESS: ${DOCKERHOST}:6100-6109:6110-6119
       LRC_MINSLEEP: 10
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
 
+# ==============================================================================
 # IVCT Logsink component
+# ==============================================================================
   logsink:
     image: msg134/logsink
     depends_on:
-      - activemq
+    - activemq
     volumes:
-      - runtime-config:/root/conf:nocopy
+    - runtime-config:/root/conf:nocopy
     environment:
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
     
+# ==============================================================================
 # IVCT GUI component
+# ==============================================================================
   gui:
     image: msg134/ivct-gui
     ports:
-      - "8180:8080"
+    - "${IVCT_GUI}:8080"
     depends_on:
-      - activemq
+    - activemq
     volumes:
-      - runtime-config:/root/conf:nocopy
+    - runtime-config:/root/conf:nocopy
     environment:
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
       
+# ==============================================================================
 # IVCT runtime configuration data
+# ==============================================================================
   runtime-config:
     image: msg134/runtime-config
     volumes:
-      - runtime-config:/root/conf
+    - runtime-config:/root/conf
 
+# ==============================================================================
 # IVCT Test Suite data for Helloworld
+# ==============================================================================
   ts-helloworld:
     image: msg134/ts-helloworld
     volumes:
-      - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.0
       
+# ==============================================================================
 # IVCT Test Suite data for Encoding Rules 
+# ==============================================================================
   ts-hla-encoding-rules-tester:
     image: msg134/ts-hla-encoding-rules-tester
     volumes:
-      - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0
+    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.0
 
+# ==============================================================================
+# Data volumes
+# ==============================================================================
 volumes:
   runtime-config:
   ts-helloworld:
   ts-hla-encoding-rules-tester:
-
+  license_volume:
