@@ -11,19 +11,19 @@ For simplicity we assume that the composition runs on a single Docker Host.
 
 
 
-Steps to get going
+Steps to get going:
 
 1. Edit the `.env` file to set the ``DOCKERHOST`` to the hostname or IP address of the Docker Host.
 
-2. Start the composition with ``docker-compose up``
+2. Start the composition with ``docker-compose up``.
 
 3. From the same or another host start the HelloWorld application; provide the hostname or IP address of the Docker Host and use ``A`` as the name of the federation. Leave other values to their default.
 
 4. Navigate to the X Server web page 
 
-   URL: ``<Docker Host>:8081``
+   URL: ``<Docker Host>:8081/vnc_auto.html``
 
-5. Verify from the Pitch CRC UI that there is a federation with one federate.
+5. Verify from the Pitch CRC UI that there is a federation with one federate named ``A``.
 
 6. Navigate to the IVCT web page.
 
