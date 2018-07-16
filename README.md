@@ -1,9 +1,5 @@
 # IVCT_Images
-This repository contains **Docker build files** to build IVCT container images and **Docker compose files** to run IVCT compositions.
-
-## Docker build files
-
-The Dockerfiles to build container images can be found under the ``Dockerfiles`` directory
+This repository contains **Docker compose files** to run IVCT compositions.
 
 ## Docker compose files
 
