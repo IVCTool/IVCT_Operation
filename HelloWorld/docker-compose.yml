@@ -70,7 +70,7 @@ services:
 # image. By default the container waits for the CRC to be up.
 # Since the non-containerized federate application "HelloWorld" runs outside the
 # VPN of this composition and must be able to connect to the federation, it is
-# necessary to publish the LRC ports of this application to the Docker Host,
+# necessary to expose the LRC ports of this application to the Docker Host,
 # using the PITCH_ADVERTISE_ADDRESS. Both a TCP and a UDP port range are
 # published for reliable and best effort communication.
 # Check the LRC wiki page for more LRC options.

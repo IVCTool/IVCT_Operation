@@ -1,6 +1,8 @@
 # IVCT Hello World composition
 
-This composition includes various components to test the HelloWorld federate application. Main parts in the Hello World composition are:
+This IVCT Hello World composition includes various IVCT components to test the HelloWorld federate application. The IVCT components in the composition are all containerized. The HelloWorld federate is a non-containerized application that runs on the same host system as where the IVCT Hello World composition is running, although this is not required per se.
+
+Main parts in the IVCT Hello World composition are:
 
 - Simulation infrastructure components: the Pitch CRC and an X Server
 - IVCT components: AMQ, TC Runner, Log Sink and the GUI
@@ -29,13 +31,17 @@ Steps to get going:
 
    Where the value ``8081`` must match with the ``XSERVER_PORT`` setting in the ``.env`` file.
 
+   And where ``<Docker Host>`` should be replaced by the name of you host system.
+
 5. Verify from the Pitch CRC UI that there is a federation with one federate named ``A``.
 
 6. Navigate to the IVCT web page.
 
    URL: ``<Docker Host>:8180/ivct.gui.ui.html``
 
-   Where the value ``8180`` must match with the ``IVCT_GUI_PORT`` setting in the ``.env`` file. 
+   Where the value ``8180`` must match with the ``IVCT_GUI_PORT`` setting in the ``.env`` file.
+
+   And where ``<Docker Host>`` should be replaced by the name of you host system.
 
 7. Login to the IVCT (admin / admin) and navigate to the test cases page.
 
