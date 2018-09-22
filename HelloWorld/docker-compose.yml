@@ -9,17 +9,19 @@ version: '3'
 # In this composition the Pitch CRC is started with a license container.
 # The license key in the license container is tight to a Pitch license agreement
 # and must remain proprietary to the licensee. Therefore the license container
-# cannot be stored in the MSaaS Docker Registry. The container image used is an
-# example.
+# cannot be stored in the MSaaS Docker Registry. The license container image is
+# defined by an environment variable.
 # ==============================================================================
 
 services:
 # ==============================================================================
 # Pitch CRC
 # The CRC publishes its port on the Docker Host so that the non-containerized
-# federate application "HelloWorld" can connect to the CRC. The value of
-# MAC_ADDRESS is related to the license key in the license container.
-# Check the CRC wiki page for more options.
+# federate application "HelloWorld" can connect to the CRC.
+# The MAC_ADDRESS is required and the value relates to the license key in the
+# licenses container.
+# The DISPLAY setting is optional, and, if set, must refer is an X Server
+# display.
 # ==============================================================================
   crc:
     image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
@@ -29,34 +31,38 @@ services:
     - "8989:8989"
     mac_address: ${MAC_ADDRESS}
     environment:
-      DISPLAY: xserver:0
+      DISPLAY: ${DISPLAY}
       CRC_REJECT_MISMATCHED_VERSIONS: "false"
+      CRC_SKIP_CONNECTIVITY_CHECK: "true"
     volumes:
     - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
 
 # ==============================================================================
 # Pitch CRC license container
-# The image used here is for example purposes only.
+# The provided image contains the license key.
 # ==============================================================================
   license:
     image: ${LICENSE_IMAGE}
     volumes:
     - license_volume:/license-key
-
+    
 # ==============================================================================
-# General X Server
-# The X Server is in this composition used for displaying the Pitch CRC GUI.
-# Instead of the X Server the Pitch Web UI can be used also.
+# Pitch web UI container
+# This image provides a web UI to the CRC.
+# URL: ${DOCKERHOST}:${WEBUI_PORT}//webview
+# Login: admin / admin
 # ==============================================================================
-  xserver:
-    image: app-docker136.hex.tno.nl/library/xserver
+  webui:
+    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
     ports:
-    - "${XSERVER_PORT}:8080"
+    - "${WEBUI_PORT}:8080"
       
 # ==============================================================================
 # Apache Active Message Queue
 # Just get this image from the Docker Hub.
 # The MQ is used for communication between the different IVCT components.
+# The ports are listed for reference, but do not need to be exposed and may be
+# omitted.
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
@@ -67,13 +73,13 @@ services:
 # ==============================================================================
 # IVCT Test Case Runner
 # The TC Runner is an HLA federate application based on the Pitch LRC base
-# image. By default the container waits for the CRC to be up.
-# Since the non-containerized federate application "HelloWorld" runs outside the
-# VPN of this composition and must be able to connect to the federation, it is
-# necessary to expose the LRC ports of this application to the Docker Host,
+# image.
+# 
+# Since the non-containerized federate application "HelloWorld" runs outside
+# the VPN of this composition and must be able to connect to the federation,
+# it is necessary to expose the LRC ports of the TC Runner to the Docker Host,
 # using the PITCH_ADVERTISE_ADDRESS. Both a TCP and a UDP port range are
-# published for reliable and best effort communication.
-# Check the LRC wiki page for more LRC options.
+# exposed for reliable and best effort communication.
 # ==============================================================================
   tc-runner:
     image: msg134/tc-runner:development-latest
@@ -103,6 +109,7 @@ services:
     image: msg134/logsink:development-latest
     depends_on:
     - activemq
+    - runtime-config
     volumes:
     - runtime-config:/root/conf:nocopy
     environment:
@@ -117,6 +124,7 @@ services:
     image: msg134/ivct-gui:development-latest
     depends_on:
     - activemq
+    - runtime-config
     ports:
     - "${IVCT_GUI_PORT}:8080"
     volumes:
