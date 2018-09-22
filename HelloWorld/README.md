@@ -23,7 +23,7 @@ Steps to get going:
 2. Start the composition with ``docker-compose up``.
 3. From the same or another host start the HelloWorld application; provide the hostname or IP address of the Docker Host and use ``A`` as the name of the federation. Leave other values to their default.
 4. Navigate to the Pitch web UI:  ``http://<DOCKERHOST>:<WEBUI_PORT>/webview``.
-5. Login to the Pitch web UI (admin / admin) and add the CRC.
+5. Login to the Pitch web UI (Administrator / admin) and add the CRC that runs on host ``crc``.
 6. Verify from the Pitch web UI that there is a federation with one federate named ``A``.
 7. Navigate to the IVCT UI: ``http://<DOCKERHOST>:<IVCUI_PORT>/ivct.gui.ui.html``.
 

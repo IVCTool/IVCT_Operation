@@ -126,7 +126,7 @@ services:
     - activemq
     - runtime-config
     ports:
-    - "${IVCT_GUI_PORT}:8080"
+    - "${IVCTUI_PORT}:8080"
     volumes:
     - runtime-config:/root/conf:nocopy
     environment:
