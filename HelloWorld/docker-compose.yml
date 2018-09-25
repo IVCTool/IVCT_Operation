@@ -49,7 +49,7 @@ services:
 # ==============================================================================
 # Pitch web UI container
 # This image provides a web UI to the CRC.
-# URL: ${DOCKERHOST}:${WEBUI_PORT}//webview
+# URL: ${DOCKERHOST}:${WEBUI_PORT}
 # Login: admin / admin
 # ==============================================================================
   webui:
@@ -119,6 +119,8 @@ services:
     
 # ==============================================================================
 # IVCT GUI component
+# URL: ${DOCKERHOST}:${WEBUI_PORT}/ivct.gui.ui.html
+# Login: admin / admin
 # ==============================================================================
   gui:
     image: msg134/ivct-gui:development-latest
