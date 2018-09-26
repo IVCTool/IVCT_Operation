@@ -1,7 +1,8 @@
+version: '3'
 # ==============================================================================
-# HELLOWORLD IVCT composition
+# SHIPSIM IVCT composition
 #
-# This composition consists of various container images to test the HelloWorld
+# This composition consists of various container images to test the SHIPSIM
 # federate application.
 #
 # In this composition the Pitch CRC is started with a license container.
@@ -14,8 +15,6 @@
 services:
 # ==============================================================================
 # Pitch CRC
-# The CRC publishes its port on the Docker Host so that the non-containerized
-# federate application "HelloWorld" can connect to the CRC.
 # The MAC_ADDRESS is required and the value relates to the license key in the
 # licenses container.
 # ==============================================================================
@@ -23,8 +22,6 @@ services:
     image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
     depends_on:
     - license
-    ports:
-    - "8989:8989"
     mac_address: ${MAC_ADDRESS}
     environment:
       CRC_REJECT_MISMATCHED_VERSIONS: "false"
@@ -44,7 +41,7 @@ services:
 # ==============================================================================
 # Pitch web UI container
 # This image provides a web UI to the CRC.
-# URL: ${DOCKERHOST}:${WEBUI_PORT}//webview
+# URL: ${DOCKERHOST}:${WEBUI_PORT}
 # Login: admin / admin
 # ==============================================================================
   webui:
@@ -54,45 +51,26 @@ services:
 
 # ==============================================================================
 # Apache Active Message Queue
-# Just get this image from the Docker Hub.
 # The MQ is used for communication between the different IVCT components.
-# The ports are listed for reference, but do not need to be exposed and may be
-# omitted.
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
-    ports:
-    - "61616:61616"
-    - "8161:8161"
 
 # ==============================================================================
 # IVCT Test Case Runner
 # The TC Runner is an HLA federate application based on the Pitch LRC base
 # image.
-#
-# Since the non-containerized federate application "HelloWorld" runs outside
-# the VPN of this composition and must be able to connect to the federation,
-# it is necessary to expose the LRC ports of the TC Runner to the Docker Host,
-# using the PITCH_ADVERTISE_ADDRESS. Both a TCP and a UDP port range are
-# exposed for reliable and best effort communication.
 # ==============================================================================
   tc-runner:
     image: msg134/tc-runner:development-latest
     depends_on:
     - activemq
     - runtime-config
-    - ts-helloworld
     - ts-hla-encoding-rules-tester
-    ports:
-    - "6100-6109:6100-6109/tcp"
-    - "6110-6119:6110-6119/udp"
     volumes:
     - runtime-config:/root/conf:nocopy
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.1:nocopy
     - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
     environment:
-      PITCH_ADVERTISE_ADDRESS: ${DOCKERHOST}:6100-6109:6110-6119
-      LRC_MINSLEEP: 10
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
@@ -114,7 +92,7 @@ services:
 
 # ==============================================================================
 # IVCT GUI component
-# URL: ${DOCKERHOST}:${WEBUI_PORT}/ivct.gui.ui.html
+# URL: ${DOCKERHOST}:${IVCTUI_PORT}/ivct.gui.ui.html
 # Login: admin / admin
 # ==============================================================================
   gui:
@@ -140,14 +118,6 @@ services:
     - runtime-config:/root/conf
 
 # ==============================================================================
-# IVCT Test Suite data for Helloworld
-# ==============================================================================
-  ts-helloworld:
-    image: msg134/ts-helloworld:1.0.1
-    volumes:
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld
-
-# ==============================================================================
 # IVCT Test Suite data for Encoding Rules
 # ==============================================================================
   ts-hla-encoding-rules-tester:
@@ -156,10 +126,20 @@ services:
     - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester
 
 # ==============================================================================
-# Data volumes
+# The SUT components follow below
+# ==============================================================================
+
+  shipsim:
+    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
+    environment:
+    - FEDERATENAME=VRF/UG
+    depends_on:
+    - crc
+
+# ==============================================================================
+# Data volumes for Test Suites and Licenses
 # ==============================================================================
 volumes:
   runtime-config:
-  ts-helloworld:
   ts-hla-encoding-rules-tester:
   license_volume:
