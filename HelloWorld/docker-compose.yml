@@ -140,7 +140,7 @@ services:
   ts-helloworld:
     image: msg134/ts-helloworld:1.0.1
     volumes:
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.1
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld
       
 # ==============================================================================
 # IVCT Test Suite data for Encoding Rules 
@@ -148,7 +148,7 @@ services:
   ts-hla-encoding-rules-tester:
     image: msg134/ts-hla-encoding-rules-tester:1.0.1
     volumes:
-    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
+    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester
 
 # ==============================================================================
 # Data volumes
