@@ -1,9 +1,17 @@
 # IVCT Shipsim composition
 
-This IVCT composition includes:
+The IVCT Shipsim composition is provided for three RTIs:
+
+- Pitch: ``pi-docker-compose.yml``
+- VTMaK: ``ma-docker-compose.yml``
+- Portico: ``po-docker-compose.yml``
+
+
+
+Each IVCT composition includes:
 
 - the IVCT components
-  - IVCT Simulation components: the Pitch CRC and license
+  - IVCT simulation components (there are RTI dependent;, e.g. the Pitch CRC image and Pitch license image
   - IVCT components: AMQ, TC Runner, Log Sink and the GUI
   - IVCT run time configuration data
   - IVCT test suite data: Encoding Rules data  
@@ -16,17 +24,15 @@ This IVCT composition includes:
 
 For simplicity we assume that the composition runs on a single Docker Host.
 
-
-
 Steps to get going:
 
 1. Create/edit a `.env` file and define the following environment variables:
 
-   - ``LICENSE_IMAGE`` to your license image with your license key in it.
-   - ``MAC_ADDRESS`` to the MAC address value associated with the license key.
+   - ``LICENSE_IMAGE`` to your license image with your license key in it (for the Pitch RTI).
+   - ``MAC_ADDRESS`` to the MAC address value associated with the license key (for Pitch the RTI).
    - ``WEBUI_PORT`` to the network port for the Pitch web UI.
    - ``IVCTUI_PORT`` to the network port for the IVCT UI.
-2. Start the composition with ``docker-compose up``.
+2. Start the IVCT composition; for e.g. the Pitch RTI do ``docker-compose -f pi-docker-compose.yml up``.
 3. Navigate to the Pitch web UI:  ``http://<DOCKERHOST>:<WEBUI_PORT>``.
 4. Login to the Pitch web UI (Administrator / admin) and add the CRC that runs on host ``crc``.
 5. Verify from the Pitch web UI that there is a federation with the SUT federate.

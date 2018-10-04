@@ -1,6 +1,6 @@
 version: '3'
 # ==============================================================================
-# SHIPSIM IVCT composition
+# SHIPSIM IVCT composition for the Pitch RTI
 #
 # This composition consists of various container images to test the SHIPSIM
 # federate application.
@@ -58,11 +58,10 @@ services:
 
 # ==============================================================================
 # IVCT Test Case Runner
-# The TC Runner is an HLA federate application based on the Pitch LRC base
-# image.
+# The TC Runner is an HLA federate application based on an LRC base image.
 # ==============================================================================
   tc-runner:
-    image: msg134/tc-runner:development-latest
+    image: msg134/tc-runner:pi-development-latest
     depends_on:
     - activemq
     - runtime-config
@@ -128,11 +127,11 @@ services:
 # ==============================================================================
 # The SUT components follow below
 # ==============================================================================
-
   shipsim:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
     environment:
     - FEDERATENAME=VRF/UG
+    - LRC_MASTERADDRESS=crc:8989
     depends_on:
     - crc
 
