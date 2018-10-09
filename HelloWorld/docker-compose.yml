@@ -93,7 +93,6 @@ services:
     - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
     environment:
       PITCH_ADVERTISE_ADDRESS: ${DOCKERHOST}:6100-6109:6110-6119
-      LRC_MINSLEEP: 10
       ACTIVEMQ_HOST: activemq
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
