@@ -33,7 +33,7 @@ services:
   license:
     image: ${LICENSE_IMAGE}
     volumes:
-    - license_volume:/license-key
+    - license_volume:/data
 
 # ==============================================================================
 # Pitch web UI container
