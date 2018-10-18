@@ -27,9 +27,6 @@ services:
     ports:
     - "8989:8989"
     mac_address: ${MAC_ADDRESS}
-    environment:
-      CRC_REJECT_MISMATCHED_VERSIONS: "false"
-      CRC_SKIP_CONNECTIVITY_CHECK: "true"
     volumes:
     - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
 
@@ -40,7 +37,7 @@ services:
   license:
     image: ${LICENSE_IMAGE}
     volumes:
-    - license_volume:/license-key
+    - license_volume:/data
 
 # ==============================================================================
 # Pitch web UI container
