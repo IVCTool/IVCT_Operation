@@ -23,9 +23,6 @@ services:
     depends_on:
     - license
     mac_address: ${MAC_ADDRESS}
-    environment:
-      CRC_REJECT_MISMATCHED_VERSIONS: "false"
-      CRC_SKIP_CONNECTIVITY_CHECK: "true"
     volumes:
     - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
 
@@ -130,8 +127,8 @@ services:
   shipsim:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
     environment:
-    - FEDERATENAME=VRF/UG
     - LRC_MASTERADDRESS=crc:8989
+    - FEDERATENAME=VRF/UG
     depends_on:
     - crc
 
