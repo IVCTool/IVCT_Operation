@@ -78,7 +78,7 @@ services:
 # IVCT Test Suite data for Encoding Rules
 # ==============================================================================
   ts-hla-encoding-rules-tester:
-    image: msg134/ts-hla-encoding-rules-tester:1.0.1
+    image: msg134/ts-hla-encoding-rules-tester:development-1.0.1
     volumes:
     - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
 
