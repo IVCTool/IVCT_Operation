@@ -33,13 +33,11 @@ services:
 # ==============================================================================
 # Shipsim
 # ==============================================================================
-
   shipsim:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
     environment:
     - LRC_MASTERADDRESS=childbooster:8688
     - PITCH_CRCADDRESS=${PITCH_CRCNAME}@childbooster:8688
-    - PITCH_ENABLETRACE=1
     - FEDERATIONNAME=NETNext2
     - FEDERATENAME=SHIPSIM
 
