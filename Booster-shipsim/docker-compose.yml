@@ -1,0 +1,50 @@
+version: '3'
+# ==============================================================================
+# IVCT composition using Pitch Booster to connect to the main federation.
+# ==============================================================================
+
+services:
+# ==============================================================================
+# Pitch Child Booster
+# ==============================================================================
+  childbooster:
+    image: app-docker136.hex.tno.nl/pitch/booster:2.3.0
+    mac_address: ${BOOSTER_MAC_ADDRESS}
+    command: -v
+    ports:
+    - "8623:8623"
+    environment:
+    - ISCHILD=
+    - PARENTID=${PARENTID}
+    - PARENTNAME=${PARENTNAME}
+    - PARENTADDRESS=${BOOSTER_PARENTADDRESS}
+    - CHILDID=${CHILDID}
+    - CHILDNAME=${CHILDNAME}
+    volumes:
+    - booster_license_volume:/usr/local/PitchBooster/jre/.systemPrefs/se/pitch/booster/config:nocopy
+    depends_on:
+    - booster_license
+
+  booster_license:
+    image: ${BOOSTER_LICENSE_IMAGE}
+    volumes:
+    - booster_license_volume:/data
+
+# ==============================================================================
+# Shipsim
+# ==============================================================================
+
+  shipsim:
+    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
+    environment:
+    - LRC_MASTERADDRESS=childbooster:8688
+    - PITCH_CRCADDRESS=${PITCH_CRCNAME}@childbooster:8688
+    - PITCH_ENABLETRACE=1
+    - FEDERATIONNAME=NETNext2
+    - FEDERATENAME=SHIPSIM
+
+# ==============================================================================
+# Data volumes for Test Suites and Licenses
+# ==============================================================================
+volumes:
+  booster_license_volume:

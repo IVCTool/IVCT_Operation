@@ -1,6 +1,6 @@
 version: '3'
 # ==============================================================================
-# IVCT composition using Pitch Booster to connect to the main federation.
+# IVCT composition using Pitch Booster to connect to the SUT.
 # ==============================================================================
 
 services:
@@ -15,8 +15,8 @@ services:
     - "8623:8623"
     environment:
     - ISCHILD=
-    - PARENTID=172
-    - PARENTNAME="Pitch.NETN"
+    - PARENTID=${PARENTID}
+    - PARENTNAME=${PARENTNAME}
     - PARENTADDRESS=${BOOSTER_PARENTADDRESS}
     - CHILDID=${CHILDID}
     - CHILDNAME=${CHILDNAME}
@@ -66,7 +66,7 @@ services:
       ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
       LRC_MASTERADDRESS: childbooster:8688
-      PITCH_CRCADDRESS: CRC.NETNBOOSTER@childbooster:8688
+      PITCH_CRCADDRESS: ${PITCH_CRCNAME}@childbooster:8688
       
 # ==============================================================================
 # IVCT Logsink component
