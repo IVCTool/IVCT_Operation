@@ -142,7 +142,7 @@ services:
   ts-helloworld:
     image: msg134/ts-helloworld:1.0.1
     volumes:
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.1
 
 # ==============================================================================
 # IVCT Test Suite data for Encoding Rules
