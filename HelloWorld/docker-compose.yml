@@ -76,7 +76,7 @@ services:
 # Check the LRC wiki page for more LRC options.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:development-latest
+    image: ivct/tc-runner:pi-development-latest
     depends_on:
     - activemq
     - runtime-config
