@@ -1,3 +1,4 @@
+
 version: '3'
 # ==============================================================================
 # SHIPSIM IVCT composition for the Pitch RTI
@@ -58,24 +59,24 @@ services:
 # The TC Runner is an HLA federate application based on an LRC base image.
 # ==============================================================================
   tc-runner:
-    image: msg134/tc-runner:pi-development-latest
+    image: ivct/tc-runner:pi-development-latest
     depends_on:
     - activemq
     - runtime-config
-    - ts-hla-encoding-rules-tester
+    - ts-hla-encoding-rules
     volumes:
     - runtime-config:/root/conf:nocopy
-    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
     environment:
       ACTIVEMQ_HOST: activemq
-      ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
+      SETTINGS_DESIGNATOR: crcAddress=crc:8989
 
 # ==============================================================================
 # IVCT Logsink component
 # ==============================================================================
   logsink:
-    image: msg134/logsink:development-latest
+    image: ivct/logsink:development-latest
     depends_on:
     - activemq
     - runtime-config
@@ -83,7 +84,6 @@ services:
     - runtime-config:/root/conf:nocopy
     environment:
       ACTIVEMQ_HOST: activemq
-      ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
 
 # ==============================================================================
@@ -92,7 +92,7 @@ services:
 # Login: admin / admin
 # ==============================================================================
   gui:
-    image: msg134/ivct-gui:development-latest
+    image: ivct/ivct-gui:development-latest
     depends_on:
     - activemq
     - runtime-config
@@ -102,24 +102,23 @@ services:
     - runtime-config:/root/conf:nocopy
     environment:
       ACTIVEMQ_HOST: activemq
-      ACTIVEMQ_PORT: 61616
       IVCT_CONF: /root/conf/
 
 # ==============================================================================
 # IVCT runtime configuration data
 # ==============================================================================
   runtime-config:
-    image: msg134/runtime-config:development-latest
+    image: ivct/runtime-config:development-latest
     volumes:
     - runtime-config:/root/conf
 
 # ==============================================================================
 # IVCT Test Suite data for Encoding Rules
 # ==============================================================================
-  ts-hla-encoding-rules-tester:
-    image: msg134/ts-hla-encoding-rules-tester:development-1.0.1
+  ts-hla-encoding-rules:
+    image: ivct/ts-hla-encoding-rules:development-1.0.1
     volumes:
-    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
 
 # ==============================================================================
 # The SUT components follow below
@@ -137,5 +136,5 @@ services:
 # ==============================================================================
 volumes:
   runtime-config:
-  ts-hla-encoding-rules-tester:
+  ts-hla-encoding-rules:
   license_volume:
