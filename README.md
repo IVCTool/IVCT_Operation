@@ -1,5 +1,5 @@
 # IVCT_Images
-This repository contains **Docker compose files** to run IVCT compositions.
+This repository contains **Docker compose files** to run IVCT compositions and SUT compositions.
 
 ## Docker compose files
 
