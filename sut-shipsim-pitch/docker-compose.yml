@@ -1,0 +1,36 @@
+version: '3'
+# ==============================================================================
+# SHIPSIM SUT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+  crc:
+    image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
+    depends_on:
+    - license
+    mac_address: ${MAC_ADDRESS}
+    volumes:
+    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
+    ports:
+    - "8989:8989"
+
+  web:
+    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
+    ports:
+    - "8181:8080"
+   
+  license:
+    image: ${LICENSE_IMAGE}
+    volumes:
+    - license_volume:/data
+
+  shipsim:
+    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
+    environment:
+    - LRC_MASTERADDRESS=crc:8989
+    - FEDERATENAME=VRF/UG
+    depends_on:
+    - crc
+
+volumes:
+  license_volume:

@@ -21,4 +21,5 @@ Other files               -- optional
 
 ## Container image descriptions
 
-Descriptions of IVCT container images are maintained under the Wiki of this repository, one page per container image. A general structure is provided in the wiki home page: https://github.com/MSG134/IVCT_Images/wiki.
+Descriptions of IVCT Framework container images are maintained under the Wiki of this repository.
+

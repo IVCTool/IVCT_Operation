@@ -1,9 +1,6 @@
 version: '3'
 # ==============================================================================
-# SHIPSIM IVCT composition for the Portico RTI
-#
-# This composition consists of various container images to test the SHIPSIM
-# federate application.
+# IVCT composition for the Pitch RTI
 # ==============================================================================
 
 services:
@@ -13,13 +10,15 @@ services:
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
+    network_mode: host
 
 # ==============================================================================
 # IVCT Test Case Runner
 # The TC Runner is an HLA federate application based on an LRC base image.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:po-development-latest
+    image: ivct/tc-runner:pi-development-latest
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
@@ -28,40 +27,38 @@ services:
     - runtime-config:/root/conf:nocopy
     - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
     environment:
-      ACTIVEMQ_HOST: activemq
-      IVCT_CONF: /root/conf/
+    - IVCT_CONF=/root/conf/
+    - PITCH_CRCADDRESS=localhost:8989
 
 # ==============================================================================
 # IVCT Logsink component
 # ==============================================================================
   logsink:
     image: ivct/logsink:development-latest
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
     volumes:
     - runtime-config:/root/conf:nocopy
     environment:
-      ACTIVEMQ_HOST: activemq
-      IVCT_CONF: /root/conf/
+    - IVCT_CONF=/root/conf/
 
 # ==============================================================================
 # IVCT GUI component
-# URL: ${DOCKERHOST}:${IVCTUI_PORT}/ivct.gui.ui.html
+# URL: http://${DOCKERHOST}:8080/ivct.gui.ui.html
 # Login: admin / admin
 # ==============================================================================
   gui:
     image: ivct/ivct-gui:development-latest
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
-    ports:
-    - "${IVCTUI_PORT}:8080"
     volumes:
     - runtime-config:/root/conf:nocopy
     environment:
-      ACTIVEMQ_HOST: activemq
-      IVCT_CONF: /root/conf/
+    - IVCT_CONF=/root/conf/
 
 # ==============================================================================
 # IVCT runtime configuration data
@@ -80,15 +77,7 @@ services:
     - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
 
 # ==============================================================================
-# The SUT components follow below
-# ==============================================================================
-  shipsim:
-    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:po
-    environment:
-    - FEDERATENAME=VRF/UG
-
-# ==============================================================================
-# Data volumes for Test Suites and Licenses
+# Data volumes for IVCT Runtime Config data and Test Suite data
 # ==============================================================================
 volumes:
   runtime-config:
