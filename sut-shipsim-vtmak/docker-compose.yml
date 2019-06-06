@@ -1,0 +1,21 @@
+version: '3'
+# ==============================================================================
+# SHIPSIM SUT composition for the VTMaK RTI
+# ==============================================================================
+
+services:
+  rtiexec:
+    image: app-docker136.hex.tno.nl/vtmak/rtiexec:4.5
+    environment:
+    - RTI_ASSISTANT_DISABLE=1
+    ports:
+    - "4000:4000"
+    - "5000:5000"
+
+  shipsim:
+    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:ma
+    environment:
+    - LRC_MASTERADDRESS=rtiexec:4000
+    - FEDERATENAME=VRF/UG
+    depends_on:
+    - rtiexec

@@ -1,65 +1,24 @@
-
 version: '3'
 # ==============================================================================
-# SHIPSIM IVCT composition for the Pitch RTI
-#
-# This composition consists of various container images to test the SHIPSIM
-# federate application.
-#
-# In this composition the Pitch CRC is started with a license container.
-# The license key in the license container is tight to a Pitch license agreement
-# and must remain proprietary to the licensee. Therefore the license container
-# cannot be stored in the MSaaS Docker Registry. The license container image is
-# defined by an environment variable.
+# IVCT composition for the VTMaK RTI
 # ==============================================================================
 
 services:
-# ==============================================================================
-# Pitch CRC
-# The MAC_ADDRESS is required and the value relates to the license key in the
-# licenses container.
-# ==============================================================================
-  crc:
-    image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
-    depends_on:
-    - license
-    mac_address: ${MAC_ADDRESS}
-    volumes:
-    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
-
-# ==============================================================================
-# Pitch CRC license container
-# The provided image contains the license key.
-# ==============================================================================
-  license:
-    image: ${LICENSE_IMAGE}
-    volumes:
-    - license_volume:/data
-
-# ==============================================================================
-# Pitch web UI container
-# This image provides a web UI to the CRC.
-# URL: ${DOCKERHOST}:${WEBUI_PORT}
-# Login: admin / admin
-# ==============================================================================
-  webui:
-    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
-    ports:
-    - "${WEBUI_PORT}:8080"
-
 # ==============================================================================
 # Apache Active Message Queue
 # The MQ is used for communication between the different IVCT components.
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
+    network_mode: host
 
 # ==============================================================================
 # IVCT Test Case Runner
 # The TC Runner is an HLA federate application based on an LRC base image.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:pi-development-latest
+    image: ivct/tc-runner:ma-development-latest
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
@@ -68,41 +27,38 @@ services:
     - runtime-config:/root/conf:nocopy
     - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
     environment:
-      ACTIVEMQ_HOST: activemq
-      IVCT_CONF: /root/conf/
-      SETTINGS_DESIGNATOR: crcAddress=crc:8989
+    - IVCT_CONF=/root/conf/
+    - MAK_RTIEXECADDRESS=localhost:4000
 
 # ==============================================================================
 # IVCT Logsink component
 # ==============================================================================
   logsink:
     image: ivct/logsink:development-latest
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
     volumes:
     - runtime-config:/root/conf:nocopy
     environment:
-      ACTIVEMQ_HOST: activemq
-      IVCT_CONF: /root/conf/
+    - IVCT_CONF=/root/conf/
 
 # ==============================================================================
 # IVCT GUI component
-# URL: ${DOCKERHOST}:${IVCTUI_PORT}/ivct.gui.ui.html
+# URL: http://${DOCKERHOST}:8080/ivct.gui.ui.html
 # Login: admin / admin
 # ==============================================================================
   gui:
     image: ivct/ivct-gui:development-latest
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
-    ports:
-    - "${IVCTUI_PORT}:8080"
     volumes:
     - runtime-config:/root/conf:nocopy
     environment:
-      ACTIVEMQ_HOST: activemq
-      IVCT_CONF: /root/conf/
+    - IVCT_CONF=/root/conf/
 
 # ==============================================================================
 # IVCT runtime configuration data
@@ -121,20 +77,8 @@ services:
     - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
 
 # ==============================================================================
-# The SUT components follow below
-# ==============================================================================
-  shipsim:
-    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
-    environment:
-    - LRC_MASTERADDRESS=crc:8989
-    - FEDERATENAME=VRF/UG
-    depends_on:
-    - crc
-
-# ==============================================================================
-# Data volumes for Test Suites and Licenses
+# Data volumes for IVCT Runtime Config data and Test Suite data
 # ==============================================================================
 volumes:
   runtime-config:
   ts-hla-encoding-rules:
-  license_volume:
