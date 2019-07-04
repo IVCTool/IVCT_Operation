@@ -1,6 +1,6 @@
-# IVCT composition for the VTMaK RTI
+# IVCT composition for the MaK RTI
 
-The IVCT composition for the VTMaK RTI includes the following containers:
+The IVCT composition for the MaK RTI includes the following containers:
 
 - IVCT framework containers: AMQ, TC Runner, Log Sink and the GUI
 - IVCT run time configuration data
@@ -8,13 +8,9 @@ The IVCT composition for the VTMaK RTI includes the following containers:
 
 The IVCT framework containers in this composition run in `host` network mode. This means that the IVCT containers use the host network stack and are visible on the network as if they run as native applications on the host.
 
-The VTMaK RTI Exec and Forwarder are part of the System Under Test and therefore not part of this composition.
+The MaK RTI Exec is part of the System Under Test and therefore not part of this composition.
 
-## Connecting to the VTMaK RTI Exec
+## IVCT Web UI
 
-The Local RTI Component of the TC Runner is currently explicitly configured with the default address of the VTMaK RTI Exec (`localhost:4000`)  using the environment variable `MAK_RTIEXECADDRESS`. See issue https://github.com/MSG134/IVCT_Framework/issues/192 for more information.
-
-The assumption is that the RTI Exec runs on the same host as the IVCT.
-
-
+Connect to the IVCT Web UI on `http://${DOCKERHOST}:8080`. Login as admin, password admin.
 
