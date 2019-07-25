@@ -86,12 +86,12 @@ services:
     - "6110-6119:6110-6119/udp"
     volumes:
     - runtime-config:/root/conf:nocopy
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-1.0.1:nocopy
-    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1:nocopy
-    - ts-hla-cs-verification:/root/conf/TestSuites/TS_HLA_CS_Verification-2.0.0:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-2.0.0:nocopy
+    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0:nocopy
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0:nocopy
-    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Objects-2.0.0:nocopy
-    - ts-hla-declaration:/root/conf/TestSuites/Declaration-2.0.0:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0:nocopy
     environment:
       PITCH_ADVERTISE_ADDRESS: ${DOCKERHOST}:6100-6109:6110-6119
       ACTIVEMQ_HOST: activemq
@@ -152,23 +152,23 @@ services:
 # IVCT Test Suite data for Encoding Rules
 # ==============================================================================
   ts-hla-encoding-rules-tester:
-    image: ivct/ts-hla-encoding-rules:development-latest
+    image: ivct/ts-hla-encoding-rules:2.0.0
     volumes:
-    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-1.0.1
+    - ts-hla-encoding-rules-tester:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0
 
 # ==============================================================================
 # IVCT Test Suite data for HLA CS Verification
 # ==============================================================================
   ts-hla-cs-verification:
-    image: ivctci/ts-hla-cs-verification:development-latest
+    image: ivct/ts-hla-cs-verification:2.0.0
     volumes:
-    - ts-hla-cs-verification:/root/conf/TestSuites/TS_HLA_CS_Verification-2.0.0
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Services
 # ==============================================================================
   ts-hla-services:
-    image: ivctci/ts-hla-services:development-latest
+    image: ivct/ts-hla-services:2.0.0
     volumes:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0
 
@@ -176,7 +176,7 @@ services:
 # IVCT Test Suite data for HLA Object
 # ==============================================================================
   ts-hla-object:
-    image: ivctci/ts-hla-cs-verification:development-latest
+    image: ivct/ts-hla-object:2.0.0
     volumes:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0
 
@@ -184,7 +184,7 @@ services:
 # IVCT Test Suite data for HLA Declaration
 # ==============================================================================
   ts-hla-declaration:
-    image: ivctci/ts-hla-declaration:development-latest
+    image: ivct/ts-hla-declaration:2.0.0
     volumes:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0
 
