@@ -1,12 +1,12 @@
 version: '3'
 # ==============================================================================
-# IVCT composition for the MaK RTI
+# IVCT composition for the VTMaK RTI using HOST NETWORK MODE
 # ==============================================================================
 
 services:
 # ==============================================================================
 # Apache Active Message Queue
-# The MQ is used for communication between the different IVCT components.
+# Active MQ is used for communication between the IVCT components.
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
@@ -14,7 +14,8 @@ services:
 
 # ==============================================================================
 # IVCT Test Case Runner
-# The TC Runner is an HLA federate application based on an LRC base image.
+# The TC Runner executes the test cases. Test cases are included in test suites. 
+# Test suite data is mounted as docker volume.
 # ==============================================================================
   tc-runner:
     image: ivct/tc-runner:ma-development-latest
@@ -36,9 +37,6 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0:nocopy
-    environment:
-    - IVCT_CONF=/root/conf/
-    - ACTIVEMQ_HOST=localhost
 
 # ==============================================================================
 # IVCT Logsink component
@@ -51,12 +49,11 @@ services:
     - runtime-config
     volumes:
     - runtime-config:/root/conf:nocopy
-    environment:
-    - IVCT_CONF=/root/conf/
-    - ACTIVEMQ_HOST=localhost
 
 # ==============================================================================
 # IVCT GUI component
+# The UI of the IVCT. Test suite data is mounted as docker volume.
+#
 # URL: http://${DOCKERHOST}:8080
 # Login: admin / admin
 # ==============================================================================
@@ -66,11 +63,20 @@ services:
     depends_on:
     - activemq
     - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
     volumes:
     - runtime-config:/root/conf:nocopy
-    environment:
-    - IVCT_CONF=/root/conf/
-    - ACTIVEMQ_HOST=localhost
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-2.0.0:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0:nocopy
 
 # ==============================================================================
 # IVCT runtime configuration data
@@ -84,7 +90,7 @@ services:
 # IVCT Test Suite data for Helloworld
 # ==============================================================================
   ts-helloworld:
-    image: ivct/ts-helloworld:master-latest
+    image: ivct/ts-helloworld:development-latest
     volumes:
     - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-2.0.0
 
@@ -92,7 +98,7 @@ services:
 # IVCT Test Suite data for Encoding Rules
 # ==============================================================================
   ts-hla-encoding-rules:
-    image: ivct/ts-hla-encoding-rules:master-latest
+    image: ivct/ts-hla-encoding-rules:development-latest
     volumes:
     - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0
 
@@ -100,7 +106,7 @@ services:
 # IVCT Test Suite data for HLA CS Verification
 # ==============================================================================
   ts-hla-cs-verification:
-    image: ivct/ts-hla-cs-verification:master-latest
+    image: ivct/ts-hla-cs-verification:development-latest
     volumes:
     - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0
 
@@ -108,7 +114,7 @@ services:
 # IVCT Test Suite data for HLA Services
 # ==============================================================================
   ts-hla-services:
-    image: ivct/ts-hla-services:master-latest
+    image: ivct/ts-hla-services:development-latest
     volumes:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0
 
@@ -116,7 +122,7 @@ services:
 # IVCT Test Suite data for HLA Object
 # ==============================================================================
   ts-hla-object:
-    image: ivct/ts-hla-object:master-latest
+    image: ivct/ts-hla-object:development-latest
     volumes:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0
 
@@ -124,7 +130,7 @@ services:
 # IVCT Test Suite data for HLA Declaration
 # ==============================================================================
   ts-hla-declaration:
-    image: ivct/ts-hla-declaration:master-latest
+    image: ivct/ts-hla-declaration:development-latest
     volumes:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0
 
@@ -139,4 +145,3 @@ volumes:
   ts-hla-services:
   ts-hla-object:
   ts-hla-declaration:
-

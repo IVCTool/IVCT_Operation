@@ -1,6 +1,6 @@
 version: '3'
 # ==============================================================================
-# SHIPSIM SUT composition for the Portico RTI
+# SHIPSIM SUT composition for the Portico RTI using HOST NETWORK MODE
 # ==============================================================================
 
 services:
@@ -8,4 +8,4 @@ services:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:po
     network_mode: host
     environment:
-    - FEDERATENAME=VRF/UG
+    - FEDERATENAME=SHIPSIM

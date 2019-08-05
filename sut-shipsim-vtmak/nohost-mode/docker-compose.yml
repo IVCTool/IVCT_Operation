@@ -16,6 +16,6 @@ services:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:ma
     environment:
     - LRC_MASTERADDRESS=rtiexec:4000
-    - FEDERATENAME=VRF/UG
+    - FEDERATENAME=SHIPSIM
     depends_on:
     - rtiexec
