@@ -1,0 +1,45 @@
+version: '3'
+# ==============================================================================
+# SHIPSIM SUT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+  crc:
+    image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
+    depends_on:
+    - license
+    mac_address: ${MAC_ADDRESS}
+    volumes:
+    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
+    ports:
+    - "8989:8989"
+
+  web:
+    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
+    ports:
+    - "8181:8080"
+   
+  license:
+    image: ${LICENSE_IMAGE}
+    volumes:
+    - license_volume:/data
+    
+# Run SUT federate in host network mode, so that together with the IVCT federates it can
+# establish a fully meshed network and exchange TCP/UDP messages on the host
+# machine/network.
+# Also force the SUT federate to use the proper network interface (in this example eth0)
+# when checking for the LRC master address. Otherwise it may select the lo interface which
+# causes the LRC to fail later on when connecing to the CRC.
+  shipsim:
+    image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
+    network_mode: host
+    environment:
+    - PITCH_LRCADAPTER=eth0
+    - LRC_MASTERADDRESS=localhost:8989
+    - PITCH_CRCADDRESS=localhost:8989
+    - FEDERATENAME=VRF/UG
+    depends_on:
+    - crc
+
+volumes:
+  license_volume:
