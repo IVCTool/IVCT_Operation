@@ -4,9 +4,9 @@ Assuming a Docker Engine and Docker Compose have been installed, the quickest wa
 
 == Copy the IVCT composition files to your local environment
 
-In the Compositions repository there are IVCT compositions for different HLA-RTI implementations. In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `no host` mode, to be explained later.
+In the Compositions repository there are IVCT compositions for different HLA-RTI implementations. In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `overlay` mode, to be explained later.
 
-Copy the files under the `ivct-pitch/nohost-mode` directory to your local Docker environment. This concerns two files:
+Copy the files under the `ivct-pitch/overlay-mode` directory to your local Docker environment. This concerns two files:
 
 * `docker-compose.yml`: a Docker compose file describing the IVCT composition.
 * `.env`: environment settings related to the Docker compose file.
