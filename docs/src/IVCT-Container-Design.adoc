@@ -8,7 +8,7 @@ image:images/ContainerDesign.png[IVCT Container Design]
 
 The color coding of the images is:
 
-- **BLUE**: IVCT container images ([IVCT TC Runner Application-image](IVCT-TC-Runner-Application-image.md), [IVCT GUI image](IVCT-GUI-image.md), and [IVCT LogSink Application image](IVCT-LogSink-Application-image.md)).
+- **BLUE**: IVCT container images (TC Runner Application image, IVCT GUI image, and IVCT LogSink Application image).
 - **GREY**: IVCT data volumes (as container image or other storage class).
 - **WHITE**: These are outside the scope of the IVCT itself. E.g. the HLA RTI related container images.
 

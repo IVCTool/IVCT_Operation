@@ -2,7 +2,7 @@
 
 == Introduction
 
-The primary deployment model of the IVCT is based on Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The primary benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
+The primary deployment model of the IVCT uses Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The main benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
 
 Containers provides an easy way to deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. Currently, the following RTI implementations are supported by the IVCT:
 
