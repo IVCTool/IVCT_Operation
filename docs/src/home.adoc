@@ -1,70 +1,60 @@
-= Containerized IVCT
+= IVCT Docker container release
 
-< WORK IN PROGRESS, SECTIONS will move to separate topic pages later >
+== Introduction
 
-https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers, and provides an easy way to deploy the IVCT on different platforms for different HLA-RTIs. All the IVCT components are available as container image.
+The primary deployment model of the IVCT is based on Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The primary benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
 
-NOTE: The reader is familiar with the Docker concepts and has the knowledge to install Docker on Windows or Linux.
+Containers provides an easy way to deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. Currently, the following RTI implementations are supported by the IVCT:
 
-NOTE: The reader is also familiar with HLA concepts and has the knowledge to install an HLA-RTI on Windows or Linux.
+- `Pitch RTI` (http://pitchtechnologies.com)
+- `VTMaK RTI` (https://www.mak.com)
+- `Portico` (https://github.com/openlvc/portico)
 
-== Install and run the ICVT
+IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images.
 
-Assuming Docker Engine and Docker Compose have been installed, the quickest way to deploy the IVCT is as follows:
+The remainder of this page provides getting started instructions and provides information with regards to different IVCT deployment and  configuration options.
 
-. Determine the IVCT version that you want to deploy.
+NOTE: The reader is familiar with the Docker concepts and has the knowledge and ability to install Docker on Windows or Linux.
 
-There is an IVCT version for each HLA-RTI variant. IVCT docker compositions are available for the following HLA-RTIs: `Pitch`, `VT MaK`, and `Portico`. In this example we use the Pitch RTI version of the IVCT. We also run the IVCT in `no host` mode, to be explained later.
+NOTE: The reader is also familiar with HLA concepts and has the knowledge and ability to install an HLA-RTI on Windows or Linux.
 
-. Copy the IVCT docker-compose file to your local environment.
+== Getting started
 
-Copy the file `docker-compose.yml` under the `ivct-pitch` directory to your local environment.
+This topic demonstrates the basic steps to deploy the IVCT for the Pitch RTI and run a test against the HelloWorld SUT.
 
-. Deploy the IVCT
+* <<IVCT-Deployment.adoc#,Deploying the IVCT>>
+* <<IVCT-Testing-HelloWorld.adoc#,Testing the HelloWorld SUT>>
 
-Issue the command
+== Deployment Options
 
- docker-compose up
+This topic summarizes the main options for deploying the IVCT using Docker.
 
-The images will be pulled from the Docker Hub and the IVCT will be deployed by the Docker Engine.
-
-. Navigate to the IVCT UI
-
-From a webbrowser, navigate to the web page of the IVCT UI: `http://${DOCKERHOST}:8080`.  Here you should replace `${DOCKERHOST}` by the host name of the Docker Engine. Login as user `admin` with password `admin.`
-
-You can explore the UI, but for running tests a System Under Test (SUT) is required, as well as a Pitch CRC.
-
-== Testing the Hello World application
-< TO BE ADDED >
-
-== IVCT deployment options
-< TO BE ELABORATED >
-
-=== Host mode networking
-This is the recommended deployment, as it allows the general use of TCP/IP, UDP/IP and Multicast communication with the SUT.
-
-Note that Docker on Windows running Linux containers does not support host mode networking, only Docker on Linux does.
-
-=== Non-host mode
-This is only recommended when using reliable communication (i.e. TCP/IP). Depending on the RTI implementation, it may be possible to use UDP/IP in this mode. Multicast is not possible in this mode.
-
-== IVCT RID file configuration
-The IVCT uses a default (and RTI vendor specific) RID file when connecting to the RTI. This is sufficient in most cases.
-
-The RID file for the MaK RTI has been set up to:
-- use reliable communication to enable `nohost mode` networking
-- let the RTI Exec perform license checks
-
-To use an alternate RID, adapt the IVCT composition as follows:
-< TO BE ADDED >
-
-== RTI Settings Designator
-< TO BE ADDED>
+* <<IVCT-Deployment-Options.adoc#,Deployment options>>
 
 == IVCT Container images
-=== Overview
-=== Container image A
-=== Container image B
-=== Container image C
-== Test Suite container images
-=== creating a TS image
+
+This topic provides an overview of the container images that make up the IVCT.
+
+* <<IVCT-Container-Design.adoc#,Overview>>
+* <<IVCT-TCRunner-Image.adoc#,IVCT TC Runner image>>
+* <<IVCT-GUI-Image.adoc#,IVCT GUI image>>
+* <<IVCT-LogSink-Image.adoc#,IVCT LogSink image>>
+
+== Test Suite Container images
+
+This topic provides an overview of the Test Suite container images.
+
+* <<IVCT-TestSuite-Images.adoc#,Overview>>
+* <<IVCT-TestSuite-Image-Construction.adoc#,Test Suite image construction>>
+
+== RID File Configuration
+
+This topic provides the instructions on how to configure the IVCT with a specific RTI RID file.
+
+* <<IVCT-RID-File-Configuration#,RID file configuration>>
+
+== IVCT Compositions overview
+
+This topic summarizes the available compositions in the repository.
+
+<< to be added >>

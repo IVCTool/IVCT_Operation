@@ -37,7 +37,7 @@ services:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0:nocopy
     environment:
     - ACTIVEMQ_HOST=activemq
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6100-6109:6110-6119
+    - PITCH_ADVERTISE_ADDRESS=${IVCT_HOST}:6100-6109:6110-6119
     ports:
     - "6100-6109:6100-6109/tcp"
     - "6110-6119:6110-6119/udp"
@@ -84,7 +84,7 @@ services:
     environment:
     - ACTIVEMQ_HOST=activemq
     ports:
-    - "${IVCTUI_PORT}:8080"
+    - "${IVCT_UIPORT}:8080"
 
 # ==============================================================================
 # IVCT runtime configuration data

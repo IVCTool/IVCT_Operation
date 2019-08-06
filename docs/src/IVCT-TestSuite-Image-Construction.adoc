@@ -1,0 +1,39 @@
+= Test Suite Image construction
+
+The construction of a Test Suite image requires that the Test Suite data is provided as a TAR file, located under the `build/distributions` directory of the Docker build context. For example:
+
+....
+context/Dockerfile
+context/build/distributions/TS_HLA_EncodingRulesTester-2.0.0.tar
+....
+
+The Dockerfile for creating the Test Suite image is as follows:
+
+....
+FROM busybox
+ENTRYPOINT [ "sh", "-c", " \
+   if [ -n \"$VOLUME\" -a -n \"$1\" ]; then \
+      if [ -n \"$OPTS\" ]; then \
+         cp $OPTS $VOLUME $1; \
+      else \
+         cp -a $VOLUME $1; \
+      fi; \
+      echo \"Copied $VOLUME to $1\"; \
+   fi" , \
+"--" ]
+
+ADD ./build/distributions/${TESTSUITE_NAME}-${TESTSUITE_VERSION}.tar /root/conf/TestSuites/
+ENV VOLUMEDIR /root/conf/TestSuites/${TESTSUITE_NAME}-${TESTSUITE_VERSION}
+ENV VOLUME ${VOLUMEDIR}/.
+VOLUME ${VOLUMEDIR}
+....
+
+The Test Suite name and Test Suite version are Dockerfile arguments that must be provided from the context in which this Dockerfile is used. E.g. from a docker-compose file or a Travis build script.
+
+The data in the TAR file is placed under `/root/conf/TestSuites/`. This directory is declared as a (Docker) `VOLUME` so that Docker automatically will copy the content of this directly into a Docker volume on the host system once the container is started. This is also the directory under which the data will be mounted in the TC Runner and IVCT GUI containers.
+
+The `ENTRYPOINT` script enables the user of the image to provide an alternate directory to copy the data into. This is typically not needed in a Docker environment. However, this script is required using the Test Suite image under Kubernetes. Kubernetes does not automatically copy data into a volume (i.e. the data volume concept is entirely different on Kubernetes), but this script enables the user to perform a similar action on Kubernetes Pod initialization. The synopsis of the container command line arguments is:
+
+`TestSuiteImage [<opts>] <target directory>`
+
+The Test Suite image is based on the minimal `busybox` image in order to get a shell to execute the `ENTRPOINT` script in.

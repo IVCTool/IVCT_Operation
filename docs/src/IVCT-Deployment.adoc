@@ -1,0 +1,67 @@
+= Deploying the IVCT
+
+Assuming a Docker Engine and Docker Compose have been installed, the quickest way to get started with the IVCT is as follows.
+
+== Deploying the IVCT
+
+=== Copy the IVCT composition files to your local environment
+
+In the Compositions repository there are IVCT compositions for different HLA-RTI implementations. In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `no host` mode, to be explained later.
+
+Copy the files under the `ivct-pitch/nohost-mode` directory to your local Docker environment. This concerns two files:
+
+* `docker-compose.yml`: a Docker compose file describing the IVCT composition.
+* `.env`: environment settings related to the Docker compose file.
+
+=== Adapt the environment settings
+
+Open the `.env` file in a text editor and set `IVCT_HOST` to the host where the IVCT will be executing. The `IVCT_UIPORT` value should be fine for your environment, but may be adapted too.
+
+=== Start the IVCT
+
+Deploy and start the IVCT using the following command:
+
+ docker-compose up
+
+The IVCT Docker container images will be pulled from the Docker Hub and the IVCT will be deployed.
+
+=== Login to the IVCT UI
+
+From a webbrowser, navigate to the web page of the IVCT UI: `http://${IVCT_HOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_HOST}` and `${IVCT_UIPORT}` by the values used in the `.env` file. Login as user `admin` with password `admin.`
+
+You can explore the UI, but for executing a test a System Under Test (SUT) as well as a Pitch CRC is required.
+
+== Testing the Hello World application
+
+To execute a test, a System Under Test as well as additional RTI components are needed. The SUT is expected to include any additional RTI components for executing the tests. The IVCT does not include these.
+
+=== Obtain and install RTI components
+
+The additional components are RTI implementation specific. For example, the Pitch RTI requires a Pitch Central RTI Component (Pitch CRC), the VTMaK RTI requires an RTI Exec, whereas Portico requires no additional components at all.
+
+Both Pitch and VTMak provide free versions of their RTI. The additional components can be obtained by requesting a free version of the RTI:
+
+- Pitch pRTI Free: http://pitchtechnologies.com/products/prti
+- VTMaK RTI Free: https://www.mak.com/products/link/mak-rti
+
+The free version is sufficient for executing tests. The installation of additional RTI components is out of the scope of this getting started section. The remainder of this section assumes that a Pitch CRC has been installed on a host called `mycrc.com`, listening on the default CRC port `8989`.
+
+=== Start the Hello World application
+
+<< Reinhard or John to add ... >
+
+Classpath settings for the RTI needeed?  Is there a BAT file per RTI flavor?
+
+=== Run a test
+
+<< Reinhard or John to add ... >
+
+Login to the IVCT and navigate to the SUT page ...
+
+Enter the address of the Pitch CRC in the settine designatot ...
+
+Anything else?
+
+Press `Execute` to start the test.
+
+Results are ...

@@ -1,0 +1,32 @@
+= RID File Configuration
+
+The RTI Initialization Data (RID) file, also called the RTI settings file, contains RTI implementation specific information for the configuration and tuning of the RTI. E.g. network options, RTI services options etc.
+
+The IVCT is configured with a default RID file which is sufficient for most cases. However, for certification of a SUT the RID file content may need to be changed or the content may need to be preserved as part of the certification results.
+
+The location of the RID file in the file system of the TC Runner container is also RTI implementation specific. For the supported RTIs the file system location and RID file name is:
+
+|===
+|RTI | File system directory | RID file name
+
+|Pitch
+|`/root/prti1516e`
+|`prti1516eLRC.settings`
+|VTMaK
+|`/etc/makrti`
+|`rid.mtl`
+|Portico
+|`/usr/local/portico/portico-nightly-2016.05.28`
+|`RTI.rid`
+|===
+
+An alternate RID file can be provided to the TC Runner by bind mounting the alternate RID file into the TC Runner file system, for example for the Pitch RTI:
+
+....
+tc-runner:
+  image: ivct/tc-runner:pi-development-latest
+  volumes:
+  - "/path/to/my/prti1516eLRC.settings:/root/prti1516e/prti1516eLRC.settings"
+....
+
+To copy the RID file from a running TC Runner container you can use the `docker cp` command.

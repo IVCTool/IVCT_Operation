@@ -1,0 +1,12 @@
+= IVCT RID Configuration
+The IVCT uses a default (and RTI vendor specific) RID file when connecting to the RTI. This is sufficient in most cases.
+
+The RID file for the MaK RTI has been set up to:
+- use reliable communication to enable `nohost mode` networking
+- let the RTI Exec perform license checks
+
+To use an alternate RID, adapt the IVCT composition as follows:
+< TO BE ADDED >
+
+== RTI Settings Designator
+< TO BE ADDED>

@@ -1,0 +1,14 @@
+= Test Suite Images
+
+Several Test Suites are available to the IVCT for the execution of test cases. This includes, but is not limited to the following:
+
+* `TS_HLA_BASE`: To test whether interaction parameters and objects attributes are correctly encoded.
+* `TS_EntityIntegrityChecker`: Validates the integrity of RPR-FOM Base Entities instances published by the System under Test (SUT).
+* `TS_CS_Verification`:
+* `TS_Warfare`: tests RPR-FOM warfare interactions.
+
+The data (including code) related to a Test Suite is stored in a Docker Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and GUI containers at run-time. See <<IVCT-Container-Design.adoc#,Container Design Overview>>.
+
+The compositions provided in the Compositions repository can be extended to include more Test Suites. Several example for the inclusion of Test Suite images are available in the Compositions repository.
+
+However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction.adoc#,Test Suite image construction>>].
