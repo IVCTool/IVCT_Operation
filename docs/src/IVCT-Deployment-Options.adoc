@@ -20,9 +20,9 @@ image:images/overlay-mode.png[IVCT overlay-mode]
 
 This deployment option is only recommended when using reliable communication (i.e. TCP/IP) between the IVCT and the SUT.
 
-* VTMaK RTI: The default VTMaK RTI RID file has been configured to use reliable communication (TCP/IP) only. UDP/IP is not supported in this deployment option.
+* VTMaK RTI: The RTI has been configured via the RID file to use reliable communication (TCP/IP) only. UDP/IP is not supported in this deployment option.
 
-* Pitch RTI: Both TCP/IP and UDP/IP is possible, by setting some LRC specific environment variables in the IVCT compose file.
+* Pitch RTI: Both TCP/IP and UDP/IP are supported, by setting some LRC specific environment variables in the IVCT compose file.
 
 Multicast is not possible with this deployment option, regardless what RTI implementation is used.
 
@@ -45,7 +45,7 @@ Additional, but RTI specific components may be employed to connect the IVCT to t
 |-
 |===
 
-Note that the FOM transportation indication (Reliable, Best Effort) typically implies a certain network communication protocol to be used. I.e. Best Effort typically implies UDP/IP or Multicast, and Reliable typically implies TCP/IP. In case of the VTMaK RTI, the RID file is configured to use TCP/IP regardless of the FOM transportation indication.
+Note that the FOM transportation indication (Reliable, Best Effort) typically implies a certain network communication protocol to be used. I.e. Best Effort typically implies UDP/IP or Multicast, and Reliable typically implies TCP/IP. In case of the VTMaK RTI, the RTI is configured to use TCP/IP regardless of the FOM transportation indication.
 
 == References
 https://docs.docker.com/network/host/
