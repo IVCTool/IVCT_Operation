@@ -1,6 +1,6 @@
 == IVCT TC-Runner Application image
 
-The Testcase Runner component image extends a Local RTI Component (LRC) image hosted in the **app-docker136.hex.tno.nl** Docker registry. The LRC image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC images are available for different RTI implementations (Pitch, Mak, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC image includes a Java JRE. An LRC image sets the LRC libraries in the $CLASSPATH and $LD_LIBRARYPATH and provides several environment variables to control the behavior of the LRC. For more information see the LRC image documentation.
+The Testcase Runner Application image extends a Local RTI Component (LRC) image hosted in the **app-docker136.hex.tno.nl** (private) Docker registry. The LRC image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC images are available for different RTI implementations (Pitch, Mak, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC image includes a Java JRE. An LRC image sets the LRC libraries in the $CLASSPATH and $LD_LIBRARYPATH and provides several environment variables to control the behavior of the LRC.
 
 === Environment Variables
 
@@ -9,7 +9,32 @@ The Testcase Runner component image extends a Local RTI Component (LRC) image ho
 
 | ACTIVEMQ_HOST | Hostname/IP of the Active MQ host | `localhost`
 | ACTIVEMQ_PORT | Port at which Active MQ can be reached at the host | `61616`
-| IVCT_CONF | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. See also [IVCT Configuration directory](https://github.com/MSG134/IVCT_Framework/wiki/IVCT_Configuration). | `/root/conf` directory
+| IVCT_CONF | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf`
 |===
 
-For more environment variables see the LRC image documentation.
+Additional environment variables are inherited from the LRC image. The most relevant ones are listed below.
+
+==== Pitch LRC settings
+|===
+| Environment variable                | Description                                                  | Default if not set
+
+| ``PITCH_LRCADAPTER``                | Applies to direct mode. The network adapter that the LRC should use. | Use IP route to CRC to determine adapter
+| ``PITCH_CRCADDRESS``                | CRC address in the format of `<host>:<port>` (direct mode) or `<crc-nickname>@<boost host>:<boost port>` (booster mode). If not set, defaults to either `LRC_MASTERADDRESS` (if `LRC_MASTERADDRESS` is set) or `crc:8989` (if `LRC_MASTERADDRESS` is not set). | `LRC_MASTERADDRESS` (if set) or `rtiexec:4000` (otherwise)
+| ``PITCH_ADVERTISE_ADDRESS``         | Applies to direct mode. Use this address to advertise the LRC. The format is ``[<host address>][:[<mintcpport>]-[<maxtcpport>][:[<minudpport>]-[<maxudpport>]]]`` | Mode IP, ``:6000-6999:5000-5999``
+|===
+
+==== Portico LRC settings
+|===
+| Environment variable            | Description                                                  | Default if not set
+
+| ``PORTICO_LRCADAPTER``          | The network adapter (network interface) that the LRC should use. The name must be an exact match. | RID file default
+|===
+
+==== VTMaK LRC settings
+
+|===
+| Environment variable         | Description                                                  | Default if not set
+
+| `MAK_LRCADAPTER`             | Network interface address to use for the TCP Forwarder       | `0.0.0.0`, i.e. first available non-localhost interface address
+| `MAK_RTIEXECADDRESS`         | RTI Exec address in the format of `<host>:<port>`. If not set, defaults to either `LRC_MASTERADDRESS` (if `LRC_MASTERADDRESS` is set) or `rtiexec:4000` (if `LRC_MASTERADDRESS` is not set). | `LRC_MASTERADDRESS` (if set) or `rtiexec:4000` (otherwise)
+|===

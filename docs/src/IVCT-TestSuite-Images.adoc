@@ -11,4 +11,4 @@ The data (including code) related to a Test Suite is stored in a Docker Test Sui
 
 The compositions provided in the Compositions repository can be extended to include more Test Suites. Several example for the inclusion of Test Suite images are available in the Compositions repository.
 
-However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction.adoc#,Test Suite image construction>>].
+However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction.adoc#,Test Suite image construction>>.

@@ -1,0 +1,22 @@
+= IVCT Compositions
+
+Supported IVCT Compositions are available from the repository. The structure of the repository is something like:
+
+....
+
+Compositions
+ |-- ivct-pitch                 (IVCT compositions for the Pitch RTI)
+ |    |-- host-mode
+ |    |-- overlay-mode
+ |
+ |-- ivct-portico               (IVCT compositions for the Portico RTI)
+ |    |-- host-mode
+ |
+ |-- ivct-vtmak                 (IVCT compositions for the VTMaK RTI)
+ |    |-- host-mode
+ |
+....
+
+For some of the composition there is an `.env` file with environment variables that may need to be adapted to suite the local environment. If there is no `.env` file, then the composition can be used as is.
+
+As noted in <<IVCT-Deployment-Options.adoc#,Deployment options>>, the host mode compositions require a Linux host.

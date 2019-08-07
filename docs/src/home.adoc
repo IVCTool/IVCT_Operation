@@ -1,51 +1,54 @@
-= IVCT Docker container release
+= IVCT Compositions
 
 == Introduction
 
-The primary deployment model of the IVCT uses Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The main benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
+The primary deployment model of the IVCT is based on Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The main benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
 
-Containers provides an easy way to deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. Currently, the following RTI implementations are supported by the IVCT:
+Containers provides an easy way to distribute and deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. The application of Docker container technology allows a user to run the IVCT without having to build and install the IVCT Framework and its dependencies. All that is required is a functional Docker Engine installed on a host. See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
+
+IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images. Currently, the following RTI implementations are supported by the IVCT:
 
 - `Pitch RTI` (http://pitchtechnologies.com)
 - `VTMaK RTI` (https://www.mak.com)
 - `Portico` (https://github.com/openlvc/portico)
 
-IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images.
+The remainder of this page provides getting started instructions and provides information with regards to different IVCT deployment and configuration options.
 
-The remainder of this page provides getting started instructions and provides information with regards to different IVCT deployment and  configuration options.
-
-NOTE: The reader is familiar with the Docker concepts and has the knowledge and ability to install Docker on Windows or Linux.
-
-NOTE: The reader is also familiar with HLA concepts and has the knowledge and ability to install an HLA-RTI on Windows or Linux.
+[cols="1,10a"]
+|===
+|image:images/info.png[Info] |The reader is familiar with the Docker concepts and has the knowledge and ability to install Docker on Windows or Linux.
+|image:images/info.png[Info] |The reader is also familiar with HLA concepts and has the knowledge and ability to install an HLA-RTI on Windows or Linux.
+|===
 
 == Getting started
 
 This topic demonstrates the basic steps to deploy the IVCT for the Pitch RTI and run a test against the HelloWorld SUT.
 
-* <<IVCT-Deployment.adoc#,Deploying the IVCT>>
-* <<IVCT-Testing-HelloWorld.adoc#,Testing the HelloWorld SUT>>
-
-== Deployment Options
-
-This topic summarizes the main options for deploying the IVCT using Docker.
-
-* <<IVCT-Deployment-Options.adoc#,Deployment options>>
+* <<IVCT-GettingStarted-Deployment#,Deploy the IVCT>>
+* <<IVCT-GettingStarted-HelloWorld#,Test the HelloWorld SUT>>
 
 == IVCT Container images
 
 This topic provides an overview of the container images that make up the IVCT.
 
-* <<IVCT-Container-Design.adoc#,Overview>>
-* <<IVCT-TCRunner-Image.adoc#,IVCT TC Runner image>>
-* <<IVCT-GUI-Image.adoc#,IVCT GUI image>>
-* <<IVCT-LogSink-Image.adoc#,IVCT LogSink image>>
+* <<IVCT-Container-Overview#,Overview>>
+* <<IVCT-TCRunner-Image#,IVCT TC Runner image>>
+* <<IVCT-GUI-Image#,IVCT GUI image>>
+* <<IVCT-LogSink-Image#,IVCT LogSink image>>
+
+== IVCT Deployment Options
+
+This topic summarizes the main options for deploying the IVCT using Docker.
+
+* <<IVCT-Hosting#,IVCT Hosting>>
+* <<IVCT-Deployment-Options#,Deployment options>>
 
 == Test Suite Container images
 
 This topic provides an overview of the Test Suite container images.
 
-* <<IVCT-TestSuite-Images.adoc#,Overview>>
-* <<IVCT-TestSuite-Image-Construction.adoc#,Test Suite image construction>>
+* <<IVCT-TestSuite-Images#,Overview>>
+* <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>
 
 == RID File Configuration
 
@@ -57,4 +60,4 @@ This topic provides the instructions on how to configure the IVCT with a specifi
 
 This topic summarizes the available compositions in the repository.
 
-<< to be added >>
+* <<IVCT-Compositions#,IVCT Compositions>>
