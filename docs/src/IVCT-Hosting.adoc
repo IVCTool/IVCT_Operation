@@ -6,6 +6,6 @@ The IVCT requires a Docker Engine and associated operating system version. This 
 
 Additional RTI components required for the execution of tests such as the `Pitch CRC` and `MaK RTI Exec` should be placed on either the SUT Host or on another dedicated host (but not the IVCT Host).
 
-The recommended hosting is illustrated in the following figure. Note that for SUT certification it may be required run the IVCT on a dedicated IVCT Host.
+The recommended hosting is illustrated in the following figure. Note that for SUT certification it may be required to run the IVCT on a dedicated IVCT Host.
 
 image:images/hosts.png[IVCT Host and SUT Host]
