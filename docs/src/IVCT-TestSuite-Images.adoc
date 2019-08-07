@@ -9,8 +9,6 @@ Several Test Suites are available to the IVCT for the execution of test cases. T
 
 << Reinhard / John to complete this overview >>
 
-The data (including code) related to a Test Suite is stored in a Docker Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and GUI containers at run-time. See <<IVCT-Container-Design#,Container Overview>>.
+The data (including code) related to a Test Suite is stored in a Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and IVCT GUI containers at run-time. See <<IVCT-Container-Design#,Container Overview>>.
 
-The compositions provided in the Compositions repository can be extended to include more Test Suites. Several example for the inclusion of Test Suite images are available in the Compositions repository.
-
-However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>.
+The IVCT compositions provided in the Compositions repository can be extended with mode Test Suites. However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>.
