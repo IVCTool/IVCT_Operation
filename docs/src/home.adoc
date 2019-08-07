@@ -49,6 +49,7 @@ This topic provides an overview of the Test Suite container images available to 
 
 * <<IVCT-TestSuite-Images#,Overview>>
 * <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>
+* <<IVCT-TestSuite-Updating#,Update Test Suite image>>
 
 == RID File Configuration
 
