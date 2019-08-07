@@ -7,7 +7,7 @@ The IVCT GUI extends the official Tomcat JRE8 image. The `war` files for the GUI
 |===
 | Environment Variable Name  | Description | Default if not set
 
-| ACTIVEMQ_HOST | Hostname/IP of the Active MQ host | `localhost`
-| ACTIVEMQ_PORT | Port at which Active MQ can be reached at the host | `61616`
-| IVCT_CONF | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf`
+| ``ACTIVEMQ_HOST`` | Hostname/IP of the Active MQ host | `localhost`
+| ``ACTIVEMQ_PORT`` | Port at which Active MQ can be reached at the host | `61616`
+| ``IVCT_CONF`` | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf`
 |===

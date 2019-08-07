@@ -32,10 +32,10 @@ services:
 # The SHIPSIM SUT
 #
 # Since the CRC runs on the same host as the SUT, it is addressed as localhost.
-# Force the federate application to use the proper network interface (in this
-# case eth0) when checking for the network route to the CRC. Otherwise it may
-# select the lo interface which causes the LRC to fail later on when it actually
-# does want to connect to the CRC.
+# However, force the federate application to use the proper network interface
+# (in this case eth0) when checking for the network route to the CRC. Otherwise
+# it may select the lo interface which causes the LRC to fail later on when it
+# actually does want to connect to the CRC.
 # ==============================================================================
   shipsim:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
