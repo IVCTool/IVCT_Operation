@@ -15,7 +15,7 @@ Compositions
  |-- ivct-vtmak                 (IVCT compositions for the VTMaK RTI)
  |    |-- host-mode
  |    |-- overlay-mode
-|
+ |
 ....
 
 For some of the composition there is an `.env` file with environment variables that may need to be adapted to suit the local environment. If there is no `.env` file, then the composition can be used as is.
