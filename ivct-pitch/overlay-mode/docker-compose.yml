@@ -59,7 +59,7 @@ services:
 # IVCT GUI component
 # The UI of the IVCT. Test suite data is mounted as docker volume.
 #
-# URL: http://${DOCKERHOST}:${IVCTUI_PORT}
+# URL: http://${DOCKERHOST}:${IVCT_UIPORT}
 # Login: admin / admin
 # ==============================================================================
   gui:
