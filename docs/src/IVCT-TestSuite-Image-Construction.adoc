@@ -40,10 +40,10 @@ The Test Suite name and Test Suite version are Dockerfile arguments that must be
 
 The data in the TAR file is placed under `/root/conf/TestSuites/`. This directory is declared as a (Docker) `VOLUME` so that Docker automatically will copy the content of this directly into a Docker volume on the host system once the container is created. This is also the directory under which the data will be mounted in the TC Runner and IVCT GUI containers.
 
-The `ENTRYPOINT` script enables the user of the image to provide an alternate directory to copy the data into. This is typically not needed in a Docker environment. However, this script is required when using the Test Suite image under Kubernetes. Kubernetes does not automatically copy data into a volume (i.e. the data volume concept is entirely different on Kubernetes), but this script enables the user to perform a similar action on Kubernetes Pod initialization. The synopsis of the container command line arguments is:
+The `ENTRYPOINT` script enables the user of the image to provide an alternate directory to copy the data into. This is typically not needed in a Docker environment. However, this script is required when using the Test Suite image under Kubernetes. Kubernetes does not automatically copy data into a volume (i.e. the data volume concept is entirely different on Kubernetes), and this script enables the user to perform a similar action on Kubernetes Pod initialization. The synopsis of the container command line is:
 
-  TestSuiteImage [<opts>] <target directory>
+  TestSuiteImage <target directory>
 
-where opts are Linux `cp` options (default option is `-a`).
+The `OPTS` environment variable can be used to specify `cp` options to the entrypoint script (the default option is `-a`).
 
 The Test Suite image is based on the minimal `busybox` image in order to get a shell to execute the `ENTRYPOINT` script in.
