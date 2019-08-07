@@ -1,13 +1,13 @@
 = IVCT Container Overview
 
-The containerized version of the IVCT consists of several Docker container images. An overview of the container images and the relationships between them is provided in the following figure.
+The IVCT consists of several Docker container images. An overview of the container images and the relationships between them is provided in the following figure.
 
 image:images/ContainerDesign.png[IVCT Container Design]
 
 The color coding of the images is:
 
-- **BLUE**: IVCT container images (I.e. TC Runner Application, IVCT GUI, and IVCT LogSink Application).
-- **GREY**: IVCT data volumes (as container image or other storage class).
+- **BLUE**: IVCT container images (i.e. <<IVCT-TCRunner-Image#,IVCT TC Runner image>>, <<IVCT-GUI-Image#,IVCT GUI image>>, and <<IVCT-LogSink-Image#,IVCT LogSink image>>).
+- **GREY**: IVCT data volumes (as container image or other storage class), see <<IVCT-TestSuite-Images#,Test Suites overview>>.
 - **WHITE**: These are outside the scope of the IVCT project. E.g. the HLA RTI related container images.
 
 The relationships are:

@@ -31,7 +31,7 @@ Additional, but RTI specific components may be employed to connect the IVCT to t
 
 == Summary
 
-.Supported RTI network communication protocols per deployment option
+.Supported Network communication protocols per deployment option and per RTI
 |===
 |Deployment option | Pitch | VTMaK | Portico
 
@@ -45,7 +45,7 @@ Additional, but RTI specific components may be employed to connect the IVCT to t
 |-
 |===
 
-Note that the FOM transportation indication (Reliable, Best Effort) typically implies a certain network protocol to be used for communication. I.e. Best Effort typically implies UDP/IP or Multicast, and Reliable typically implies TCP/IP. In case of the VTMaK RTI, the RID file is setup to use TCP/IP regardless of the FOM transportation indication.
+Note that the FOM transportation indication (Reliable, Best Effort) typically implies a certain network communication protocol to be used. I.e. Best Effort typically implies UDP/IP or Multicast, and Reliable typically implies TCP/IP. In case of the VTMaK RTI, the RID file is configured to use TCP/IP regardless of the FOM transportation indication.
 
 == References
 https://docs.docker.com/network/host/
