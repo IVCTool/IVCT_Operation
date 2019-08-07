@@ -35,6 +35,6 @@ Additional environment variables are inherited from the LRC image. The most rele
 |===
 | Environment variable        | Description | Default if not set
 
-| ``MAK_LRCADAPTER``          | Network interface address to use for the TCP Forwarder | `0.0.0.0`, i.e. first available non-localhost interface address
+| ``MAK_LRCADAPTER``          | Network interface address to use for the MaK Forwarder | `0.0.0.0`, i.e. first available non-localhost interface address
 | ``MAK_RTIEXECADDRESS``      | RTI Exec address in the format of `<host>:<port>`. | `rtiexec:4000`
 |===
