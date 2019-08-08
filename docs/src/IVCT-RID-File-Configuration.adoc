@@ -26,7 +26,7 @@ An alternate RID file can be provided to the TC Runner by bind mounting the alte
 tc-runner:
   image: ivct/tc-runner:pi-development-latest
   volumes:
-  - "/path/to/my/prti1516eLRC.settings:/root/prti1516e/prti1516eLRC.settings"
+  - /path/to/my/prti1516eLRC.settings:/root/prti1516e/prti1516eLRC.settings
 ....
 
 To copy the RID file from a running TC Runner container you can use the `docker cp` command.
