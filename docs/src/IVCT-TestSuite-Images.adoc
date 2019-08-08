@@ -1,10 +1,11 @@
 = Test Suite Images
 
-Several Test Suites are available to the IVCT for the execution of test cases. This includes, but is not limited to the following:
+Several Test Suites are available to the IVCT for the execution of test cases. The data (including code) related to a Test Suite is stored in a Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and IVCT GUI containers at run-time. See <<IVCT-Container-Overview#,Container Overview>>. 
 
+The currently supported test suites are the following:
 
 |===
-| Test suite id | Test Purpose | Image
+| Test Suite Id | Test Purpose | Image
 
 | link:https://github.com/IVCTool/TS_HelloWorld[TS_HelloWorld] | Tutorial test suite | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-helloworld[ivct/ts-helloworld:tagname]
 | link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_CS_Verification[TS_HLA_Verification] | This test case is equivalent to the "FCTT_NG" configuration verification step. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-cs-verification[ivct/ts-hla-cs-verification:tagname]
@@ -14,14 +15,6 @@ Several Test Suites are available to the IVCT for the execution of test cases. T
 | link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_HLA_EncodingRulesTester[TS_HLA_EncodingRulesTester] | This test suite will test whether a System Under Test (SUT) correctly encodes the data types used in interaction parameters or object attributes. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-encoding-rules[ivct/ts-hla-encoding-rules:tagname]
 |===
 
-
-* `TS_HLA_BASE`: To test whether interaction parameters and objects attributes are correctly encoded.
-* `TS_EntityIntegrityChecker`: Validates the integrity of RPR-FOM Base Entities instances published by the System under Test (SUT).
-* `TS_CS_Verification`:
-* `TS_Warfare`: tests RPR-FOM warfare interactions.
-
-<< Reinhard / John to complete this overview >>
-
-The data (including code) related to a Test Suite is stored in a Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and IVCT GUI containers at run-time. See <<IVCT-Container-Overview#,Container Overview>>.
-
 The IVCT compositions provided in the Compositions repository can be extended with more Test Suites. However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>.
+
+There are some test suites currently under development (see link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/testsuite-overview.adoc[Test Suite Overview]).
