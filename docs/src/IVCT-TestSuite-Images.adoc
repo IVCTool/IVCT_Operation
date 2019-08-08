@@ -16,4 +16,4 @@ Several Test Suites are available to the IVCT for the execution of test cases. T
 
 The IVCT compositions provided in the Compositions repository can be extended with more Test Suites. However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>.
 
-There are some test suites currently under development (see link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/testsuite-overview.adoc[Test Suite Overview]).
+There are some other test suites currently under development, see link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/testsuite-overview.adoc[Test Suite Overview].
