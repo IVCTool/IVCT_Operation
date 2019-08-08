@@ -2,8 +2,7 @@
 
 Several Test Suites are available to the IVCT for the execution of test cases. The data (including code) related to a Test Suite is stored in a Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and IVCT GUI containers at run-time. See <<IVCT-Container-Overview#,Container Overview>>. 
 
-The currently supported test suites are the following:
-
+.Currently supported test suites
 |===
 | Test Suite Id | Test Purpose | Image
 
