@@ -57,6 +57,7 @@ This topic discusses the options for preserving tests logs and test reports.
 
 * <<IVCT-Preserving-Data#,Preserving data>>
 
+
 == RID File Configuration
 
 This topic provides the instructions on how to configure the IVCT with a specific RTI RID file.
