@@ -51,6 +51,12 @@ This topic provides an overview of the Test Suite container images available to 
 * <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>
 * <<IVCT-TestSuite-Updating#,Update Test Suite image>>
 
+== Preserving data
+
+This topic discusses the options for preserving tests logs and test results.
+
+* <<IVCT-Preserving-Data#,Preserving data>>
+
 == RID File Configuration
 
 This topic provides the instructions on how to configure the IVCT with a specific RTI RID file.
