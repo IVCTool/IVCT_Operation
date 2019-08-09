@@ -4,9 +4,9 @@ The results of the tests are stored (by the TC Runner Application) in the RunTim
 
 This topic lists several options to preserve the data in the data volume.
 
-== Use driver options (Linux)
+== Use driver options to make volume persistent (Linux)
 
-This option makes the RunTime Config data volume persistent using the local volume driver options. To do this, add the `local` volume driver to the `runtime-config` volume as shown in the compose file snippet below.
+This option makes the RunTime Config data volume persistent using the local volume driver options. To do this, add the `local` volume driver to the `runtime-config` volume as shown in the code snippet below.
 
 ....
 
@@ -36,7 +36,7 @@ volumes:
   ts-hla-declaration:
 ....
 
-The driver options is a list of key-value pairs that is passed to the driver for this volume, the `local` driver in this example. The environment variable `CONFDIR` must refer to an existing directory on the `IVCT_HOST`, and must be defined in the `.env` file.
+The driver options is a list of key-value pairs that is passed to the driver for this volume, the `local` driver in this example. The environment variable `CONFDIR` must refer to an existing directory on the `IVCT_HOST`, and must be defined in the `.env` file. The volume data will be stored in this directory.
 
 For this option to work make sure that the volume `runtime-config` does not exist yet. Otherwise it won't be created with the provided driver options. I.e. stop all containers that use the volume, and issue the `docker volume prune` to remove any volumes not in use anymore.
 
@@ -50,7 +50,7 @@ And to the test reports:
 
  cd ${CONFDIR}/IVCTsut/<SUT_NAME>/Reports
 
-== Use Docker copy command
+== Use Docker copy command to copy out files
 
 The second option uses the `docker cp` command to copy data from the data volume to the `IVCT_HOST`, using one of the containers that has mounted this volume. In this example we use the IVCT GUI container to copy out test logs.
 
@@ -64,7 +64,7 @@ Similar for the test reports:
 
 The container name `overlaymode_gui_1` refers to the IVCT GUI container in the `overlay-mode` composition. The container ID and container name can be looked up with the command `docker-compose ps` or `docker ps`.
 
-== Add a file browser to the IVCT composition
+== Add a file browser to the IVCT composition to access files
 
 The third option is to extend the IVCT composition with a file browser to access and download logs and reports:
 
