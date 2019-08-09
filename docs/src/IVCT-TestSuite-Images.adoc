@@ -1,14 +1,19 @@
 = Test Suite Images
 
-Several Test Suites are available to the IVCT for the execution of test cases. This includes, but is not limited to the following:
+Several Test Suites are available to the IVCT for the execution of test cases. The data (including code) related to a Test Suite is stored in a Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and IVCT GUI containers at run-time. See <<IVCT-Container-Overview#,Container Overview>>. 
 
-* `TS_HLA_BASE`: To test whether interaction parameters and objects attributes are correctly encoded.
-* `TS_EntityIntegrityChecker`: Validates the integrity of RPR-FOM Base Entities instances published by the System under Test (SUT).
-* `TS_CS_Verification`:
-* `TS_Warfare`: tests RPR-FOM warfare interactions.
+.Currently supported test suites
+|===
+| Test Suite Id | Test Purpose | Image
 
-<< Reinhard / John to complete this overview >>
-
-The data (including code) related to a Test Suite is stored in a Test Suite container image, named after the Test Suite. The data in the Test Suite container image is mounted as a Docker volume into the IVCT TC Runner and IVCT GUI containers at run-time. See <<IVCT-Container-Design#,Container Overview>>.
+| link:https://github.com/IVCTool/TS_HelloWorld[TS_HelloWorld] | Tutorial test suite | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-helloworld[ivct/ts-helloworld:tagname]
+| link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_CS_Verification[TS_HLA_Verification] | This test case is equivalent to the "FCTT_NG" configuration verification step. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-cs-verification[ivct/ts-hla-cs-verification:tagname]
+| link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_HLA_Declaration[TS_HLA_Declaration] | This test case verifies that the federate only publishes and subscribes objects, interactions and attributes specified in its SOM. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-declaration[ivct/ts-hla-declaration:tagname]
+| link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_HLA_Services[TS_HLA_Services] | This test suite verifies that the federate uses only the services specified in its SOM. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-services[ivct/ts-hla-services:tagname]
+| link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_HLA_Object[TS_HLA_Object] | This test suite verifies that the federate sends and receives only the objects and interactions specified in its SOM. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-object[ivct/ts-hla-object:tagname]
+| link:https://github.com/IVCTool/TS_HLA_BASE/tree/master/TS_HLA_EncodingRulesTester[TS_HLA_EncodingRulesTester] | This test suite will test whether a System Under Test (SUT) correctly encodes the data types used in interaction parameters or object attributes. | link:https://cloud.docker.com/u/ivct/repository/docker/ivct/ts-hla-encoding-rules[ivct/ts-hla-encoding-rules:tagname]
+|===
 
 The IVCT compositions provided in the Compositions repository can be extended with more Test Suites. However, note that a Test Suite container image must comply to certain construction rules in order to be usable in an IVCT composition, see <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>.
+
+There are some other test suites currently under development, see link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/testsuite-overview.adoc[Test Suite Overview].
