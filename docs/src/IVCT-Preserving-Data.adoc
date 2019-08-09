@@ -50,7 +50,7 @@ And to the test reports:
 
  cd ${CONFDIR}/IVCTsut/<SUT_NAME>/Reports
 
-== Use Docker copy command (Windows and Linux)
+== Use Docker copy command
 
 The second option uses the `docker cp` command to copy data from the data volume to the `IVCT_HOST`, using one of the containers that has mounted this volume. In this example we use the IVCT GUI container to copy out test logs.
 
@@ -95,7 +95,7 @@ And create the following `filebrowser.json` configuration file in the directory 
 }
 ....
 
-Once the composition is brought up, navigate to `http://${IVCT_HOST}:8081` and login as user `admin` with password `admin`, where `${IVCT_HOST}` should be replaced by the IVCT host name. 
+Once the composition is brought up, navigate to `http://${IVCT_HOST}:8081` and login as user `admin` with password `admin`, where `${IVCT_HOST}` should be replaced by the IVCT host name.
 
 == References:
 https://docs.docker.com/engine/reference/commandline/volume_create
