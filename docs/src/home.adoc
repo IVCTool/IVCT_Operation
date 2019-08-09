@@ -53,7 +53,7 @@ This topic provides an overview of the Test Suite container images available to 
 
 == Preserving data
 
-This topic discusses the options for preserving tests logs and test results.
+This topic discusses the options for preserving tests logs and test reports.
 
 * <<IVCT-Preserving-Data#,Preserving data>>
 
