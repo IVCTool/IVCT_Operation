@@ -46,7 +46,7 @@ To get to the test log of a particular test suite `<TESTSUITE_NAME>` ran against
 
  cd ${CONFDIR}/IVCTsut/<SUT_NAME>/<TESTSUITE_NAME>/Logs
 
- And to the test reports:
+And to the test reports:
 
  cd ${CONFDIR}/IVCTsut/<SUT_NAME>/Reports
 
