@@ -64,5 +64,38 @@ Similar for the test reports:
 
 The container name `overlaymode_gui_1` refers to the IVCT GUI container in the `overlay-mode` composition. The container ID and container name can be looked up with the command `docker-compose ps` or `docker ps`.
 
+== Add a file browser to the IVCT composition
+
+The third option is to extend the IVCT composition with a file browser to access and download logs and reports:
+
+Simply add the https://hub.docker.com/r/filebrowser/filebrowser[file browser] service, using the following code snippet:
+....
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    depends_on:
+    - runtime-config
+    volumes:
+    - runtime-config:/srv:nocopy
+    - ./filebrowser.json:/.filebrowser.json
+    ports:
+    - "8081:80"
+....
+
+And create the following `filebrowser.json` configuration file in the directory from where the IVCT composition is started:
+
+....
+{
+  "port": 80,
+  "baseURL": "",
+  "address": "",
+  "log": "stdout",
+  "database": "/database.db",
+  "root": "/srv"
+}
+....
+
+Once the composition is brought up, navigate to `http://${IVCT_HOST}:8081` and login as user `admin` with password `admin`, where `${IVCT_HOST}` should be replaced by the IVCT host name. 
+
 == References:
 https://docs.docker.com/engine/reference/commandline/volume_create
