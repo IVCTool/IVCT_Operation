@@ -55,7 +55,7 @@ This topic provides an overview of the Test Suite container images available to 
 
 This topic discusses the options for preserving tests logs and test reports.
 
-* <<IVCT-Preserving-TestResults#,Preserving data>>
+* <<IVCT-Preserving-TestResults#,Preserving test results>>
 
 == RID File Configuration
 
