@@ -40,7 +40,7 @@ The driver options is a list of key-value pairs that is passed to the driver for
 
 For this option to work make sure that the volume `runtime-config` does not exist yet. Otherwise the existing volume will be used and no new volume will be created with the provided driver options. Thus, stop all containers that use the volume, and issue the `docker volume prune` to remove the volume.
 
-The documentation about local driver is quite minimal on the Docker documentation site. However it turns out that only the built-in local driver on Linux accepts the driver options. These options are similar to the Linux mount command, and are actually passed on to that command.
+The documentation about the `local` driver is quite minimal on the Docker documentation site. However it turns out that only the built-in local driver on Linux accepts the driver options. These options are similar to the Linux mount command, and are actually passed on to that command.
 
 To get to the test log of a particular test suite `<TESTSUITE_NAME>` ran against a SUT named `<SUT_NAME>`, navigate to the following directory on the `IVCT_HOST`:
 
