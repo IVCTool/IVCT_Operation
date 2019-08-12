@@ -1,6 +1,6 @@
 = Preserving test results
 
-The results of the tests are stored (by the TC Runner Application) in the RunTime Config data volume. The data volume remains in place as long as it is not removed. Thus an IVCT composition can be started, stopped, and restarted with an existing data volume. However, when this data volume is removed the test results are gone too.
+The results of the tests are stored in the RunTime Config data volume. The data volume remains in place as long as it is not removed. Thus an IVCT composition can be started, stopped, and restarted with an existing data volume. However, when this data volume is removed the test results are gone too.
 
 This topic lists several options to preserve the data in the data volume.
 
