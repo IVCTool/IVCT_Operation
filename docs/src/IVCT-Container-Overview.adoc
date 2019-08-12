@@ -17,4 +17,4 @@ The relationships are:
 - **mounts**: container image mounts the indicated data volume at run-time.
 
 The TestSuite data volume is mounted by the IVCT GUI and IVCT TC Runner Application.
-The RunTime Config data volume is mounted by every IVCT container. In addition, this data volume includes the test results (produced by the IVCT TC Runner Application, and consumed by the IVCT GUI).
+The RunTime Config data volume is mounted by every IVCT container. In addition, this data volume includes the test results.
