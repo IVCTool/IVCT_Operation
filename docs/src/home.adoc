@@ -25,8 +25,8 @@ The remainder of this page lists several topics related to IVCT deployment and o
 This topic demonstrates the basic steps to deploy the IVCT for the Pitch RTI and run a test against the HelloWorld SUT.
 
 * <<IVCT-GettingStarted-Deployment#,Deploy the IVCT>>
-* <<IVCT-Graphical-User-Interface#,Use the Grapical User Interface>>
-* <<IVCT-GettingStarted-HelloWorld#,Run test against HelloWorld SUT>>
+* <<IVCT-Graphical-User-Interface#,Explore the Grapical User Interface>>
+* <<IVCT-GettingStarted-HelloWorld#,Run a test against the HelloWorld SUT>>
 
 == IVCT Container images
 

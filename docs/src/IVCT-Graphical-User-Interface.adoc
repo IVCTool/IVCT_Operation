@@ -1,16 +1,16 @@
-= The Grapical User Interface
+= Explore the Grapical User Interface
 
 == Introduction
 
-The Graphical User Interface (GUI) is a browser application, based on a web server running in your IVCT composition. You need to open your preferred HTML browser and navigate to the IVCT home page. In a local deployment, this would be typically
+The Graphical User Interface (GUI) is a webbrowser based application. You need to open your preferred HTML browser and navigate to the IVCT home page. In a local and standard deployment, this would be typically
 
   http:/localhost:8080
 
-In the standard deployment, the first page will be the login screen. Only authorized users are allowed to use the IVCT. Again, please contact your system administrator for your user credentials. With an initial deployment use user name `admin` with password `admin`.
+In the standard deployment, the first page will be the login screen. Only authorized users are allowed to use the IVCT. With an initial deployment the default user name and password is `admin` and `admin`.
 
 image:images/Login.PNG[Login Screen]
 
-After a successful login the IVCT GUI will be started. The general layout concept consists of a menu bar on the top part of the page, a navigation frame on the left side with a blue background, and content frame on the right side with a white background.
+After a successful login the IVCT UI will be started. The general layout concept consists of a menu bar on the top part of the page, a navigation frame on the left side with a blue background, and content frame on the right side with a white background.
 
 The Navigation frame has two parts, selectable via the little ‘^’ in the top left corner. The first one is the so called “Badges” view, and the second one is the “System under Test” view. These views are described below in more detail.
 
