@@ -2,7 +2,7 @@
 
 The value of `Local Settings Designator` (LSD) is an RTI-implementation specific string that the `TC Runner` uses for connecting to the RTI. The LSD refers to a set of LRC settings that override the default settings for the LRC. For the format of the string please refer to the RTI documentation.
 
-If no value is provided then the settings designator defaults to an empty string, meaning that the default settings are used. The TC Runner container image provides the possibility to set some of the default settings via LRC environment variables. These will be overridden by any settings provided via the LSD.
+If no value is provided then the LSD defaults to an empty string, meaning that default LRC settings are used. The default settings are dependent on the LRC Base image used by the TC Runner image. The TC Runner image provides the possibility to set some of the default settings via LRC environment variables. These will be overridden by any settings provided via the LSD.
 
 == MaK RTI LSD
 For the MaK RTI the exact syntax of the LSD is:
@@ -15,9 +15,9 @@ Where:
 * The "#" deliminator is followed by zero or more lisp expressions.
 
 === Without RTI_RID_FILE token
-If no `RTI_RID_FILE` token is specified in the LSD then the default RID file present in the LRC image is used. The default RID file is configured for strict RTI compliance and must match with the RID file used by the RTI Exec.
+If no `RTI_RID_FILE` token is specified in the LSD then the default RID file present in the LRC Base image is used. The default RID file is configured for strict RTI compliance and must match with the RID file used by the RTI Exec.
 
-To set the MaK RTI Exec address to `rtiexec` and port `4000`, use the following value:
+To set the MaK RTI Exec address to `rtiexec` and port `4000`, use the following LSD value:
 
     (setqb RTI_tcpPort 4000) (setqb RTI_tcpForwarderAddr "rtiexec")
 
@@ -50,12 +50,12 @@ For example, to set the Pitch CRC address to hostname `crc` and port `8989`, use
 If no Pitch CRC address is provided in the LSD, then the default address is used. The default address can be set via the Pitch LRC environment variables.
 
 === Refer to RID file
-When specifying an LSD, such as "MySpecialSettings", the LRC will search for additional settings as follows:
+When specifying a RID file, such as "MySpecialSettings", the LRC will search for additional settings as follows:
 
 * First, it will look for a file named "MySpecialSettings.lsd" in ``/etc/prti1516e``.
 * Then it will look for a file named "MySpecialSettings.lsd" in the home directory of the user ``/root``.
 * Then it will look for a file named "MySpecialSettings.lsd" in the working directory of the federate application.
 
-The RID file must be volume-mounted in to the TC Runner container.
+Note that the alternate RID file must be volume mounted into the TC Runner container in order to be accessible on the path specified.
 
 Any settings read from the RID file in those three locations will override the default settings. In case there are settings available in several of these locations then they will override each other in the same order as the files are read. If no RID file is specified, then the LRC will look for a file named “default.lsd”, in the same search order as above.
