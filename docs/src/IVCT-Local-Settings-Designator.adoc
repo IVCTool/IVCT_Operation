@@ -1,4 +1,5 @@
 = Local Settings Designator
+
 The value of `Local Settings Designator` (LSD) is an RTI-implementation specific string that the `TC Runner` uses for connecting to the RTI. The LSD refers to a set of LRC settings that override the default settings for the LRC. For the format of the string please refer to the RTI documentation.
 
 If no value is provided then the settings designator defaults to an empty string, meaning that the default settings are used. The TC Runner container image provides the possibility to set some of the default settings via LRC environment variables. These will be overridden by any settings provided via the LSD.
@@ -9,22 +10,28 @@ For the MaK RTI the exact syntax of the LSD is:
     RTI_RID_FILE /path/to/myRIDfile.mtl # {lisp_expression}*
 
 Where:
-* The token `RTI_RID_FILE` is optional. If included, the token `RTI_RID_FILE` must be the first token in the string. The text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the file name.
+* The token `RTI_RID_FILE` is optional. If included, the token `RTI_RID_FILE` must be the first token in the string. The text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the RID file name.
 * The "#" deliminator is followed by zero or more lisp expressions.
 
-If no `RTI_RID_FILE` token is specified in the LSD then the default RID file present in the LRC image is used. The default RID file is configured for strict RTI compliance and must match with the RID file used by the RTI Exec. So, when using an alternate RID file the settings in the file must be carefully reviewed.
+=== Without RTI_RID_FILE token
+If no `RTI_RID_FILE` token is specified in the LSD then the default RID file present in the LRC image is used. The default RID file is configured for strict RTI compliance and must match with the RID file used by the RTI Exec.
+
+To set the MaK RTI Exec address to `rtiexec` and port `4000`, use the following value:
+
+    (setqb RTI_tcpPort 4000) (setqb RTI_tcpForwarderAddr "rtiexec")
+
+If no MaK RTI Exec address is provided in the LSD, the default address is used. The default address can be set via the MAK LRC environment variables.
+
+=== With RTI_RID_FILE token
+When the token `RTI_RID_FILE` is used the text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the RID file name.
 
 To set an alternate RID file named `myRIDfile.mtl`, and to set the MaK RTI Exec address to host `rtiexec` and port `4000`, use the following string value:
 
     RTI_RID_FILE /path/to/myRIDfile.mtl # (setqb RTI_tcpPort 4000) (setqb RTI_tcpForwarderAddr "rtiexec")
 
-To just set the MaK RTI Exec address to `rtiexec` and port `4000`, use the following value:
+Note that the alternate RID file must be volume mounted into the TC Runner container in order to be accessible on the path specified.
 
-    (setqb RTI_tcpPort 4000) (setqb RTI_tcpForwarderAddr "rtiexec")
-
-Notes:
-* an alternate RID file must be volume mounted into the TC Runner container in order to be accessible on the path specified.
-* if no MaK RTI Exec address is provided in the LSD, the default address is used. The default address can be set via the MAK LRC environment variables.
+Also, when using an alternate RID file make sure the settings match up with the RTI Exec.
 
 == Pitch RTI settings designator
 For the Pitch RTI the LSD refers to either the address of the Central RTI Component (CRC), or to a RID file.
