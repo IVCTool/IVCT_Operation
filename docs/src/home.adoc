@@ -1,4 +1,4 @@
-= IVCT Compositions
+= IVCT Deployment and Operation
 
 == Introduction
 
@@ -12,7 +12,7 @@ IVCT Docker container images are available from the https://hub.docker.com/u/ivc
 - `VTMaK RTI` (https://www.mak.com)
 - `Portico` (https://github.com/openlvc/portico)
 
-The remainder of this page lists several topics with links to further information in the documentation section. This includes getting started instructions and information with regards to different IVCT deployment and configuration options.
+The remainder of this page lists several topics related to IVCT deployment and operation, with links to further information in the documentation section. This includes getting started instructions and information with regards to different IVCT deployment and configuration options.
 
 [cols="1,10a"]
 |===
