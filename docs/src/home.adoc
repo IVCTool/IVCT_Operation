@@ -58,7 +58,7 @@ This topic discusses the options for preserving tests logs and test reports.
 
 * <<IVCT-Preserving-TestResults#,Preserving test results>>
 
-== RID File Configuration and Local Setting Designator
+== RID File Configuration and Local Settings Designator
 
 This topic provides the instructions on how to configure the IVCT with a specific RTI RID file.
 
