@@ -23,7 +23,7 @@ image:images/BadgeView.PNG[Badge View]
 When a badge is selected in the navigation frame, the details will be shown in the content frame. These general information like the name, a short description and a visual key representing the badge.
 A badge also contains interoperability requirements, either directly assigned to the badge, or indirectly by a dependency definition to another badge. These interoperability requirements are assigned to test cases, which need to be passed in order to be considered compliant to that badge.
 
-![Badge View](images/BadgeHla.PNG)
+image:images/BadgeHla.PNG[Badge HLA View]
 
 == The SuT View
 
@@ -31,12 +31,11 @@ The System under Test (SuT) view, shows the configure systems to be tested. New 
 
 image:images/SutView.PNG[SuT View]
 
-The details view shows general information about the system under test, like its name, vender and version, as well as short description for its purpose.
+The details view shows general information about the system under test, such as its name, vender and version, a short description of its purpose, as well as information for the IVCT on how to connect to the `HLA RTI`. This connection information is called the `Local Settings Designator` (LSD) and the value is passed as-is to the `RTI connect` call. For more information about the LSD, see <<IVCT-Local-Settings-Designator#,The Local Settings Designator>>
+
 If the selected SuT has already been tested, the test reports will be listed below the general information. A report can be inspected by a double-click. This will open a new tab in the content frame with a text view. You can close this tab with the close button in the menu, or you leave it open for later use.
 
 image:images/SutHw.PNG[SuT View]
-
-For the RTI configuration see link:IVCT-Local-Settings-Designator.adoc[Local Settings Designator]
 
 When selecting a SuT in the navigation frame, the underlying badges are shown. These are the badges which are named in the conformance statement when creating a SuT description. Selecting a badge will show the details to be used for testing the contained interoperability requirements. These are test case parameters, optionally some extra parameters as required by some test cases, and finally the list of interoperability requirements.
 
