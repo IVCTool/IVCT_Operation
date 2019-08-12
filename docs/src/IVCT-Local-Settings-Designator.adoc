@@ -10,6 +10,7 @@ For the MaK RTI the exact syntax of the LSD is:
     RTI_RID_FILE /path/to/myRIDfile.mtl # {lisp_expression}*
 
 Where:
+
 * The token `RTI_RID_FILE` is optional. If included, the token `RTI_RID_FILE` must be the first token in the string. The text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the RID file name.
 * The "#" deliminator is followed by zero or more lisp expressions.
 
@@ -38,6 +39,7 @@ For the Pitch RTI the LSD refers to either the address of the Central RTI Compon
 
 === Refer to CRC address
 Depending on the CRC mode, the format of the CRC reference is:
+
 * Direct mode: `crcAddress=<CRC-address>:<port>`
 * Booster mode: `crcAddress=<CRC-name>@<local-booster-address>:<port>`
 
@@ -49,6 +51,7 @@ If no Pitch CRC address is provided in the LSD, then the default address is used
 
 === Refer to RID file
 When specifying an LSD, such as "MySpecialSettings", the LRC will search for additional settings as follows:
+
 * First, it will look for a file named "MySpecialSettings.lsd" in ``/etc/prti1516e``.
 * Then it will look for a file named "MySpecialSettings.lsd" in the home directory of the user ``/root``.
 * Then it will look for a file named "MySpecialSettings.lsd" in the working directory of the federate application.
