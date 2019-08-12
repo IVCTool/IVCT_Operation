@@ -25,7 +25,7 @@ The IVCT Docker container images will be pulled from the Docker Hub and the IVCT
 
 == Login to the IVCT UI
 
-The final step is logging into the IVCT UI. From a webbrowser, navigate to the web page of the IVCT UI: `http://${IVCT_HOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_HOST}` and `${IVCT_UIPORT}` by the values used in the `.env` file. If your browsers run on the same host as the IVCT you can use `http://localhost:${IVCT_UIPORT}`.
+The final step is logging into the IVCT UI. From a webbrowser, navigate to the web page of the IVCT UI: `http://${IVCT_HOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_HOST}` and `${IVCT_UIPORT}` by the values used in the `.env` file. If your browser runs on the same host as the IVCT you can use `http://localhost:${IVCT_UIPORT}`.
 
 Login as user `admin` with password `admin.`
 
