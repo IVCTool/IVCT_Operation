@@ -1,4 +1,4 @@
-= IVCT Compositions
+= IVCT Deployment and Operation
 
 == Introduction
 
@@ -6,13 +6,15 @@ The primary deployment model of the IVCT is based on Docker container technology
 
 Containers provides an easy way to distribute and deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. The application of Docker container technology allows a user to run the IVCT without having to build and install the IVCT Framework and its dependencies. All that is required is a functional Docker Engine installed on a host. See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
 
-IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images. Currently, the following RTI implementations are supported by the IVCT:
+IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images. IVCT compositions for different HLA-RTI implementations are available from this repository. Currently, the following RTI implementations are supported by the IVCT:
 
 - `Pitch RTI` (http://pitchtechnologies.com)
 - `VTMaK RTI` (https://www.mak.com)
 - `Portico` (https://github.com/openlvc/portico)
 
-The remainder of this page lists several topics with links to further information in the documentation section. This includes getting started instructions and information with regards to different IVCT deployment and configuration options.
+The Pitch and VTMaK RTIs are IEEE 1516-2010 compliant implementations. The Portico RTI is a partial implementation, i.e. not all RTI services are supported and the data encoding is not compliant with the HLA standard.
+
+The remainder of this page lists several topics related to IVCT deployment and operation, with links to further information in the documentation section. This includes getting started instructions and information with regards to different IVCT deployment and configuration options.
 
 [cols="1,10a"]
 |===
@@ -25,7 +27,8 @@ The remainder of this page lists several topics with links to further informatio
 This topic demonstrates the basic steps to deploy the IVCT for the Pitch RTI and run a test against the HelloWorld SUT.
 
 * <<IVCT-GettingStarted-Deployment#,Deploy the IVCT>>
-* <<IVCT-GettingStarted-HelloWorld#,Run test against HelloWorld SUT>>
+* <<IVCT-GettingStarted-Graphical-User-Interface#,Explore the Grapical User Interface>>
+* <<IVCT-GettingStarted-HelloWorld#,Run a test against the HelloWorld SUT>>
 
 == IVCT Container images
 
@@ -51,11 +54,18 @@ This topic provides an overview of the Test Suite container images available to 
 * <<IVCT-TestSuite-Image-Construction#,Test Suite image construction>>
 * <<IVCT-TestSuite-Updating#,Update Test Suite image>>
 
-== RID File Configuration
+== Preserving test results
+
+This topic discusses the options for preserving tests logs and test reports.
+
+* <<IVCT-Preserving-TestResults#,Preserving test results>>
+
+== RID File Configuration and Local Settings Designator
 
 This topic provides the instructions on how to configure the IVCT with a specific RTI RID file.
 
 * <<IVCT-RID-File-Configuration#,RID file configuration>>
+* <<IVCT-Local-Settings-Designator#,Local Settings Designator>>
 
 == IVCT Compositions overview
 

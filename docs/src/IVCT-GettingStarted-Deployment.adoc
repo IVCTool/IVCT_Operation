@@ -4,7 +4,7 @@ Assuming a Docker Engine and Docker Compose have been installed, the quickest wa
 
 == Copy the IVCT composition files to your local environment
 
-In the Compositions repository there are IVCT compositions for different HLA-RTI implementations. In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `overlay` mode, to be explained later.
+In this repository there are IVCT compositions for different HLA-RTI implementations. In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `overlay` mode, to be explained later.
 
 Copy the files under the `ivct-pitch/overlay-mode` directory to your local Docker environment. This concerns two files:
 
@@ -25,6 +25,10 @@ The IVCT Docker container images will be pulled from the Docker Hub and the IVCT
 
 == Login to the IVCT UI
 
-From a webbrowser, navigate to the web page of the IVCT UI: `http://${IVCT_HOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_HOST}` and `${IVCT_UIPORT}` by the values used in the `.env` file. Login as user `admin` with password `admin.`
+The final step is logging into the IVCT UI. From a webbrowser, navigate to the web page of the IVCT UI: `http://${IVCT_HOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_HOST}` and `${IVCT_UIPORT}` by the values used in the `.env` file. If your browser runs on the same host as the IVCT you can use `http://localhost:${IVCT_UIPORT}`.
 
-You can explore the UI, but for executing a test a System Under Test (SUT) as well as a Pitch CRC is required.
+Login as user `admin` with password `admin.`
+
+Once you are logged in you can explore the UI, as described in more detail at: <<IVCT-GettingStarted-Graphical-User-Interface#,Explore the Grapical User Interface>>
+
+However, for executing a test a System Under Test (SUT) as well as a Pitch CRC is required. This is explained at: <<IVCT-GettingStarted-HelloWorld#,Run a test against the HelloWorld SUT>>

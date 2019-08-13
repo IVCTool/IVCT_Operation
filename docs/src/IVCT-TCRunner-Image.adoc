@@ -1,6 +1,10 @@
-== IVCT TC-Runner Application image
+== IVCT TC Runner Application image
 
-The Testcase Runner Application image extends a Local RTI Component (LRC) image hosted in the **app-docker136.hex.tno.nl** (private) Docker registry. The LRC image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC images are available for different RTI implementations (Pitch, Mak, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC image includes a Java JRE. An LRC image sets the LRC libraries in the $CLASSPATH and $LD_LIBRARYPATH and provides several environment variables to control the behavior of the LRC.
+The Test Case (TC) Runner Application executes test cases. The TC Runner Application image is based on a Local RTI Component (LRC) Base image.
+
+The LRC Base image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC Base images are available for different RTI implementations (Pitch, Mak, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC Base image includes a Java JRE and provides several environment variables to control the behavior or some settings of the LRC. The LRC Base image settings are overridden by the settings provided via the Local Settings Designator.
+
+At run-time, Test Case execution results are reported via the Active MQ.
 
 === Environment Variables
 

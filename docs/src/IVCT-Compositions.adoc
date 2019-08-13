@@ -1,10 +1,10 @@
 = IVCT Compositions
 
-Supported IVCT Compositions are available from the Compositions repository. The structure of the repository looks like:
+Supported IVCT Compositions are available from this repository. The structure of the repository looks like:
 
 ....
 
-Compositions
+Repository
  |-- ivct-pitch                 (IVCT compositions for the Pitch RTI)
  |    |-- host-mode
  |    |-- overlay-mode
@@ -20,4 +20,4 @@ Compositions
 
 For some of compositions there is an `.env` file with environment variables that may need to be adapted to suit the local environment. If there is no `.env` file, then the composition can be used as is.
 
-As noted in <<IVCT-Deployment-Options.adoc#,Deployment options>>, the host mode compositions require a Linux host.
+As noted in <<IVCT-Deployment-Options#,Deployment options>>, the host mode compositions require a Linux host.

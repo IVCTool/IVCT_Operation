@@ -36,9 +36,9 @@ services:
   shipsim:
     image: app-docker136.hex.tno.nl/msaas-aus/shipsim:pi
     environment:
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
-    - PITCH_CRCADDRESS=${DOCKERHOST}:8989
-    - FEDERATENAME=VRF/UG
+    - PITCH_ADVERTISE_ADDRESS=${SUT_HOST}:6200-6209:6210-6219
+    - PITCH_CRCADDRESS=${SUT_HOST}:8989
+    - FEDERATENAME=SHIPSIM
     ports:
     - "6200-6209:6200-6209/tcp"
     - "6210-6219:6210-6219/udp"
