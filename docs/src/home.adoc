@@ -6,11 +6,13 @@ The primary deployment model of the IVCT is based on Docker container technology
 
 Containers provides an easy way to distribute and deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. The application of Docker container technology allows a user to run the IVCT without having to build and install the IVCT Framework and its dependencies. All that is required is a functional Docker Engine installed on a host. See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
 
-IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images. Currently, the following RTI implementations are supported by the IVCT:
+IVCT Docker container images are available from the https://hub.docker.com/u/ivct[Docker Hub], the main distribution medium for Docker container images. IVCT compositions for different HLA-RTI implementations are available from this repository. Currently, the following RTI implementations are supported by the IVCT:
 
 - `Pitch RTI` (http://pitchtechnologies.com)
 - `VTMaK RTI` (https://www.mak.com)
 - `Portico` (https://github.com/openlvc/portico)
+
+The Pitch and VTMaK RTIs are IEEE 1516-2010 compliant implementations. The Portico RTI is a partial implementation, i.e. not all RTI services are supported and the data encoding is not compliant with the HLA standard.
 
 The remainder of this page lists several topics related to IVCT deployment and operation, with links to further information in the documentation section. This includes getting started instructions and information with regards to different IVCT deployment and configuration options.
 

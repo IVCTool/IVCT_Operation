@@ -1,6 +1,6 @@
 == IVCT GUI Image
 
-The IVCT GUI extends the official Tomcat JRE8 image. The `war` files for the GUI Server and GUI Frontend resulting from the IVCT Framework Gradle build are simply added to the Tomcat `webapps` directory.
+The IVCT GUI provides the web UI of the IVCT. The image is based on the official Tomcat JRE8 image. At run-time the IVCT GUI communicates via the Active MQ with the TC Runner.
 
 === Environment Variables
 
@@ -9,5 +9,5 @@ The IVCT GUI extends the official Tomcat JRE8 image. The `war` files for the GUI
 
 | ``ACTIVEMQ_HOST`` | Hostname/IP of the Active MQ host | `localhost`
 | ``ACTIVEMQ_PORT`` | Port at which Active MQ can be reached at the host | `61616`
-| ``IVCT_CONF`` | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf`
+| ``IVCT_CONF`` | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf/IVCT.properties`
 |===
