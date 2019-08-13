@@ -1,0 +1,52 @@
+version: '3'
+# ==============================================================================
+# SHIPSIM SUT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+# ==============================================================================
+# SHIPSIM SUT composition includes the Pitch CRC and Pitch web UI, plus a
+# license container image for the CRC.
+# ==============================================================================
+  crc:
+    image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
+    depends_on:
+    - license
+    mac_address: ${MAC_ADDRESS}
+    volumes:
+    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
+    ports:
+    - "8989:8989"
+
+  web:
+    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
+    ports:
+    - "8181:8080"
+
+  license:
+    image: ${LICENSE_IMAGE}
+    volumes:
+    - license_volume:/data
+
+# ==============================================================================
+# The HelloWorld SUT
+# In this composition the SUT connects to the CRC via the Docker host network.
+# Ensure that the advertised port range does not overlap with other federates.
+# ==============================================================================
+  helloworld:
+    image: ivct/helloworld:pi-2.0.0
+    environment:
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
+    - PITCH_CRCADDRESS=${DOCKERHOST}:8989
+    - SETTINGS_DESIGNATOR=crcAddress=crc:8989
+    - FEDERATE_NAME=A
+    - POPULATION=100
+    - CYCLES=1000000
+    depends_on:
+    - crc
+
+# ==============================================================================
+# RTI license
+# ==============================================================================
+volumes:
+  license_volume:
