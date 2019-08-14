@@ -19,7 +19,7 @@ The test suite ``TS_HelloWorld`` impements two simple test cases, each testing a
 
 The HelloWorld federate is a simple Java application, that can be used as a console application under Windows and Linux. The application is also provided as a docker image, which is the recommended way to start with. After installing an RTI, as explained in the chapter above, the link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/docker-compose.yml[docker-compose.yml] can be used, to start the RTI togehter with the helloworld federate in composition.
 
-NOTE: The link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/docker-compose.yml[docker-compose.yml] file is configured for the Pitch RTI. Other examples will be provided in the future.
+NOTE: This link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/docker-compose.yml[docker-compose.yml] file is configured for the Pitch RTI. Other examples will be provided in the future.
 
 === Copy the RTI/HelloWorld composition file to you local environment
 
@@ -71,16 +71,16 @@ In the compose file, there are several enviroment variable settings for the hell
 | Environment Variable Name  | Description | Default if not set
 
 | SETTINGS_DESIGNATOR        | Connection parmeter for the `RTIambassador.connect` method   |no default assumed, this variable must be set to the RTI service. A typical value would be `crcAddress=crc:8989`
-| FEDERATE_NAME              | Name of the SuT federate   | A
-| POPULATION                 | Size of the starting population for the HelloWorld Country object   | 10
-| CYCLES                     | Number if iterations before resigning the federate   |1000000
+| FEDERATE_NAME              | Name of the SuT federate. In the default parameter settings the federate name `A` is used. This setting must match the actual test case parameters.  | `A`
+| POPULATION                 | Size of the starting population for the HelloWorld Country object.   | `10`
+| CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
 |===
 
 === Start the RTI and the helloworld federate
 
 The compose file is designed to start the RTI together with the helloworld federated. The composition is started with the command:
 
-docker-compose up
+  docker-compose up
 
 
 === Run a test
