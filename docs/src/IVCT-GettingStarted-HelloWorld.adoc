@@ -13,22 +13,80 @@ Both Pitch and VTMak provide free versions of their RTI. The additional componen
 
 The free version is sufficient for executing tests. The installation of additional RTI components is out of the scope of this getting started section. The remainder of this section assumes that a Pitch CRC has been installed on a host called `mycrc.com`, listening on the default CRC port `8989`.
 
-== Start the Hello World application
+== Start the HelloWorld application
 
-<< Reinhard or John to add ... >
+The test suite ``TS_HelloWorld`` impements two simple test cases, each testing a interoperability requirement defined in the HelloWorld badge. Along with the test suite implementation, there is also the helloWorld federate. This federate can used as a System under Test against the test suite, and it is a good starting point to explore and understand the IVCT installation.
 
-Classpath settings for the RTI needeed?  Is there a BAT file per RTI flavor?
+The HelloWorld federate is a simple Java application, that can be used as a console application under Windows and Linux. The application is also provided as a docker image, which is the recommended way to start with. After installing an RTI, as explained in the chapter above, the link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/docker-compose.yml[docker-compose.yml] can be used, to start the RTI togehter with the helloworld federate in composition.
 
-== Run a test
+NOTE: The link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/docker-compose.yml[docker-compose.yml] file is configured for the Pitch RTI. Other examples will be provided in the future.
 
-<< Reinhard or John to add ... >
+=== Copy the RTI/HelloWorld composition file to you local environment
 
-Login to the IVCT and navigate to the SUT page ...
+First you need to copy the content of the link:https://github.com/IVCTool/IVCT_Operation/tree/develop/sut-helloworld-pitch/overlay-mode[sut-helloworld-pitch] folder to you local Docker environment. There are two files in this folder:name: value
 
-Enter the address of the Pitch CRC in the settine designatot ...
+* link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/docker-compose.yml[docker-compose.yml]: A docker compose file describing the RTI service togehter with the helloworld system under test federate.
+* link:https://github.com/IVCTool/IVCT_Operation/blob/develop/sut-helloworld-pitch/overlay-mode/.env[.env]: The environment settings to be used when starting the above composition.
 
-Anything else?
+=== Adapt the environment settings
 
-Press `Execute` to start the test.
+Before starting the composition, you need to provide some basic settings for the RTI installation.
 
-Results are ...
+[source, yaml]
+----
+# ==============================================================================
+# The Pitch CRC license container image.
+# The name in this image is fictitious and must be set to a correct image name.
+# ==============================================================================
+LICENSE_IMAGE=your.crc.license.image
+
+# ==============================================================================
+# The MAC address associated with the license key in the license container
+# image. The addess is fictitious and must be set to a correct MAC address.
+# ==============================================================================
+MAC_ADDRESS=00:00:00:00:00:00
+
+# ==============================================================================
+# The host where the SUT is running. The name in this file is fictitious
+# and must be set to a proper host address. The SUT will provide this
+# address to the Pitch CRC as the address where it can be contacted by other
+# federate applications.
+# ==============================================================================
+DOCKERHOST=sut.at.network.com
+----
+
+NOTE: Creating a license image is currently explained in the TNO wiki. This will eventually replaced by vendor provided documentation.
+
+The `MAC_ADDRESS` is required, if you are using a mac address based license for the Pitch RTI. Other license models are possible.
+
+The `DOCKERHOST` setting need to be changed to the address where your docker engine is running. In most cases this will be `localhost`.
+
+
+
+=== Environment Variables
+
+In the compose file, there are several enviroment variable settings for the helloworld federate. No changes are needed, as long as the crc service configuration in the compose file is not changed.
+
+|===
+| Environment Variable Name  | Description | Default if not set
+
+| SETTINGS_DESIGNATOR        | Connection parmeter for the `RTIambassador.connect` method   |no default assumed, this variable must be set to the RTI service. A typical value would be `crcAddress=crc:8989`
+| FEDERATE_NAME              | Name of the SuT federate   | A
+| POPULATION                 | Size of the starting population for the HelloWorld Country object   | 10
+| CYCLES                     | Number if iterations before resigning the federate   |1000000
+|===
+
+=== Start the RTI and the helloworld federate
+
+The compose file is designed to start the RTI together with the helloworld federated. The composition is started with the command:
+
+docker-compose up
+
+
+=== Run a test
+
+After the IVCTool and the RTI with the helloworld federated are up and running, you are able to run test cases. In the default deployment of the IVCTool there is an entry for the helloworld in the SuT section. Login to the IVCTools and navigate to the hw_iosb entry in the SuT section.
+
+In the conformance statement of the hw_iosb, you need to change the host name in the settings designator. If your IVCTool composition is running on the same docker host as your sut-helloworld composition, the host name will be `crc`.
+
+You may then select one of the listed interoperability requirements and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
