@@ -1,11 +1,11 @@
 version: '3'
 # ==============================================================================
-# SHIPSIM SUT composition for the Pitch RTI using HOST NETWORK MODE
+# HelloWorld SUT composition for the Pitch RTI using HOST NETWORK MODE
 # ==============================================================================
 
 services:
 # ==============================================================================
-# SHIPSIM SUT composition includes the Pitch CRC and Pitch web UI, plus a
+# HelloWorld SUT composition includes the Pitch CRC and Pitch web UI, plus a
 # license container image for the CRC.
 # ==============================================================================
   crc:
@@ -31,21 +31,17 @@ services:
 # ==============================================================================
 # The HelloWorld SUT
 # In this composition the SUT connects to the CRC via the Docker host network.
-# Ensure that the advertised port range does not overlap with other federates.
 # ==============================================================================
   helloworld:
     image: ivct/helloworld:pi-2.0.0
     network_mode: host
     environment:
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
-    - PITCH_CRCADDRESS=${DOCKERHOST}:8989
-    - SETTINGS_DESIGNATOR=crcAddress=crc:8989
+    - SETTINGS_DESIGNATOR=crcAddress=localhost:8989
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
     depends_on:
     - crc
-
 
 # ==============================================================================
 # RTI license
