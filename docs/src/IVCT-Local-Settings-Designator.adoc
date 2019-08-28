@@ -34,7 +34,7 @@ Note that the alternate RID file must be volume mounted into the TC Runner conta
 
 Also, when using an alternate RID file make sure the settings match up with the RTI Exec.
 
-== Pitch RTI settings designator
+== Pitch RTI LSD
 For the Pitch RTI the LSD refers to either the address of the Central RTI Component (CRC), or to a RID file.
 
 === Refer to CRC address
@@ -59,3 +59,7 @@ When specifying a RID file, such as "MySpecialSettings", the LRC will search for
 Note that the alternate RID file must be volume mounted into the TC Runner container in order to be accessible on the search path.
 
 Any settings read from the RID file in those three locations will override the default settings. In case there are settings available in several of these locations then they will override each other in the same order as the files are read. If no RID file is specified, then the LRC will look for a file named “default.lsd”, in the same search order as above.
+
+== Portico RTI LSD
+For Portico the LSD is a string which, if defined, should contain a comma separated list of properties. See https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html.
+These properties augment/override the properties in the RID file.
