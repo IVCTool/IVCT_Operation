@@ -1,0 +1,22 @@
+version: '3'
+# ==============================================================================
+# SHIPSIM SUT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+
+
+# ==============================================================================
+# The HelloWorld SUT
+# In this composition the SUT connects to the CRC via the Docker host network.
+# Ensure that the advertised port range does not overlap with other federates.
+# ==============================================================================
+  helloworld-b:
+    image: ivct/helloworld:pi-2.0.0
+    environment:
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
+    - PITCH_CRCADDRESS=${DOCKERHOST}:8989
+    - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
+    - FEDERATE_NAME=B
+    - POPULATION=100
+    - CYCLES=1000000
