@@ -12,9 +12,9 @@ services:
 # Ensure that the advertised port range does not overlap with other federates.
 # ==============================================================================
   helloworld-a:
-    image: ivct/helloworld:pi-2.0.0
+    image: ivct/helloworld:pi-${TS_HW_VERSION}
     environment:
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
+    # - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
     - PITCH_CRCADDRESS=${DOCKERHOST}:8989
     - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
     - FEDERATE_NAME=A
