@@ -6,10 +6,4 @@ At run-time, test results are saved in the Runtime Config data volume.
 
 === Environment Variables
 
-|===
-| Environment Variable Name  | Description | Default if not set
-
-| ``ACTIVEMQ_HOST`` | Hostname/IP of the Active MQ host | `localhost`
-| ``ACTIVEMQ_PORT`` | Port at which Active MQ can be reached at the host | `61616`
-| ``IVCT_CONF`` | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf`
-|===
+For a full list of parameters, see the link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/2-8-IVCT_Configuration.adoc[IVCT Configuration].
