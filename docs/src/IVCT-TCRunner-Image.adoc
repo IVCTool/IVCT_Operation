@@ -13,7 +13,7 @@ For a full list of parameters, see the link:https://github.com/IVCTool/IVCT_Fram
 The most relevant ones for the Operator are:
 
 |===
-| Environment Variable Name   | Description | Default if not set
+| Environment variable  | Description | Default if not set
 
 | `SETTINGS_DESIGNATOR` | Value to use for the RTI connection string if no value is provided in the SuT conformance statement. | The default is an empty string
 | `FEDERATION_NAME`     | Value to use for the federation name if no value is provided in SuT conformance statement.  | `TheWorld`
