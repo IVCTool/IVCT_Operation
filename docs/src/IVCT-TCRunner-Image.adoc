@@ -8,15 +8,18 @@ At run-time, Test Case execution results are reported via the Active MQ.
 
 === Environment Variables
 
-|===
-| Environment Variable Name   | Description | Default if not set
+For a full list of parameters, see the link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/2-8-IVCT_Configuration.adoc[IVCT Configuration].
 
-| ``ACTIVEMQ_HOST``           | Hostname/IP of the Active MQ host | `localhost`
-| ``ACTIVEMQ_PORT``           | Port at which Active MQ can be reached at the host | `61616`
-| ``IVCT_CONF``               | References either a directory with the properties file named `IVCT.properties` or to the properties file itself. | `/root/conf`
+The most relevant ones for the Operator are:
+
+|===
+| Environment variable  | Description | Default if not set
+
+| `SETTINGS_DESIGNATOR` | Value to use for the RTI connection string if no value is provided in the SuT conformance statement. | The default is an empty string
+| `FEDERATION_NAME`     | Value to use for the federation name if no value is provided in SuT conformance statement.  | `TheWorld`
 |===
 
-Additional environment variables are inherited from the LRC image. The most relevant ones are listed below.
+Besides these environment variables, additional environment variables are inherited from the LRC image. The most relevant ones are shown below.
 
 ==== Pitch LRC settings
 |===
@@ -26,6 +29,8 @@ Additional environment variables are inherited from the LRC image. The most rele
 | ``PITCH_CRCADDRESS``        | CRC address in the format of `<host>:<port>` (direct mode) or `<crc-nickname>@<boost host>:<boost port>` (booster mode). | `crc:8989`
 | ``PITCH_ADVERTISE_ADDRESS`` | Applies to direct mode. Use this address to advertise the LRC. The format is ``[<host address>][:[<mintcpport>]-[<maxtcpport>][:[<minudpport>]-[<maxudpport>]]]`` | Mode IP, ``:6000-6999:5000-5999``
 |===
+
+If the `SETTINGS_DESIGNATOR` is an empty string then the LRC image default behavior comes into play. That is, the federate application (the TC Runner in this case) will use whatever is set by the LRC image as the address for the CRC. The address is the value of the environment variable `PITCH_CRCADDRESS`.
 
 ==== Portico LRC settings
 |===
@@ -42,3 +47,5 @@ Additional environment variables are inherited from the LRC image. The most rele
 | ``MAK_LRCADAPTER``          | Network interface address to use for the MaK Forwarder | `0.0.0.0`, i.e. first available non-localhost interface address
 | ``MAK_RTIEXECADDRESS``      | RTI Exec address in the format of `<host>:<port>`. | `rtiexec:4000`
 |===
+
+If the `SETTINGS_DESIGNATOR` is an empty string then the LRC image default behavior comes into play. That is, the federate application (the TC Runner in this case) will use whatever is set by the LRC image as the address for the RTI Exec. The address is the value of the environment variable `MAK_RTIEXECADDRESS`.
