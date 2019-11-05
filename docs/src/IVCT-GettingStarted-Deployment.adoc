@@ -8,8 +8,8 @@ In this repository there are IVCT compositions for different HLA-RTI implementat
 
 Copy the files under the `ivct-pitch/overlay-mode` directory to your local Docker environment. This concerns two files:
 
-* `docker-compose.yml`: a Docker compose file describing the IVCT composition.
-* `.env`: environment settings related to the Docker compose file.
+* https://raw.githubusercontent.com/IVCTool/IVCT_Operation/develop/ivct-pitch/overlay-mode/docker-compose.yml[`docker-compose.yml`]: a Docker compose file describing the IVCT composition.
+* https://raw.githubusercontent.com/IVCTool/IVCT_Operation/develop/ivct-pitch/overlay-mode/.env[`.env`]: environment settings related to the Docker compose file.
 
 == Adapt the environment settings
 
