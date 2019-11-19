@@ -17,7 +17,7 @@ services:
 # Test suite data is mounted as docker volume.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:pi-${IVCT_VERSION}
+    image: ivct/tc-runner:pi-bare-${IVCT_VERSION}
     depends_on:
     - activemq
     - runtime-config
@@ -35,6 +35,9 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
+    - ${PITCH_HOME}/include:/usr/local/pitch/include
+    - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
     - ACTIVEMQ_HOST=activemq
     # - PITCH_ADVERTISE_ADDRESS=${IVCT_HOST}:6100-6109:6110-6119
