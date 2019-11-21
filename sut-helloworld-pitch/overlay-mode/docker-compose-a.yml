@@ -12,14 +12,18 @@ services:
 # Ensure that the advertised port range does not overlap with other federates.
 # ==============================================================================
   helloworld-a:
-    image: ivct/helloworld:pi-${TS_HW_VERSION}
+    image: ivct/helloworld:pi-bare-${TS_HW_VERSION}
     environment:
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
+    # - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
     - PITCH_CRCADDRESS=${DOCKERHOST}:8989
     - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
-    ports:
-    - "6200-6209:6200-6209/tcp"
-    - "6210-6219:6210-6219/udp"
+    # ports:
+    # - "6200-6209:6200-6209/tcp"
+    # - "6210-6219:6210-6219/udp"
+    volumes:
+    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
+    - ${PITCH_HOME}/include:/usr/local/pitch/include
+    - ${LRC_SETTINGSDIR}:/root/prti1516e
