@@ -1,50 +1,19 @@
 version: '3'
 # ==============================================================================
-# HelloWorld SUT composition for the Pitch RTI using HOST NETWORK MODE
+# The HelloWorld SUT.
 # ==============================================================================
 
 services:
-# ==============================================================================
-# HelloWorld SUT composition includes the Pitch CRC and Pitch web UI, plus a
-# license container image for the CRC.
-# ==============================================================================
-  crc:
-    image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
-    depends_on:
-    - license
-    mac_address: ${MAC_ADDRESS}
-    volumes:
-    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
-    ports:
-    - "8989:8989"
-
-  web:
-    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
-    ports:
-    - "8181:8080"
-
-  license:
-    image: ${LICENSE_IMAGE}
-    volumes:
-    - license_volume:/data
-
-# ==============================================================================
-# The HelloWorld SUT
-# In this composition the SUT connects to the CRC via the Docker host network.
-# ==============================================================================
   helloworld:
-    image: ivct/helloworld:pi-2.0.0
+    image: ivct/helloworld:pi-bare-${TS_HW_VERSION}
     network_mode: host
     environment:
-    - SETTINGS_DESIGNATOR=crcAddress=localhost:8989
+    - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
+    - SETTINGS_DESIGNATOR=${SETTINGS_DESIGNATOR}
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
-    depends_on:
-    - crc
-
-# ==============================================================================
-# RTI license
-# ==============================================================================
-volumes:
-  license_volume:
+    volumes:
+    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
+    - ${PITCH_HOME}/include:/usr/local/pitch/include
+    - ${LRC_SETTINGSDIR}:/root/prti1516e

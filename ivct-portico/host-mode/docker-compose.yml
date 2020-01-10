@@ -18,7 +18,7 @@ services:
 # Test suite data is mounted as docker volume.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:po-development-latest
+    image: ivct/tc-runner:po-${IVCT_VERSION}
     network_mode: host
     depends_on:
     - activemq
@@ -31,18 +31,18 @@ services:
     - ts-hla-declaration
     volumes:
     - runtime-config:/root/conf:nocopy
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-2.0.0:nocopy
-    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0:nocopy
-    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0:nocopy
-    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0:nocopy
-    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0:nocopy
-    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
 
 # ==============================================================================
 # IVCT Logsink component
 # ==============================================================================
   logsink:
-    image: ivct/logsink:development-latest
+    image: ivct/logsink:${IVCT_VERSION}
     network_mode: host
     depends_on:
     - activemq
@@ -58,7 +58,7 @@ services:
 # Login: admin / admin
 # ==============================================================================
   gui:
-    image: ivct/ivct-gui:development-latest
+    image: ivct/ivct-gui:${IVCT_VERSION}
     network_mode: host
     depends_on:
     - activemq
@@ -71,18 +71,18 @@ services:
     - ts-hla-declaration
     volumes:
     - runtime-config:/root/conf:nocopy
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-2.0.0:nocopy
-    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0:nocopy
-    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0:nocopy
-    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0:nocopy
-    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0:nocopy
-    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
 
 # ==============================================================================
 # IVCT runtime configuration data
 # ==============================================================================
   runtime-config:
-    image: ivct/runtime-config:development-latest
+    image: ivct/runtime-config:${IVCT_VERSION}
     volumes:
     - runtime-config:/root/conf
 
@@ -90,49 +90,49 @@ services:
 # IVCT Test Suite data for Helloworld
 # ==============================================================================
   ts-helloworld:
-    image: ivct/ts-helloworld:development-latest
+    image: ivct/ts-helloworld:${TS_HW_VERSION}
     volumes:
-    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-2.0.0
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}
 
 # ==============================================================================
 # IVCT Test Suite data for Encoding Rules
 # ==============================================================================
   ts-hla-encoding-rules:
-    image: ivct/ts-hla-encoding-rules:development-latest
+    image: ivct/ts-hla-encoding-rules:${TS_HLA_VERSION}
     volumes:
-    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-2.0.0
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}
 
 # ==============================================================================
 # IVCT Test Suite data for HLA CS Verification
 # ==============================================================================
   ts-hla-cs-verification:
-    image: ivct/ts-hla-cs-verification:development-latest
+    image: ivct/ts-hla-cs-verification:${TS_HLA_VERSION}
     volumes:
-    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-2.0.0
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Services
 # ==============================================================================
   ts-hla-services:
-    image: ivct/ts-hla-services:development-latest
+    image: ivct/ts-hla-services:${TS_HLA_VERSION}
     volumes:
-    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-2.0.0
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Object
 # ==============================================================================
   ts-hla-object:
-    image: ivct/ts-hla-object:development-latest
+    image: ivct/ts-hla-object:${TS_HLA_VERSION}
     volumes:
-    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-2.0.0
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Declaration
 # ==============================================================================
   ts-hla-declaration:
-    image: ivct/ts-hla-declaration:development-latest
+    image: ivct/ts-hla-declaration:${TS_HLA_VERSION}
     volumes:
-    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-2.0.0
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}
 
 # ==============================================================================
 # Data volumes for IVCT Runtime Config data and Test Suite data
