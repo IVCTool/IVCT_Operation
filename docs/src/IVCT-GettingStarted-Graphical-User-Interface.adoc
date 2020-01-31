@@ -25,7 +25,7 @@ A badge also contains interoperability requirements, either directly assigned to
 
 image:images/GUI_BadgeHLA.PNG[Badge HLA View]
 
-== The TestSuite View
+== The Testsuite View
 
 The test suite view shows all included test suites in the IVCT platform.
 
@@ -66,7 +66,7 @@ When selecting a test case tile the list of interoperability requirements are sh
 Depending on the status of the test execution, the test case tiles are displayed in different colors:
 
 - **PASSED**: green color
-- **INCONCLUSIVE**: purple colors
+- **INCONCLUSIVE**: purple color
 - **FAILED**: red color
 
 image:images/GUI_SutHwEncodingTC.PNG[SuT View]
@@ -78,7 +78,7 @@ With the button <TC execute> in the menu frame, the test case assigned to this i
 Depending on the status of the test execution, the test result name in <TC Status> and <TC Execution History> are displayed in different colors:
 
 - **PASSED**: green color
-- **INCONCLUSIVE**: purple colors
+- **INCONCLUSIVE**: purple color
 - **FAILED**: red color
 
 The <TC Execution Log> table displays the log message selected in the <TC Execution History> table.
