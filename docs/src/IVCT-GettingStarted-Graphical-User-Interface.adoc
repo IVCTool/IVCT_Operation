@@ -8,7 +8,7 @@ The Graphical User Interface (GUI) is a webbrowser based application. You need t
 
 In the standard deployment, the first page will be the login screen. Only authorized users are allowed to use the IVCT. With an initial deployment the default user name and password is `admin` and `admin`.
 
-image:images/GUI_Login.PNG[Login Screen]
+image:images/GUI_Login.png[Login Screen]
 
 After a successful login the IVCT UI will be started. The general layout concept consists of a menu bar on the top part of the page, a navigation frame on the left side with a blue background, and content frame on the right side with a white background.
 
@@ -161,7 +161,7 @@ image:images/GUI_TestEngineStatusRed.PNG[TestEngine Status]
 System information, such as the software version of the IVCT environment, can be displayed via the menu item <About>.
 The menu item <Logout> logs the user off the system.
 
-image:images/GUI_Menu.PNG[Menu]
+image:images/GUI_Menu.png[Menu]
 
 image:images/GUI_IVCTVersion.PNG[Version]
 
