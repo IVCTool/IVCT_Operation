@@ -123,7 +123,7 @@ image:images/GUI_EditSuT.PNG[Edit SuT]
 
 === Language and Log Level Settings
 
-The system allows the user to change of the language settings and log level settings.
+The system allows the user to change the language settings and log level settings.
 
 You can select either English or German as language. The default language is English.
 
