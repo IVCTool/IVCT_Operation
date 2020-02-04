@@ -71,7 +71,7 @@ Depending on the status of the test execution, the test case tiles are displayed
 
 image:images/GUI_SutHwEncodingTC.PNG[SuT View]
 
-In order to test a test case, it must be selected in the navigation frame (double click on the test case tile).
+In order to execute a test case, it must be selected in the navigation frame (double click on the test case tile).
 That opens a detail view in the content frame, with a short description and a list of reports with existing protocol files.
 With the button <TC execute> in the menu frame, the test case assigned to this interoperability requirement can be started.
 
@@ -93,13 +93,13 @@ A detailed protocol log shows the current output of the running test case.
 
 image:images/GUI_TcExec.PNG[SuT View]
 
-Some testcases require a dynamic reaction from the SuT which cannot be automated.
+Some testcases do have specific instructions to the IVCT operator. 
 The test case makes a request to the SuT operator and waits until the SuT operator confirms that the required action or configuration has been performed.
 An optional comment for traceability can be added.
 
 image:images/GUI_TcExecOperatorRequest.PNG[SuT View]
 
-At the end of the execution of a test case, the status of the test execution is displayed in form of a popup window.
+At the end of the test case execution, the  test verdict is displayed in form of a popup window.
 
 image:images/GUI_TcExecStatus.PNG[SuT View]
 
@@ -123,19 +123,17 @@ image:images/GUI_EditSuT.PNG[Edit SuT]
 
 === Language and Log Level Settings
 
-The system allows the user to change the language settings and log level settings.
-
-You can select either English or German as language. The default language is English.
+The system allows the user to change the language settings and log level settings. You can select either English or German as language. The default language is English.
 
 As log level you can decide between the following levels:
 
-- TRACE
-- DEBUG
-- INFO
-- WARN
-- ERROR
+- TRACE: Detailed information about the individual test steps, like the HLA API calls and callbacks. 
+- DEBUG: This level contains specfic developer information used for testing the test cases.
+- INFO: High level information about the test execution. 
+- WARN: The warning level reports events which need the attention of the IVCT operator. 
+- ERROR: Events which are considered as faulty behaviour are reported as errors.  
 
-The default log level is INFO.
+The default log level is INFO. 
 
 image:images/GUI_Options.PNG[Options]
 
