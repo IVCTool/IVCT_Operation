@@ -12,6 +12,8 @@ services:
     image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
     depends_on:
     - license
+    environment:
+    - PITCH_CRCADDRESS=${DOCKERHOST}:8989
     mac_address: ${MAC_ADDRESS}
     volumes:
     - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy

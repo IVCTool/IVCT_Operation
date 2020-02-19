@@ -12,18 +12,19 @@ services:
 # Ensure that the advertised port range does not overlap with other federates.
 # ==============================================================================
   helloworld-a:
-    image: ivct/helloworld:pi-bare-${TS_HW_VERSION}
+    image: ivct/helloworld:pi-skeleton-${TS_HW_VERSION}
     environment:
+    # use advertise address if helloworld shall be seen outside docker
     # - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
     - PITCH_CRCADDRESS=${DOCKERHOST}:8989
     - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
+    # Specify port advertise range in case the SuT runs outside docker
     # ports:
     # - "6200-6209:6200-6209/tcp"
     # - "6210-6219:6210-6219/udp"
     volumes:
-    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
-    - ${PITCH_HOME}/include:/usr/local/pitch/include
+    - ${PITCH_RTI_HOME}:/usr/local/lrc/code
     - ${LRC_SETTINGSDIR}:/root/prti1516e

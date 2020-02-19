@@ -10,6 +10,8 @@ services:
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
+    ports:
+    - "61616:61616/tcp"
 
 # ==============================================================================
 # IVCT Test Case Runner
@@ -17,7 +19,7 @@ services:
 # Test suite data is mounted as docker volume.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:pi-bare-${IVCT_VERSION}
+    image: ivct/tc-runner:pi-skeleton-${IVCT_VERSION}
     depends_on:
     - activemq
     - runtime-config
@@ -35,15 +37,15 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
-    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
-    - ${PITCH_HOME}/include:/usr/local/pitch/include
+    - ${PITCH_RTI_HOME}:/usr/local/lrc/code
     - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
     - ACTIVEMQ_HOST=activemq
-    # - PITCH_ADVERTISE_ADDRESS=${IVCT_HOST}:6100-6109:6110-6119
-    ports:
-    - "6100-6109:6100-6109/tcp"
-    - "6110-6119:6110-6119/udp"
+    # Specify port advertise range in case the SuT runs outside docker
+    # - PITCH_ADVERTISE_ADDRESS=${IVCT_HOST}:6000-6009:6010-6019
+    # ports:
+    # - "6000-6009:6000-6009/tcp"
+    # - "6010-6019:6010-6019/udp"
 
 # ==============================================================================
 # IVCT Logsink component
@@ -150,6 +152,12 @@ services:
 # ==============================================================================
 volumes:
   runtime-config:
+      # === map to host file system ===
+      # driver: local
+      # driver_opts:
+      #     type: none
+      #     device: ${CONFDIR}
+      #     o: bind
   ts-helloworld:
   ts-hla-encoding-rules:
   ts-hla-cs-verification:
