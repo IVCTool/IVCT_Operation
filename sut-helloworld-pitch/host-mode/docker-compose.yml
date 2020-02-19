@@ -5,15 +5,12 @@ version: '3'
 
 services:
   helloworld:
-    image: ivct/helloworld:pi-bare-${TS_HW_VERSION}
+    image: ivct/helloworld:pi-skeleton-${TS_HW_VERSION}
     network_mode: host
     environment:
-    - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
     - SETTINGS_DESIGNATOR=${SETTINGS_DESIGNATOR}
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
     volumes:
-    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
-    - ${PITCH_HOME}/include:/usr/local/pitch/include
-    - ${LRC_SETTINGSDIR}:/root/prti1516e
+    - ${PITCH_RTI_HOME}:/usr/local/prti1516e

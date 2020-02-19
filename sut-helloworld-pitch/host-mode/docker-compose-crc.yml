@@ -4,28 +4,16 @@ version: '3'
 # ==============================================================================
 
 services:
-  crc:
-    image: app-docker136.hex.tno.nl/pitch/crc:5.4.0.0
-    depends_on:
-    - license
-    mac_address: ${MAC_ADDRESS}
-    volumes:
-    - license_volume:/etc/.java/.systemPrefs/se/pitch/prti1516e/config:nocopy
-    ports:
-    - "8989:8989"
-
-  web:
-    image: app-docker136.hex.tno.nl/pitch/web:2.3.0
+  xserver:
+    image: hlacontainers/xserver
     ports:
     - "8181:8080"
 
-  license:
-    image: ${LICENSE_IMAGE}
+  crc:
+    image: hlacontainers/pitch-crc:skeleton
     volumes:
-    - license_volume:/data
-
-# ==============================================================================
-# RTI license
-# ==============================================================================
-volumes:
-  license_volume:
+    - ${PITCH_RTI_HOME}:/usr/local/prti1516e
+    environment:
+    - DISPLAY=xserver:0
+    ports:
+    - "8989:8989"
