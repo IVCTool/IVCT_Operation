@@ -37,9 +37,7 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
-    - ${PITCH_HOME}/lib:/usr/local/pitch/lib
-    - ${PITCH_HOME}/include:/usr/local/pitch/include
-    - ${LRC_SETTINGSDIR}:/root/prti1516e
+    - ${PITCH_RTI_HOME}:/usr/local/prti1516e
 
 # ==============================================================================
 # IVCT Logsink component
