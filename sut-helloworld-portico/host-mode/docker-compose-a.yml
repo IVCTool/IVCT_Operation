@@ -4,8 +4,8 @@ version: '3'
 # ==============================================================================
 
 services:
-  helloworld:
-    image: ivct/helloworld:${TS_HW_VERSION}
+  helloworld-a:
+    image: ivct/helloworld:po-${TS_HW_VERSION}
     network_mode: host
     environment:
     - SETTINGS_DESIGNATOR=
