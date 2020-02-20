@@ -8,7 +8,7 @@ services:
 # Start helloWorld SuT for testing
 # ==============================================================================
   helloworld:
-    image: ivct/helloworld:${TS_HW_SUT_VERSION}
+    image: ivct/helloworld:po-${TS_HW_SUT_VERSION}
     environment:
     - SETTINGS_DESIGNATOR=
     - FEDERATE_NAME=A
