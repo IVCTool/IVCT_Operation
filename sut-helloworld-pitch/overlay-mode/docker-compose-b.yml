@@ -1,30 +1,25 @@
 version: '3'
 # ==============================================================================
-# SHIPSIM SUT composition for the Pitch RTI
-# ==============================================================================
-
-services:
-
-
-# ==============================================================================
 # The HelloWorld SUT
 # In this composition the SUT connects to the CRC via the Docker host network.
 # Ensure that the advertised port range does not overlap with other federates.
 # ==============================================================================
+
+services:
+# The HW application including the LRC.
+# The LRC is mounted from the host file system.
   helloworld-b:
     image: ivct/helloworld:pi-skeleton-${TS_HW_VERSION}
     environment:
-    # use advertise address if helloworld shall be seen outside docker
-    # - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6220-6229:6230-6239
-    - PITCH_CRCADDRESS=${DOCKERHOST}:8989
+    # Advertise the LRC port range on which max 10 federates can connect
+    # via TCP and UDP.
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6300-6309:6310-6319
     - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
     - FEDERATE_NAME=B
     - POPULATION=100
     - CYCLES=1000000
-    # Specify port advertise range in case the SuT runs outside docker
-    # ports:
-    # - "6220-6229:6220-6229/tcp"
-    # - "6230-6239:6230-6239/udp"
+    ports:
+    - "6300-6309:6300-6309/tcp"
+    - "6310-6319:6310-6319/udp"
     volumes:
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
-    - ${LRC_SETTINGSDIR}:/root/prti1516e
