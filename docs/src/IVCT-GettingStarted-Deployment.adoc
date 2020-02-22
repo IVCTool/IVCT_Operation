@@ -8,11 +8,8 @@ The first step is to clone this repository to your Docker Host to get the compos
 
 In this repository there are IVCT and SUT example compositions for different HLA-RTI implementations (Pitch, VTMaK, and Portico), organized in the following directories:
 
-````
-<vendor> / <deployment> / ivct
-
-<vendor> / <deployment> / sut-hellowworld
-````
+  <vendor> / <deployment> / ivct
+  <vendor> / <deployment> / sut-hellowworld
 
 Where `<vendor>` is `pitch`, `vtmak`, or `portico`. 
 
