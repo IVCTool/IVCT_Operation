@@ -4,19 +4,19 @@ The RTI Initialization Data (RID) file, also called the RTI settings file, conta
 
 The IVCT is configured with a default RID file which is sufficient for most cases. However, for certification of a SUT the RID file content may need to be changed or the content may need to be preserved as part of the certification results.
 
-The location of the RID file in the file system of the TC Runner container is also RTI implementation specific. For the supported RTIs the file system location and RID file name is:
+The location of the RID file in the file system of the TC Runner container is standardized across different RTIs (see https://github.com/hlacontainers/lrc). For the supported RTIs the file system location and RID file name is:
 
 |===
 |RTI | File system directory | RID file name
 
 |Pitch
-|`/root/prti1516e`
+|`/usr/local/lrc/code`
 |`prti1516eLRC.settings`
 |VTMaK
-|`/etc/makrti`
+|`/usr/local/lrc/code`
 |`rid.mtl`
 |Portico
-|`/usr/local/portico/portico-nightly-2016.05.28`
+|`/usr/local/lrc/code`
 |`RTI.rid`
 |===
 
@@ -24,9 +24,8 @@ An alternate RID file can be provided to the TC Runner by bind mounting the alte
 
 ....
 tc-runner:
-  image: ivct/tc-runner:pi-development-latest
-  volumes:
-  - /path/to/my/prti1516eLRC.settings:/root/prti1516e/prti1516eLRC.settings
+  image: ivct/tc-runner:pi-development-late  volumes:
+  - /path/to/my/prti1516eLRC.settings:/usr/local/lrc/code/prti1516eLRC.settings
 ....
 
 To copy the RID file from a running TC Runner container you can use the `docker cp` command.
