@@ -7,7 +7,7 @@ The HelloWorld application is a simple Java application that can used as a Syste
 
 == Adapt the HelloWorld environment settings
 
-Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file end in the docker compose file.
+Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file and in the docker compose file.
 
 In both files there are several enviroment variables for the HelloWorld federate. The provided values are already fine to run the application:
 
