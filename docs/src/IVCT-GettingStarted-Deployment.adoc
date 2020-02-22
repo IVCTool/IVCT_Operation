@@ -14,13 +14,11 @@ More information on this can be found in the project https://github.com/hlaconta
 
 == Clone this repository to your local environment
 
-In this repository there are IVCT and SUT example compositions for different HLA-RTI implementations (Pitch, VTMaK, and Portico), oragnized as follows in the following directories:
+In this repository there are IVCT and SUT example compositions for different HLA-RTI implementations (Pitch, VTMaK, and Portico), oragnized in the following directories:
 
 `<vendor> / <deployment> / ivct`
 
-`<vendor> / <deployment> / `sut-hellowworld`
-
-
+`<vendor> / <deployment> / sut-hellowworld`
 
 In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `bridge` network mode, to be explained later.
 
