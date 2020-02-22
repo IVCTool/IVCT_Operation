@@ -66,9 +66,3 @@ This topic provides the instructions on how to configure the IVCT with a specifi
 
 * <<IVCT-RID-File-Configuration#,RID file configuration>>
 * <<IVCT-Local-Settings-Designator#,Local Settings Designator>>
-
-== IVCT Compositions overview
-
-This topic summarizes the available compositions in the Compositions repository.
-
-* <<IVCT-Compositions#,IVCT Compositions>>
