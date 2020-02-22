@@ -9,13 +9,13 @@ The HelloWorld application is a simple Java application that can used as a Syste
 
 Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file end in the docker compose file.
 
-In both files there are several enviroment variables for the helloworld federate. The provided values are already fine to run the application:
+In both files there are several enviroment variables for the HelloWorld federate. The provided values are already fine to run the application:
 
 |===
 | Environment Variable Name  | Description | Default if not set
 
-| SETTINGS_DESIGNATOR        | Connection parmeter for the `RTIambassador.connect` method   |no default assumed, this variable must be set to the RTI service. A typical value would be `crcAddress=crc:8989`
-| FEDERATE_NAME              | Name of the SuT federate. In the default parameter settings the federate name `A` is used. This setting must match the actual test case parameters.  | `A`
+| SETTINGS_DESIGNATOR        | Local settings designator for the `RTIambassador.connect` method   |no default assumed; the value is used to provide the address of the Pitch CRC or VTMaK RTI Exec. A typical value for the Pitch RTI is `crcAddress=crc:8989`. For the Portico RTI this can be left empty.
+| FEDERATE_NAME              | Name of the SUT. In the default parameter settings the federate name `A` is used. This setting must match the actual test case parameters.  | `A`
 | POPULATION                 | Size of the starting population for the HelloWorld Country object.   | `10`
 | CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
 |===
