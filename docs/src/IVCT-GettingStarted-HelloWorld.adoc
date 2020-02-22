@@ -26,6 +26,8 @@ Start the application with
 
  docker-compose up
 
+The SUT Docker container images will be pulled from the Docker Hub and the SUT will be deployed.
+
 === Run a test
 
 Once the IVCT and the SUT are up and running, you are able to run the HelloWorld test cases. In the default deployment of the IVCT there is an entry for the helloworld in the SuT section. Login to the IVCT and navigate to the hw_iosb entry in the SuT section.
