@@ -1,4 +1,4 @@
-= Deploying the IVCT
+= Deploy the IVCT
 
 Assuming a Docker Engine and Docker Compose have been installed, the quickest way to get started with the IVCT is as follows.
 
