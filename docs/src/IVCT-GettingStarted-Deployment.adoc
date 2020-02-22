@@ -4,10 +4,13 @@ Assuming a Docker Engine and Docker Compose have been installed, the quickest wa
 
 == Install RTI on host file system
 
-Due to license restrictions to Pitch and VTMaK IVCT images do not contain any RTI files. These need to be mounted from the host file system.
-Only for the Portico IVCT image the RTI files are included.
+Due to license restrictions, the IVCT images for the Pitch and VTMaK RTI do not contain the actual RTI files. These images are so called `skeleton` images and the RTI files need to be mounted from the host file system. Only for the Portico RTI the IVCT image incudes the RTI files.
 
-For the Pitch or VTMaK RTI obtain the RTI from the vendor and install the RTI on the Docker host file system. See the project https://github.com/hlacontainers at Pitch CRC or VTMaK RTI Executive for more information.
+For the Pitch or VTMaK RTI obtain the RTI files from the vendor and install the RTI on your Docker host file system.
+
+In the examples we assume that the Pitch RTI is installed under the directory `${PITCH_RTI_HOME}` and the VTMaK RTI under the directory `${VTMAK_RTI_HOME}`.
+
+More information on this can be found in the project https://github.com/hlacontainers in the Pitch CRC or VTMaK RTI Executive repository.
 
 == Copy the IVCT composition files to your local environment
 
