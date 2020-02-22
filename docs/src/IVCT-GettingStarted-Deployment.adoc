@@ -47,7 +47,7 @@ However, for executing a test a System Under Test (SUT) is required. This is exp
 
 Due to license restrictions, the IVCT images for the Pitch and VTMaK RTI do not contain the actual RTI files. These IVCT images are so called `skeleton` images where the RTI files need to be mounted from the host file system in order to create a functioning IVCT. Only for the Portico RTI the IVCT image incudes all the necessary RTI files.
 
-For Pitch or VTMaK you have to obtain the RTI from the vendor website and install the RTI on your Docker host file system. For the example compositions in this repository we assume that the Pitch RTI is installed under the directory `${PITCH_RTI_HOME}` and the VTMaK RTI under the directory `${VTMAK_RTI_HOME}`. Both Pitch and VTMak provide free versions of their RTI.
+For Pitch or VTMaK you have to obtain the RTI from the vendor website and install the RTI on your Docker host file system. For the example compositions in this repository we assume that the Pitch RTI is installed under the directory `${PITCH_RTI_HOME}` and the VTMaK RTI under the directory `${VTMAK_RTI_HOME}`. Both Pitch and VTMaK provide free versions of their RTI.
 
 - Pitch pRTI Free: http://pitchtechnologies.com/products/prti
 - VTMaK RTI Free: https://www.mak.com/products/link/mak-rti
