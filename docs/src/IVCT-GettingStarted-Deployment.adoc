@@ -4,7 +4,7 @@ Assuming a Docker Engine and Docker Compose have been installed, the quickest wa
 
 == Install RTI on host file system
 
-Due to license restrictions, the IVCT images for the Pitch and VTMaK RTI do not contain the actual RTI files. These images are so called `skeleton` images and the RTI files need to be mounted from the host file system. Only for the Portico RTI the IVCT image incudes the RTI files.
+Due to license restrictions, the IVCT images for the Pitch and VTMaK RTI do not contain the actual RTI files. These IVCT images are so called `skeleton` images where the RTI files need to be mounted from the host file system in order to create a functioning IVCT. Only for the Portico RTI the IVCT image incudes the RTI files.
 
 For the Pitch or VTMaK RTI obtain the RTI files from the vendor and install the RTI on your Docker host file system.
 
@@ -12,9 +12,17 @@ In the examples we assume that the Pitch RTI is installed under the directory `$
 
 More information on this can be found in the project https://github.com/hlacontainers in the Pitch CRC or VTMaK RTI Executive repository.
 
-== Copy the IVCT composition files to your local environment
+== Clone this repository to your local environment
 
-In this repository there are IVCT and SUT example compositions for different HLA-RTI implementations. In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `bridge` network mode, to be explained later.
+In this repository there are IVCT and SUT example compositions for different HLA-RTI implementations (Pitch, VTMaK, and Portico), oragnized as follows in the following directories:
+
+`<vendor> / <deployment> / ivct`
+
+`<vendor> / <deployment> / `sut-hellowworld`
+
+
+
+In this example we use the IVCT composition for the Pitch RTI. We also run the IVCT in `bridge` network mode, to be explained later.
 
 Copy the directory `pitch/bridge-network` and its contents to your local Docker environment.
 
