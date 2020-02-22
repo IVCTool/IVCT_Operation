@@ -18,3 +18,5 @@ The relationships are:
 
 The TestSuite data volume is mounted by the IVCT GUI and IVCT TC Runner Application.
 The RunTime Config data volume is mounted by every IVCT container. In addition, this data volume includes the test results.
+
+For more information on the HLA-RTI related container images, see https://github.com/hlacontainers.
