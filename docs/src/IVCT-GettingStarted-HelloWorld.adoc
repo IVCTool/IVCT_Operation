@@ -1,37 +1,15 @@
 = Testing the Hello World application
 
-To execute a test, a System Under Test as well as additional RTI components are needed. The SUT is expected to include any additional RTI components for executing the tests. The IVCT does not include these.
+To execute a test, a System Under Test is needed. In the steps below we use the HelloWorld application with the Portico RTI as 
+SUT.
 
-== Obtain and install RTI components
+The HelloWorld application is a simple Java application that can used as a System under Test. It is a good starting point to explore and understand the IVCT and test suites.
 
-The additional components are RTI implementation specific. For example, the Pitch RTI requires a Pitch Central RTI Component (Pitch CRC), the VTMaK RTI requires an RTI Exec, whereas Portico requires no additional components at all.
+== Adapt the IVCT environment settings
 
-Both Pitch and VTMak provide free versions of their RTI. The additional components can be obtained by requesting a free version of the RTI:
+Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file.
 
-- Pitch pRTI Free: http://pitchtechnologies.com/products/prti
-- VTMaK RTI Free: https://www.mak.com/products/link/mak-rti
-
-The free version is sufficient for executing tests.
-
-The remainder of this section assumes that the Pitch RTI has been installed on the Docker host file system under the directory `${PITCH_RTI_HOME}`.
-
-== Start the HelloWorld application
-
-The test suite ``TS_HelloWorld`` impements two simple test cases, each testing a interoperability requirement defined in the HelloWorld badge. Along with the test suite implementation, there is also the helloWorld federate. This federate can used as a System under Test against the test suite, and it is a good starting point to explore and understand the IVCT installation.
-
-The HelloWorld federate is a simple Java application, that can be used as a console application under Windows and Linux. The application is also provided as a docker image, which is the recommended way to start with. After installing an RTI, as explained in the chapter above, the docker compose files can be used to start the Hello world application and the RTI.
-
-=== Copy the RTI/HelloWorld composition file to you local environment
-
-First you need to copy the content of the `sut-helloworld` directory to your local Docker environment.
-
-=== Adapt the environment settings
-
-Before starting the composition, check the settings in the provided `.env` file.
-
-=== Environment Variables
-
-In the compose file, there are several enviroment variable settings for the helloworld federate. No changes are needed, as long as the crc configuration in the compose file is not changed.
+In the `.env` file, there are several enviroment variables for the helloworld federate. The provided settings are already fine to run the application:
 
 |===
 | Environment Variable Name  | Description | Default if not set
@@ -42,14 +20,16 @@ In the compose file, there are several enviroment variable settings for the hell
 | CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
 |===
 
-=== Start the RTI and the helloworld federate
+=== Start the HelloWorld application
 
-Two compose files are present, one to start the RTI and the other to start the helloworld federated. Start the composition.
+Start the application with
+
+ docker-compose up
 
 === Run a test
 
-Once the IVCT and the SUT are up and running, you are able to run test cases. In the default deployment of the IVCT there is an entry for the helloworld in the SuT section. Login to the IVCTools and navigate to the hw_iosb entry in the SuT section.
+Once the IVCT and the SUT are up and running, you are able to run the HelloWorld test cases. In the default deployment of the IVCT there is an entry for the helloworld in the SuT section. Login to the IVCT and navigate to the hw_iosb entry in the SuT section.
 
-In the conformance statement of the hw_iosb, you need to change the host name in the settings designator. If your IVCTool composition is running on the same docker host as your sut-helloworld composition, the host name will be `crc`.
+In the conformance statement of the hw_iosb you need to provide the local settings designator. This valaue is RTI specific. For the Portico RTI you can leave this empty.
 
 You may then select one of the listed interoperability requirements and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
