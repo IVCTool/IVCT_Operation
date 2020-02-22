@@ -7,9 +7,9 @@ The HelloWorld application is a simple Java application that can used as a Syste
 
 == Adapt the IVCT environment settings
 
-Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file.
+Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file end in the docker compose file.
 
-In the `.env` file, there are several enviroment variables for the helloworld federate. The provided settings are already fine to run the application:
+In both files there are several enviroment variables for the helloworld federate. The provided values are already fine to run the application:
 
 |===
 | Environment Variable Name  | Description | Default if not set
