@@ -14,7 +14,7 @@ In both files there are several enviroment variables for the HelloWorld federate
 |===
 | Environment Variable Name  | Description | Default if not set
 
-| SETTINGS_DESIGNATOR        | Local settings designator for the `RTIambassador.connect` method   |no default assumed; the value is used to provide the address of the Pitch CRC or VTMaK RTI Exec. A typical value for the Pitch RTI is `crcAddress=crc:8989`. For the Portico RTI this can be left empty.
+| SETTINGS_DESIGNATOR        | Local settings designator for the `RTIambassador.connect` method   |No default assumed; the value is typically used to provide the address of the Pitch CRC or VTMaK RTI Exec. A value for the Pitch RTI is for example `crcAddress=crc:8989`. For the Portico RTI this can be left empty.
 | FEDERATE_NAME              | Name of the SUT. In the default parameter settings the federate name `A` is used. This setting must match the actual test case parameters.  | `A`
 | POPULATION                 | Size of the starting population for the HelloWorld Country object.   | `10`
 | CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
