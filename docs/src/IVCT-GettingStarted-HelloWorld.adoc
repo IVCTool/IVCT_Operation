@@ -30,6 +30,6 @@ Start the application with
 
 Once the IVCT and the SUT are up and running, you are able to run the HelloWorld test cases. In the default deployment of the IVCT there is an entry for the helloworld in the SuT section. Login to the IVCT and navigate to the hw_iosb entry in the SuT section.
 
-In the conformance statement of the hw_iosb you need to provide the local settings designator. This valaue is RTI specific. For the Portico RTI you can leave this empty.
+In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty.
 
 You may then select one of the listed interoperability requirements and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
