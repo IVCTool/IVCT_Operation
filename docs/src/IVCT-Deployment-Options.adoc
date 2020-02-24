@@ -2,10 +2,12 @@
 
 There are various ways the IVCT container images can be composed together in terms of networking, data volumes, and configuration.
 
-For two types of compositions - called deployment options - examples are provided in the repository. These are called `host network` and `bridge network`.
+For two types of compositions - called deployment options - examples are provided in the repository. These are called `host mode network` and `bridge network`.
 
 == Host mode network
 With this deployment option the IVCT containers in the composition share the host's networking namespace. Each container gets the IP address of the IVCT Host and is directly accessible from the local area network as if the container application runs on the host itself rather than on an isolated Docker overlay network. Host mode networking gives also a better performance as it does not require the network address translation (NAT) used in the overlay mode. The option is summarized in the figure below. Published container ports are visible on the local area network.
+
+A variation to this mode is called `host-advertise-network`, where the RTI exposes its network ports to the IVCT host, but where the IVCT components themselves are connected to a Docker bridge network. The container configuration in this mode is RTI specific. An example is provided for the Pitch RTI.
 
 image:images/host-mode.png[IVCT host-mode]
 
