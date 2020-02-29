@@ -45,6 +45,6 @@ However, for executing a test a System Under Test (SUT) is required. This is exp
 
 == Use the IVCT with the Pitch RTI
 
-Due to license restrictions, the IVCT image for the Pitch RTI does not contain the actual RTI files. These IVCT image for the Pitch RTI is a so called `skeleton` image where the RTI files need to be mounted from the host file system in order to create a functioning IVCT. For the Portico and VTMaK RTI the IVCT image incudes all the necessary RTI files.
+Due to license restrictions, the IVCT image for the Pitch RTI does not contain the actual RTI files. The IVCT image for the Pitch RTI is a so called `skeleton` image where the RTI files need to be mounted from the host file system in order to create a functioning IVCT. For the Portico and VTMaK RTI the IVCT image incudes all the necessary RTI files.
 
 For Pitch you have to obtain the RTI from the vendor website (http://pitchtechnologies.com) and install the RTI on your Docker host file system. For the example compositions in this repository we assume that the Pitch RTI is installed under the directory `${PITCH_RTI_HOME}`. Pitch offers a free version of the RTI from their website. The free version is sufficient for the examples in this repository.
