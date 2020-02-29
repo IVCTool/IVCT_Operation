@@ -16,10 +16,9 @@ services:
 # IVCT Test Case Runner
 # The TC Runner executes the test cases. Test cases are included in test suites. 
 # Test suite data is mounted as docker volume.
-# Also the LRC is mounted into the TC Runner container.
 # ==============================================================================
   tc-runner:
-    image: ivct/tc-runner:ma-skeleton-${IVCT_VERSION}
+    image: ivct/tc-runner:ma-${IVCT_VERSION}
     network_mode: host
     depends_on:
     - activemq
@@ -38,7 +37,6 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
-    - ${VTMAK_RTI_HOME}:/usr/local/lrc/code
 
 # ==============================================================================
 # IVCT Logsink component

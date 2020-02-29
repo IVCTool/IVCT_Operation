@@ -14,13 +14,10 @@ services:
     - sutnet
 
 # Start the VTMaK RTI Exec
-# and mount the RTI from the host file system.
   rtiexec:
-    image: hlacontainers/vtmak-rtiexec:skeleton
+    image: hlacontainers/vtmak-rtiexec:${VTMAK_VERSION}
     environment:
     - DISPLAY=xserver:0
-    volumes:
-    - ${VTMAK_RTI_HOME}:/usr/local/makRti
     networks:
     - sutnet
 

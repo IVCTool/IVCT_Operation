@@ -12,13 +12,10 @@ services:
     - "8181:8080"
 
 # Start the VTMaK RTI Exec
-# and mount the RTI from the host file system.
   rtiexec:
-    image: hlacontainers/vtmak-rtiexec:skeleton
+    image: hlacontainers/vtmak-rtiexec:${VTMAK_VERSION}
     environment:
     - DISPLAY=xserver:0
-    volumes:
-    - ${VTMAK_RTI_HOME}:/usr/local/makRti
     ports:
     - "4000:4000"
     - "5000:5000"
