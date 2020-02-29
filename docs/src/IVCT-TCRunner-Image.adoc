@@ -2,7 +2,7 @@
 
 The Test Case (TC) Runner Application executes test cases. The TC Runner Application image is based on a Local RTI Component (LRC) Base image.
 
-The LRC Base image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC Base images are available for different RTI implementations (Pitch, Mak, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC Base image includes a Java JRE and provides several environment variables to control the behavior or some settings of the LRC. The LRC Base image settings are overridden by the settings provided via the Local Settings Designator.
+The LRC Base image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC Base images are available for different RTI implementations (Pitch, VTMaK, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC Base image supports a number of environment variables to provide initial settings for the RID file, such as the address of the Pitch CRC, the address of the VTMaK RTI Executive, the network adapter to use, and the logging level. Some of the settings in the RID file can be overridden by the settings provided via the Local Settings Designator.
 
 At run-time, Test Case execution results are reported via the Active MQ.
 
@@ -19,7 +19,9 @@ The most relevant ones for the Operator are:
 | `FEDERATION_NAME`     | Value to use for the federation name if no value is provided in SuT conformance statement.  | `TheWorld`
 |===
 
-Besides these environment variables, additional environment variables are inherited from the LRC image. The most relevant ones are shown below.
+If the `SETTINGS_DESIGNATOR` is an empty string then the LRC Base image defaults to what is set in the RID file.
+
+Besides the above environment variables, additional environment variables are inherited from the LRC Base image. The most relevant ones per RTI vendor are shown below.
 
 ==== Pitch LRC settings
 |===
@@ -29,8 +31,6 @@ Besides these environment variables, additional environment variables are inheri
 | ``PITCH_CRCADDRESS``        | CRC address in the format of `<host>:<port>` (direct mode) or `<crc-nickname>@<boost host>:<boost port>` (booster mode). | `crc:8989`
 | ``PITCH_ADVERTISE_ADDRESS`` | Applies to direct mode. Use this address to advertise the LRC. The format is ``[<host address>][:[<mintcpport>]-[<maxtcpport>][:[<minudpport>]-[<maxudpport>]]]`` | Mode IP, ``:6000-6999:5000-5999``
 |===
-
-If the `SETTINGS_DESIGNATOR` is an empty string then the LRC image default behavior comes into play. That is, the federate application (the TC Runner in this case) will use whatever is set by the LRC image as the address for the CRC. The address is the value of the environment variable `PITCH_CRCADDRESS`.
 
 ==== Portico LRC settings
 |===
@@ -47,5 +47,3 @@ If the `SETTINGS_DESIGNATOR` is an empty string then the LRC image default behav
 | ``MAK_LRCADAPTER``          | Network interface address to use for the MaK Forwarder | `0.0.0.0`, i.e. first available non-localhost interface address
 | ``MAK_RTIEXECADDRESS``      | RTI Exec address in the format of `<host>:<port>`. | `rtiexec:4000`
 |===
-
-If the `SETTINGS_DESIGNATOR` is an empty string then the LRC image default behavior comes into play. That is, the federate application (the TC Runner in this case) will use whatever is set by the LRC image as the address for the RTI Exec. The address is the value of the environment variable `MAK_RTIEXECADDRESS`.

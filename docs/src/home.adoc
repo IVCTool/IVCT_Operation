@@ -1,8 +1,10 @@
 = IVCT Deployment and Operation
 
+The purpose of this section is to explain how to deploy and operate the IVCT.
+
 == Introduction
 
-The primary deployment model of the IVCT is based on Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The main benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
+The primary deployment model of the IVCT uses Docker container technology. https://docker.com[Docker] is an open source product that supports the creation, management and deployment of containers. The main benefit of using Docker container technology is that containers are portable and include all software dependencies, independent of the host operating system version on which the container executes. Containers can be transferred almost seamlessly between Docker container execution environments.
 
 Containers provides an easy way to distribute and deploy the IVCT on different platforms for different HLA Evolved (IEEE 1516-2010) RTI implementations. The application of Docker container technology allows a user to run the IVCT without having to build and install the IVCT Framework and its dependencies. All that is required is a functional Docker Engine installed on a host. See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
 
@@ -12,7 +14,7 @@ IVCT Docker container images are available from the https://hub.docker.com/u/ivc
 - `VTMaK RTI` (https://www.mak.com)
 - `Portico` (https://github.com/openlvc/portico)
 
-The Pitch and VTMaK RTIs are IEEE 1516-2010 compliant implementations. The Portico RTI is a partial implementation, i.e. not all RTI services are supported and the data encoding is not compliant with the HLA standard.
+The Pitch and VTMaK RTIs are IEEE 1516-2010 compliant implementations. The Portico RTI is a partial RTI implementation, i.e. not all RTI services are supported.
 
 The remainder of this page lists several topics related to IVCT deployment and operation, with links to further information in the documentation section. This includes getting started instructions and information with regards to different IVCT deployment and configuration options.
 
@@ -24,7 +26,7 @@ The remainder of this page lists several topics related to IVCT deployment and o
 
 == Getting started
 
-This topic demonstrates the basic steps to deploy the IVCT for the Pitch RTI and run a test against the HelloWorld SUT.
+This topic demonstrates the basic steps to deploy the IVCT for the Portico RTI and run a test against the HelloWorld SUT.
 
 * <<IVCT-GettingStarted-Deployment#,Deploy the IVCT>>
 * <<IVCT-GettingStarted-Graphical-User-Interface#,Explore the Grapical User Interface>>

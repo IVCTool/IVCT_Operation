@@ -4,26 +4,26 @@ Assuming a Docker Engine and Docker Compose have been installed, the quickest wa
 
 == Clone this repository to your local environment
 
-The first step is to clone this repository to your Docker Host to get the composition files.
+The first step is to clone this repository to your Docker Host to get the example compositions.
 
 In this repository there are IVCT and SUT example compositions for different HLA-RTI implementations (Pitch, VTMaK, and Portico), organized in the following directories:
 
   <vendor> / <deployment> / ivct
   <vendor> / <deployment> / sut-hellowworld
 
-Where `<vendor>` is `pitch`, `vtmak`, or `portico`. 
+Where `<vendor>` is `pitch`, `vtmak`, or `portico`.
 
 And where `<deployment>` includes `bridge-network` and `host-network`.
 
-With the `host-network` the IVCT and SUT communicate via the host network stack, providing the possibility to mix a containerized IVCT with a non-containerized SUT (possibly located on another host system). With the `bridge-network` the IVCT and SUT are connected via a Docker bridge network on the same Docker Host, and both the IVCT and SUT must be containerized.
+With the `host-network` deployment the IVCT and SUT communicate via the host network stack, providing the possibility to mix a containerized IVCT with a non-containerized SUT (possibly located on another host system). With the `bridge-network` the IVCT and SUT are connected via a Docker bridge network on the same Docker Host, and both the IVCT and SUT must be containerized.
 
-Each `ivct` and `sut-helloworld` directory contains a `.env` file to tailor the composition in that directory to your local infrastructure.
+Each `ivct` and `sut-helloworld` directory contains a `.env` file to tailor the composition in that directory to the local infrastructure.
 
 In the following steps we will deploy the IVCT for the Portico RTI.
 
 == Adapt the IVCT environment settings
 
-Navigate to the directory `portico/bridge-network/ivct`. Open the `.env` file in a text editor and verify the settings. The settngs should be fine, however the `IVCT_UIPORT` value may need to be adapted.
+Navigate to the directory `portico/bridge-network/ivct`. Open the `.env` file in a text editor and verify the settings. The settngs should be fine, however the `IVCT_UIPORT` value must be adapted if another service already uses this port.
 
 == Start the IVCT
 
@@ -35,7 +35,7 @@ The IVCT Docker container images will be pulled from the Docker Hub and the IVCT
 
 == Login to the IVCT UI
 
-The final step is to log into the IVCT UI. From a webbrowser, navigate to the web page of the IVCT UI: `http://${DOCKERHOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_UIPORT}` by the value used in the `.env` file. If your browser runs on the same host as the IVCT you can use `http://localhost:${IVCT_UIPORT}`.
+The final step is to log into the IVCT UI. From a webbrowser, navigate to the web page of the IVCT UI: `http://${DOCKERHOST}:${IVCT_UIPORT}`. Here you have to replace `${IVCT_UIPORT}` by the value set in the `.env` file. If your browser runs on the same host as the IVCT you can use `http://localhost:${IVCT_UIPORT}`.
 
 Login as user `admin` with password `admin.`
 
@@ -43,13 +43,8 @@ Once you are logged in you can explore the UI, as described in more detail at: <
 
 However, for executing a test a System Under Test (SUT) is required. This is explained at: <<IVCT-GettingStarted-HelloWorld#,Run a test against the HelloWorld SUT>>
 
-== Use the IVCT with the Pitch or VTMaK RTI
+== Use the IVCT with the Pitch RTI
 
-Due to license restrictions, the IVCT images for the Pitch and VTMaK RTI do not contain the actual RTI files. These IVCT images are so called `skeleton` images where the RTI files need to be mounted from the host file system in order to create a functioning IVCT. Only for the Portico RTI the IVCT image incudes all the necessary RTI files.
+Due to license restrictions, the IVCT image for the Pitch RTI does not contain the actual RTI files. These IVCT image for the Pitch RTI is a so called `skeleton` image where the RTI files need to be mounted from the host file system in order to create a functioning IVCT. For the Portico and VTMaK RTI the IVCT image incudes all the necessary RTI files.
 
-For Pitch or VTMaK you have to obtain the RTI from the vendor website and install the RTI on your Docker host file system. For the example compositions in this repository we assume that the Pitch RTI is installed under the directory `${PITCH_RTI_HOME}` and the VTMaK RTI under the directory `${VTMAK_RTI_HOME}`. Both Pitch and VTMaK provide free versions of their RTI.
-
-- Pitch pRTI Free: http://pitchtechnologies.com/products/prti
-- VTMaK RTI Free: https://www.mak.com/products/link/mak-rti
-
-The free version is sufficient for the examples in this repository.
+For Pitch you have to obtain the RTI from the vendor website (http://pitchtechnologies.com) and install the RTI on your Docker host file system. For the example compositions in this repository we assume that the Pitch RTI is installed under the directory `${PITCH_RTI_HOME}`. Pitch offers a free version of the RTI from their website. The free version is sufficient for the examples in this repository.
