@@ -24,7 +24,8 @@ An alternate RID file can be provided to the TC Runner by bind mounting the alte
 
 ....
 tc-runner:
-  image: ivct/tc-runner:pi-development-late  volumes:
+  image: ivct/tc-runner:pi-development-latest
+  volumes:
   - /path/to/my/prti1516eLRC.settings:/usr/local/lrc/code/prti1516eLRC.settings
 ....
 

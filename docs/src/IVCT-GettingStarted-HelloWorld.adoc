@@ -34,6 +34,6 @@ Once the IVCT and the SUT are up and running, you are able to run a test against
 
 Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
 
-In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make use the value is empty in the SuT view.
+In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make sure the value is empty in the SuT view.
 
 The SuT view lists the test cases for the HelloWord SuT. Select a test case and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
