@@ -5,7 +5,6 @@ version: '3.7'
 
 services:
 # The HW application.
-# The LRC is mounted from the host file system.
   helloworld:
     image: ivct/helloworld:ma-${HW_VERSION}
     environment:
