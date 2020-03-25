@@ -23,7 +23,7 @@ In the following steps we will deploy the IVCT for the Portico RTI.
 
 == Adapt the IVCT environment settings
 
-Navigate to the directory `portico/bridge-network/ivct`. Open the `.env` file in a text editor and verify the settings. The settngs should be fine, however the `IVCT_UIPORT` value must be adapted if another service already uses this port.
+Navigate to the directory `portico/bridge-network/ivct`. Open the `.env` file in a text editor and verify the settings. The settings should be fine, however the `IVCT_UIPORT` value must be adapted if another service already uses this port.
 
 == Start the IVCT
 
