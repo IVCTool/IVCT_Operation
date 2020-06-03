@@ -44,9 +44,12 @@ image:images/GUI_SutView.PNG[SuT View]
 
 The details view shows general information about the system under test, such as its name, vender and version, a short description of its purpose, as well as information for the IVCT on how to connect to the `HLA RTI`. This connection information is called the `Local Settings Designator` (LSD) and the value is passed as-is to the `RTI Connection` call. For more information about the LSD, see <<IVCT-Local-Settings-Designator#,The Local Settings Designator>>. Furthermore, the federate name and the federation name can be specified.
 
-Below the general information the capability status shows the selected capabilities with the badge id, the badge name and a conformance status after testing all interoperability requirements from the selected badge.
+Below the general information the capability status shows the selected capabilities with the badge id, the badge name and a conformance status after testing the interoperability requirements of the selected badge.
 
-If the selected SuT has already been tested, the test reports will be listed below the capability status. A report can be inspected by a double-click. This will open a new tab in the content frame with a text view. You can close this tab with the close button in the menu, or you leave it open for later use.
+Below the Capability Status section is the Test Report section.
+A test report can be generated if the selected SuT has already been tested.
+The created test reports are listed below the capability status field.
+A test report can be downloaded by double-clicking and opened with a PDF viewer.
 
 image:images/GUI_SutHw.PNG[SuT View]
 
@@ -93,7 +96,7 @@ A detailed protocol log shows the current output of the running test case.
 
 image:images/GUI_TcExec.PNG[SuT View]
 
-Some testcases do have specific instructions to the IVCT operator. 
+Some testcases do have specific instructions to the IVCT operator.
 The test case makes a request to the SuT operator and waits until the SuT operator confirms that the required action or configuration has been performed.
 An optional comment for traceability can be added.
 
@@ -103,21 +106,109 @@ At the end of the test case execution, the  test verdict is displayed in form of
 
 image:images/GUI_TcExecStatus.PNG[SuT View]
 
+== SuT Capability Status / Conformance Status
 
-== SuT Creation and Editing
+Below the general information the capability status shows the selected capabilities with the badge id, the badge name and a conformance status after testing the interoperability requirements of the selected badge.
+The conformance status can have four defined statements:
 
-The creation and editing of SuTs is possible via the menu item <SuT Settings>.
+- **PASSED**: The SuT satisfies the interoperability requirements of the badge (green color).
+- **FAILED**: The SuT does not satisfy the interoperability requirements of the badge (red color).
+- **INCONCLUSIVE**: The test cases was executed, but no statement could be made regarding the interoperability requirements of the badge (in consequence of connection problems and so on) (purple color).
+- **UNKNOWN**: The interoperability requirements defined in the badge have not been tested yet (black color).
+
+image:images/GUI_ConformanceStatus.PNG[Conformance Status]
+
+**Conformance Status - PASSED:**
+
+The conformance status of a badge is **PASSED**, if all included test suite have the status PASSED.
+In the following picture, <Testsuite A> and <Testsuite B> have the status PASSED.
+
+A test suite is PASSED if the last execution of all test cases of a test suite are Passed.
+**Significant is only the last execution of a test case!**
+In the following picture all test cases (TC) of <Testsuite A> and all test cases (TC) of <Testsuite B> have the status PASSED.
+Therefore both test suite have the status PASSED.
+
+image:images/GUI_ConformanceStatus_PASSED.PNG[Conformance Status PASSED]
+
+**Conformance Status - FAILED:**
+
+The conformance status is **FAILED**, if one or more test suites have the status FAILED.
+In the following picture, <Testsuite A> is PASSED but <Testsuite B> is FAILED.
+The test suite <Testsuite B> is FAILED because the last execution of a test case (TC2) is failed.
+
+image:images/GUI_ConformanceStatus_FAILED.PNG[Conformance Status FAILED]
+
+**Conformance Status - INCONCLUSIVE:**
+
+The conformance status is **INCONCLUSIVE**, because a test suite has the status INCONCLUSIVE.
+In the following picture, <Testsuite A> is PASSED but <Testsuite B> is INCONCLUSIVE.
+The test suite <Testsuite B> is INCONCLUSIVE because the last execution of a test case (TC2) is INCONCLUSIVE.
+
+image:images/GUI_ConformanceStatus_INCONCLUSIVE.PNG[Conformance Status INCONCLUSIVE]
+
+**Conformance Status - UNKNOWN:**
+
+The conformance status is **UNKNOWN**, if the interoperability requirements defined in the badge have not been tested yet.
+The interoperability requirements are tested using test cases.
+
+image:images/GUI_ConformanceStatus_UNKNOWN.PNG[Conformance Status UNKNOWN]
+
+
+== Create Test Report
+
+**The IVCT system enables the creation of a test report for the test inspector.**
+
+In the Test Report section (third section) the test report for the SuT can be generated by clicking the button <Create Test Report>.
+A test report can be generated if the selected SuT has already been tested.
+The created test reports are listed below the capability status field.
+A test report can be downloaded by double-clicking and opened with a PDF viewer.
+
+image:images/GUI_CreateReport.PNG[Create Report]
+
+**The overview page of the test report is structured as follows:**
+
+image:images/GUI_ReportStructure1.PNG[Report Structure - Overview]
+
+**The badge section of the test report is structured as follows:**
+
+- **Badge section:** First, all linked badges are displayed with there information.
+- **Testsuite (TS) section:** Additionally the badge section displays all assigned test suites and their information.
+- **Testcase (TC) section:** In the test suite section all assigned test cases are displayed. Beside the test case information the tested interoperability requirements, the result of the last test case execution and the corresponding logfile are displayed.
+
+image:images/GUI_ReportStructure2.PNG[Report Structure - Main Report]
+
+The one-to-many relationship in the picture should show that several badges, test suites and test cases can be displayed in the report.
+
+**Here is an report example:** (only the overview page is displayed)
+
+image:images/GUI_ReportOverviewExample.PNG[Report Overview Example]
+
+- **The conformance status of the SuT is PASSED, if all linked badges have the status PASSED!**
+
+== SuT Create / Edit / Delete
+
+The creation, editing and deletion of SuTs is possible via the menu item <SuT Settings>.
+
+image:images/GUI_AlterSUT.PNG[Alter SuT]
 
 When creating and editing SuTs, the descriptions are opened in an editing tab.
 In the edit mode you can change the Name, Vendor, Version, RTI Connection, Federate Name, Federation Name and the Description of the SuT.
 
-An important part is the definition of the SuT capabilities.
+An important part is the definition of the SuT Capabilities.
 **The selection of the available badges, is considered as the conformance statement of the SuT.**
 This selection will define the interoperability requirements to be used for the compliance testing.
 
-image:images/GUI_AlterSUT.PNG[Alter SuT]
-
 image:images/GUI_EditSuT.PNG[Edit SuT]
+
+The system allows the deletion of SuTs.
+Before a SuT can be deleted, the SuT must be selected in the left menu.
+Then the delete function is available in the <SuT Settings> menu.
+A safety request must be confirmed before the deletion process.
+**Attention: All SuT information as well as the entire test case history and all test reports are permanently deleted!**
+
+image:images/GUI_DeleteSuT.PNG[Delete SuT]
+
+
 
 == Additional information
 
@@ -127,13 +218,13 @@ The system allows the user to change the language settings and log level setting
 
 As log level you can decide between the following levels:
 
-- TRACE: Detailed information about the individual test steps, like the HLA API calls and callbacks. 
+- TRACE: Detailed information about the individual test steps, like the HLA API calls and callbacks.
 - DEBUG: This level contains specfic developer information used for testing the test cases.
-- INFO: High level information about the test execution. 
-- WARN: The warning level reports events which need the attention of the IVCT operator. 
-- ERROR: Events which are considered as faulty behaviour are reported as errors.  
+- INFO: High level information about the test execution.
+- WARN: The warning level reports events which need the attention of the IVCT operator.
+- ERROR: Events which are considered as faulty behaviour are reported as errors.
 
-The default log level is INFO. 
+The default log level is INFO.
 
 image:images/GUI_Options.PNG[Options]
 
