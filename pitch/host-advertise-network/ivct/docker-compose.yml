@@ -38,8 +38,10 @@ services:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
+    - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
     - ACTIVEMQ_HOST=activemq
+    - PITCH_CRCADDRESS=${RTIHOST}
     # Advertise the LRC port range on which max 10 federates can connect
     # via TCP and UDP.
     - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6500-6509:6510-6519
