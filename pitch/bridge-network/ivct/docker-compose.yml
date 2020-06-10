@@ -41,6 +41,7 @@ services:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
+    - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
     - ACTIVEMQ_HOST=activemq
     networks:
