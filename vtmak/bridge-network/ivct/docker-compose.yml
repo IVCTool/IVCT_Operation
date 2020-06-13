@@ -1,0 +1,181 @@
+version: '3.7'
+# ==============================================================================
+# IVCT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+# ==============================================================================
+# Apache Active Message Queue
+# Active MQ is used for communication between the IVCT components.
+# ==============================================================================
+  activemq:
+    image: rmohr/activemq:5.14.5-alpine
+    ports:
+    - "61616:61616/tcp"
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Case Runner
+# The TC Runner executes the test cases. Test cases are included in test suites.
+# Test suite data is mounted as docker volume.
+# Also the LRC is mounted into the TC Runner container.
+# ==============================================================================
+  tc-runner:
+    image: ivct/tc-runner:ma-${IVCT_VERSION}
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Logsink component
+# ==============================================================================
+  logsink:
+    image: ivct/logsink:${IVCT_VERSION}
+    depends_on:
+    - activemq
+    - runtime-config
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT GUI component
+# The UI of the IVCT. Test suite data is mounted as docker volume.
+#
+# URL: http://${IVCT_HOST}:${IVCT_UIPORT}
+# Login: admin / admin
+# ==============================================================================
+  gui:
+    image: ivct/ivct-gui:${IVCT_VERSION}
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    ports:
+    - "${IVCT_UIPORT}:8080"
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT runtime configuration data
+# ==============================================================================
+  runtime-config:
+    image: ivct/runtime-config:${IVCT_VERSION}
+    volumes:
+    - runtime-config:/root/conf
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Suite data for Helloworld
+# ==============================================================================
+  ts-helloworld:
+    image: ivct/ts-helloworld:${TS_HW_VERSION}
+    volumes:
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Suite data for Encoding Rules
+# ==============================================================================
+  ts-hla-encoding-rules:
+    image: ivct/ts-hla-encoding-rules:${TS_HLA_VERSION}
+    volumes:
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Suite data for HLA CS Verification
+# ==============================================================================
+  ts-hla-cs-verification:
+    image: ivct/ts-hla-cs-verification:${TS_HLA_VERSION}
+    volumes:
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Suite data for HLA Services
+# ==============================================================================
+  ts-hla-services:
+    image: ivct/ts-hla-services:${TS_HLA_VERSION}
+    volumes:
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Suite data for HLA Object
+# ==============================================================================
+  ts-hla-object:
+    image: ivct/ts-hla-object:${TS_HLA_VERSION}
+    volumes:
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT Test Suite data for HLA Declaration
+# ==============================================================================
+  ts-hla-declaration:
+    image: ivct/ts-hla-declaration:${TS_HLA_VERSION}
+    volumes:
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# Data volumes for IVCT Runtime Config data and Test Suite data
+# ==============================================================================
+volumes:
+  runtime-config:
+  ts-helloworld:
+  ts-hla-encoding-rules:
+  ts-hla-cs-verification:
+  ts-hla-services:
+  ts-hla-object:
+  ts-hla-declaration:
+
+networks:
+  ivctnet:
+    driver: bridge
+    name: mysimnetwork

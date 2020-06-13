@@ -1,0 +1,8 @@
+= Updating Test Suite images
+
+In case another version of a Test Suite container image needs to be used, two steps need to be performed:
+
+* Update the applicable IVCT docker compose file to refer to the new Test Suite image, and
+* Execute the command `docker volume prune` to remove the volume associated with the old Test Suite container image.
+
+For the last step ensure that any container (i.e. not container image) that uses the volume provided by the old Test Suite container image has been stopped and removed.

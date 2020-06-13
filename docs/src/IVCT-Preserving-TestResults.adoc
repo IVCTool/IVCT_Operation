@@ -1,0 +1,101 @@
+= Preserving test results
+
+The results of the tests are stored in the RunTime Config data volume. The data volume remains in place as long as it is not removed. Thus an IVCT composition can be started, stopped, and restarted with an existing data volume. However, when this data volume is removed the test results are gone too.
+
+This topic lists several options to preserve the data in the data volume.
+
+== Use driver options to make volume persistent (Linux)
+
+This option makes the RunTime Config data volume persistent using the local volume driver options. To do this, add the `local` volume driver to the `runtime-config` volume as shown in the code snippet below.
+
+....
+
+version: '3'
+# ==============================================================================
+# IVCT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+...
+
+# ==============================================================================
+# Data volumes for IVCT Runtime Config data and Test Suite data
+# ==============================================================================
+volumes:
+  runtime-config:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${CONFDIR}
+      o: bind
+  ts-helloworld:
+  ts-hla-encoding-rules:
+  ts-hla-cs-verification:
+  ts-hla-services:
+  ts-hla-object:
+  ts-hla-declaration:
+....
+
+The driver options is a list of key-value pairs that is passed to the driver for this volume, the `local` driver in this example. The environment variable `CONFDIR` must refer to an existing directory on the `IVCT_HOST`, and should be defined in the `.env` file along with the other environment variables associated with the composition. The volume data will be stored in this directory.
+
+For this option to work make sure that the volume `runtime-config` does not exist yet. Otherwise the existing volume will be used and no new volume will be created with the provided driver options. Thus, stop all containers that use the volume, and issue the `docker volume prune` to remove the volume.
+
+The documentation about the `local` driver is quite minimal on the Docker documentation site. However it turns out that only the built-in local driver on Linux accepts the driver options. These options are similar to the Linux mount command, and are actually passed on to that command.
+
+To get to the test log of a particular test suite `<TESTSUITE_NAME>` ran against a SUT named `<SUT_NAME>`, navigate to the following directory on the `IVCT_HOST`:
+
+ cd ${CONFDIR}/IVCTsut/<SUT_NAME>/<TESTSUITE_NAME>/Logs
+
+And to the test reports:
+
+ cd ${CONFDIR}/IVCTsut/<SUT_NAME>/Reports
+
+== Use Docker copy command to copy out files
+
+The second option uses the `docker cp` command to copy data from the data volume to the `IVCT_HOST`, using one of the containers that has mounted this volume. In this example we use the IVCT GUI container to copy out test logs.
+
+To copy the test logs for a particular test - in this example `RPR-Encoding-2.0` for the SUT named `vrf` - do:
+
+ docker cp overlaymode_gui_1:/root/conf/IVCTsut/vrf/RPR-Encoding-2.0/Logs .
+
+Similar for the test reports:
+
+ docker cp overlaymode_gui_1:/root/conf/IVCTsut/vrf/Reports .
+
+The container name `overlaymode_gui_1` refers to the IVCT GUI container in the `overlay-mode` composition. The container ID and container name can be looked up with the command `docker-compose ps` or `docker ps`.
+
+== Add a file browser to the IVCT composition to access files
+
+The third option is to extend the IVCT composition with a file browser to access and download logs and reports:
+
+Simply add the https://hub.docker.com/r/filebrowser/filebrowser[file browser] service, using the following code snippet:
+....
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    depends_on:
+    - runtime-config
+    volumes:
+    - runtime-config:/srv:nocopy
+    - ./filebrowser.json:/.filebrowser.json
+    ports:
+    - "8081:80"
+....
+
+And create the following `filebrowser.json` configuration file in the directory from where the IVCT composition is started:
+
+....
+{
+  "port": 80,
+  "baseURL": "",
+  "address": "",
+  "log": "stdout",
+  "database": "/database.db",
+  "root": "/srv"
+}
+....
+
+Once the composition is brought up, navigate to `http://${IVCT_HOST}:8081` and login as user `admin` with password `admin`, where `${IVCT_HOST}` should be replaced by the IVCT host name.
+
+== References:
+https://docs.docker.com/engine/reference/commandline/volume_create

@@ -1,0 +1,65 @@
+= Local Settings Designator
+
+The value of `Local Settings Designator` (LSD) is an RTI-implementation specific string that the `TC Runner` uses for connecting to the RTI. The LSD refers to a set of LRC settings that override the default settings for the LRC. For the format of the string please refer to the RTI documentation.
+
+If no value is provided then the LSD defaults to an empty string, meaning that default LRC settings are used. The default settings are dependent on the LRC Base image used by the TC Runner image. The TC Runner image provides the possibility to set some of the default settings via LRC environment variables. These will be overridden by any settings provided via the LSD.
+
+== MaK RTI LSD
+For the MaK RTI the exact syntax of the LSD is:
+
+    RTI_RID_FILE /path/to/myRIDfile.mtl # {lisp_expression}*
+
+Where:
+
+* The token `RTI_RID_FILE` is optional. If included, the token `RTI_RID_FILE` must be the first token in the string. The text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the RID file name.
+* The "#" deliminator is followed by zero or more lisp expressions.
+
+=== Without RTI_RID_FILE token
+If no `RTI_RID_FILE` token is specified in the LSD then the default RID file present in the LRC Base image is used. The default RID file is configured for strict RTI compliance and must match with the RID file used by the RTI Exec.
+
+To set the MaK RTI Exec address to `rtiexec` and port `4000`, use the following LSD value:
+
+    (setqb RTI_tcpPort 4000) (setqb RTI_tcpForwarderAddr "rtiexec")
+
+If no MaK RTI Exec address is provided in the LSD, the default address is used. The default address can be set via the MAK LRC environment variables.
+
+=== With RTI_RID_FILE token
+When the token `RTI_RID_FILE` is used the text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the RID file name.
+
+To set an alternate RID file named `myRIDfile.mtl`, and to set the MaK RTI Exec address to host `rtiexec` and port `4000`, use the following string value:
+
+    RTI_RID_FILE /path/to/myRIDfile.mtl # (setqb RTI_tcpPort 4000) (setqb RTI_tcpForwarderAddr "rtiexec")
+
+Note that the alternate RID file must be volume mounted into the TC Runner container in order to be accessible on the path specified.
+
+Also, when using an alternate RID file make sure the settings match up with the RTI Exec.
+
+== Pitch RTI LSD
+For the Pitch RTI the LSD refers to either the address of the Central RTI Component (CRC), or to a RID file.
+
+=== Refer to CRC address
+Depending on the CRC mode, the format of the CRC reference is:
+
+* Direct mode: `crcAddress=<CRC-address>:<port>`
+* Booster mode: `crcAddress=<CRC-name>@<local-booster-address>:<port>`
+
+For example, to set the Pitch CRC address to hostname `crc` and port `8989`, use the following value:
+
+    crcAddress=crc:8989
+
+If no Pitch CRC address is provided in the LSD, then the default address is used. The default address can be set via the Pitch LRC environment variables.
+
+=== Refer to RID file
+When specifying a RID file, such as "MySpecialSettings", the LRC will search for additional settings as follows:
+
+* First, it will look for a file named "MySpecialSettings.lsd" in ``/etc/prti1516e``.
+* Then it will look for a file named "MySpecialSettings.lsd" in the home directory of the user ``/root``.
+* Then it will look for a file named "MySpecialSettings.lsd" in the working directory of the federate application.
+
+Note that the alternate RID file must be volume mounted into the TC Runner container in order to be accessible on the search path.
+
+Any settings read from the RID file in those three locations will override the default settings. In case there are settings available in several of these locations then they will override each other in the same order as the files are read. If no RID file is specified, then the LRC will look for a file named “default.lsd”, in the same search order as above.
+
+== Portico RTI LSD
+For Portico the LSD is a string which, if defined, should contain a comma separated list of properties. See https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html.
+These properties augment/override the properties in the RID file.

@@ -1,0 +1,54 @@
+= IVCT Deployment Options
+
+There are various ways the IVCT container images can be composed together in terms of networking, data volumes, and configuration.
+
+For two types of compositions - called deployment options - examples are provided in the repository. These are called `host mode network` and `bridge network`.
+
+== Host mode network
+With this deployment option the IVCT containers in the composition share the host's networking namespace. Each container gets the IP address of the IVCT Host and is directly accessible from the local area network as if the container application runs on the host itself rather than on an isolated Docker overlay network. Host mode networking gives also a better performance as it does not require the network address translation (NAT) used in the overlay mode. The option is summarized in the figure below. Published container ports are visible on the local area network.
+
+A variation to this mode is called `host-advertise-network`, where the RTI exposes its network ports to the IVCT host, but where the IVCT components themselves are connected to a Docker bridge network. The container configuration in this mode is RTI specific. An example is provided for the Pitch RTI.
+
+image:images/host-mode.png[IVCT host-mode]
+
+This deployment option allows the use of TCP/IP, UDP/IP and Multicast communication with the SUT without restrictions. SUT and IVCT can also be located on different hosts, connected via a LAN.
+
+However this option only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
+
+== Bridge network
+With this deployment option the IVCT containers in the composition are attached to a bridge network. Communication between the containers is across this isolated network on the Docker Host, and not visible to other applications on the IVCT Host or elsewhere on the local area network. Containers can expose ports to the IVCT Host so that applications on the local area network can access the service provided by the composition. Docker transparently sets up port mapping (NAT) between the internal container port and external (published) service port. This option is summarized in the figure below.
+
+image:images/overlay-mode.png[IVCT overlay-mode]
+
+This deployment option is only recommended when IVCT and SUT can run on the same host, where they can be attached to the same network bridge.
+
+== Overlay network
+Docker also supports an overlay network, where containers can be connected across different Docker Hosts. The Docker overlay network does currently not support multicast. An alternative is to use the Weave overlay network for multicast (see https://www.weave.works). No examples of this option are provided.
+
+== RTI Specific Components
+Additional, but RTI specific components may be employed to connect the IVCT to the SUT. For example Pitch Booster or MaK Forwarder. These components can be used to bridge different network domains, but the application of these tools is outside the scope of this project.
+
+== Summary
+
+.Supported Network communication protocols per deployment option and per RTI
+|===
+|Deployment option | Pitch | VTMaK | Portico
+
+|Host mode network
+|TCP/IP, UDP/IP, Multicast
+|TCP/IP, UDP/IP, Multicast
+|Multicast
+|Bridge network
+|TCP/IP, UDP/IP, Multicast
+|TCP/IP, UDP/IP, Multicast
+|Multicast
+|Overlay network
+|TCP/IP, UDP/IP
+|TCP/IP, UDP/IP
+|-
+|===
+
+Note that the FOM transportation indication (Reliable, Best Effort) typically implies a certain network communication protocol to be used. I.e. Best Effort typically implies UDP/IP or Multicast, and Reliable typically implies TCP/IP. In case of the VTMaK RTI, the RTI is configured to use TCP/IP regardless of the FOM transportation indication.
+
+== References
+https://docs.docker.com/network/host/

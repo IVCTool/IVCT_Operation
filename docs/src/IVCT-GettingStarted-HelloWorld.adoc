@@ -1,0 +1,39 @@
+= Testing the Hello World application
+
+To execute a test, a System Under Test is needed. In the steps below we use the HelloWorld application with the Portico RTI as
+SUT.
+
+The HelloWorld application is a simple Java application that can used as a System under Test. It is a good starting point to explore and understand the IVCT and test suites.
+
+== Adapt the HelloWorld environment settings
+
+Navigate to the directory `portico/bridge-network/sut-helloworld` and check the settings in the provided `.env` file and in the docker compose file.
+
+In both files there are several environment variables for the HelloWorld federate. The provided values are already fine to run the application:
+
+|===
+| Environment Variable Name  | Description | Default if not set
+
+| SETTINGS_DESIGNATOR        | Local settings designator for the `RTIambassador.connect` method   |No default assumed; the value is typically used to provide the address of the Pitch CRC or VTMaK RTI Exec. A value for the Pitch RTI is for example `crcAddress=crc:8989`. For the Portico RTI this can be left empty.
+| FEDERATE_NAME              | Name of the SUT. In the default parameter settings the federate name `A` is used. This setting must match the actual test case parameters.  | `A`
+| POPULATION                 | Size of the starting population for the HelloWorld Country object.   | `10`
+| CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
+|===
+
+=== Start the HelloWorld application
+
+Start the application with
+
+ docker-compose up
+
+The SUT Docker container images will be pulled from the Docker Hub and the SUT will be deployed.
+
+=== Run a test
+
+Once the IVCT and the SUT are up and running, you are able to run a test against HelloWorld.
+
+Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
+
+In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make sure the value is empty in the SuT view.
+
+The SuT view lists the test cases for the HelloWord SuT. Select a test case and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.

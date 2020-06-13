@@ -1,0 +1,7 @@
+== IVCT GUI Image
+
+The IVCT GUI provides the web UI of the IVCT. The image is based on the official Tomcat JRE8 image. At run-time the IVCT GUI communicates via the Active MQ with the TC Runner.
+
+=== Environment Variables
+
+For a full list of parameters, see the link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/2-8-IVCT_Configuration.adoc[IVCT Configuration].

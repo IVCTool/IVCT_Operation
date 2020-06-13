@@ -1,0 +1,9 @@
+== IVCT LogSink Application Image
+
+The IVCT Logsink collects and records any messages communicated via the Active MQ. In particular test results.
+
+At run-time, test results are saved in the Runtime Config data volume.
+
+=== Environment Variables
+
+For a full list of parameters, see the link:https://github.com/IVCTool/IVCT_Framework/blob/development/docs/src/2-8-IVCT_Configuration.adoc[IVCT Configuration].

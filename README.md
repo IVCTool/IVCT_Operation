@@ -1,25 +1,16 @@
-# IVCT and SUT compositions
-This repository contains **Docker compose files** to run IVCT compositions and SUT compositions.
+# IVCT Operation
 
-## Docker compose files
+The IVCT_Operation repository provides several templates for launching the containerized software of the **Interoperability, Verification and Certification Tool (IVCT)**. This software consists of a general purpose testing framework (see https://github.com/IVCTool/IVCT_Framework) and specific test suite packages, which are designed to test interoperability requirements for federated simulations. In order to run the software, the framework needs to be compiled, configured, and bundled with a selection of test suites into an integrated runtime environment. The launch templates within this repository provides examples for this kind of software compositions.
 
-The Docker compose files for the different IVCT and SUT compositions are organized in separate *project directories*. The project directories are located directly under the root of this repository. This way orchestration tools such as Rancher or Docker ComposeUI can clone the repository and use the project directories with the content in their native environment.
+Following the principles of the **Modelling and Simulation as a Service (MSaaS)** paradigm, the required IVCT components are provided as software containers, deployable in a cloud environment. The components are implemented as Docker containers and the compositions are provided as docker compose files (yaml).
 
-For each IVCT or SUT composition there is exactly one directory named `<project-name>`. A project directory must contain a `docker-compose.yml` file and a `README.md` file. Optionally the project directory may contain the following files: a `logo.png` file (for displaying purposes), a `.env` file with docker-compose environment settings, and supplementary files associated with the composition.
+Federated simulations use communication environments to communicate and synchronize in virtual environments. The current IVCT implementation uses the **High Level Architecture (HLA)** standard for that purpose. There are several implementations for the HLA standard available, scalled **Run-Time Infrastructures (RTI)**. This repository provides several launch template examples for the most commonly used RTIs, which are also the top level entries for this repository.
 
-Each IVCT or SUT composition can be started with the standard `docker-compose` command line tool. In some cases minor adaptations may be needed to run a composition in your local environment. For example, hostnames or port numbers may need to be changed. These adaptations should generally be limited to environment settings in the `.env` file.
+Further information about the IVCT deployment and the operation concepts can be found in the [documentation](docs/src/home.adoc) section of this repository.
 
-The contents of a project directory is as follows:
 
-```
-docker-compose.yml        -- required
-README.md                 -- required
-logo.png                  -- optional
-.env                      -- optional
-Other files               -- optional
-```
+## LICENCE
 
-## Container image descriptions
+Copyright 2020 NATO/OTAN
 
-Descriptions of IVCT Framework container images are maintained under the Wiki of this repository.
-
+Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
