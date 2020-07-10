@@ -76,7 +76,7 @@ image:images/GUI_SutHwEncoding.PNG[SuT View]
 * **FAILED**: red color
 * **UNKNOWN**: white color
 
-image:images/GUI_SutHwEncodingTCSelection.PNG[SuT View]
+image:images/GUI_SutHwEncodingTcSelection.PNG[SuT View]
 
 - When selecting a test case tile the test case view is opened.
 
@@ -141,7 +141,7 @@ A test suite is PASSED if the last execution of all test cases of a test suite a
 In the following figure all test cases (TC) of <Testsuite A> and all test cases (TC) of <Testsuite B> have the status PASSED.
 Therefore both test suite have the status PASSED.
 
-image:images/GUI_ConformanceStatus_PASSED.PNG[Conformance Status PASSED, 650,650]
+image:images/GUI_ConformanceStatus_PASSED.PNG[Conformance Status PASSED]
 
 **Conformance Status - FAILED:**
 
@@ -149,7 +149,7 @@ The conformance status is **FAILED**, if one or more test suites have the status
 In the following figure <Testsuite A> is PASSED but <Testsuite B> is FAILED.
 Test suite <Testsuite B> is FAILED because the last execution of a test case (TC2) is failed.
 
-image:images/GUI_ConformanceStatus_FAILED.PNG[Conformance Status FAILED, 650,650]
+image:images/GUI_ConformanceStatus_FAILED.PNG[Conformance Status FAILED]
 
 **Conformance Status - INCONCLUSIVE:**
 
@@ -157,14 +157,14 @@ The conformance status is **INCONCLUSIVE**, because a test suite has the status 
 In the following figure <Testsuite A> is PASSED but <Testsuite B> is INCONCLUSIVE.
 Test suite <Testsuite B> is INCONCLUSIVE because the last execution of a test case (TC2) is INCONCLUSIVE.
 
-image:images/GUI_ConformanceStatus_INCONCLUSIVE.PNG[Conformance Status INCONCLUSIVE, 650,650]
+image:images/GUI_ConformanceStatus_INCONCLUSIVE.PNG[Conformance Status INCONCLUSIVE]
 
 **Conformance Status - UNKNOWN:**
 
 The conformance status is **UNKNOWN**, if the interoperability requirements defined in the badge have not been tested yet.
 The interoperability requirements are tested using test cases.
 
-image:images/GUI_ConformanceStatus_UNKNOWN.PNG[Conformance Status UNKNOWN, 650,650]
+image:images/GUI_ConformanceStatus_UNKNOWN.PNG[Conformance Status UNKNOWN]
 
 
 == Create Test Report
@@ -180,7 +180,7 @@ image:images/GUI_CreateReport.PNG[Create Report]
 
 **The overview page of the test report is structured as follows:**
 
-image:images/GUI_ReportStructure1.PNG[Report Structure - Overview, 750,750]
+image:images/GUI_ReportStructure1.PNG[Report Structure - Overview]
 
 **The badge section of the test report is structured as follows:**
 
@@ -188,13 +188,13 @@ image:images/GUI_ReportStructure1.PNG[Report Structure - Overview, 750,750]
 - **Testsuite (TS) section:** Additionally the badge section displays all assigned test suites and their information.
 - **Testcase (TC) section:** In the test suite section all assigned test cases are displayed. Beside the test case information the tested interoperability requirements, the result of the last test case execution and the corresponding logfile are displayed.
 
-image:images/GUI_ReportStructure2.PNG[Report Structure - Main Report, 750,750]
+image:images/GUI_ReportStructure2.PNG[Report Structure - Main Report]
 
 The one-to-many relationship in the figure should show that several badges, test suites and test cases can be displayed in the report.
 
 **Here is an report example:** (only the overview page is displayed)
 
-image:images/GUI_ReportOverviewExample.PNG[Report Overview Example, 750,750]
+image:images/GUI_ReportOverviewExample.PNG[Report Overview Example]
 
 - **The conformance status of the SuT is PASSED, if all linked badges have the status PASSED!**
 
