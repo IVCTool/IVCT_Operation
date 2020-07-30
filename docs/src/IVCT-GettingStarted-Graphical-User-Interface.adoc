@@ -93,6 +93,9 @@ image:images/GUI_TcExec.PNG[SuT View]
 - The status field displays the current status description of the test case activity.
 - The execution log table shows all log messages of the current test case, which provide information about the current test activity.
 - All test case messages are stored in a log file.
+- With the button <Abort> in the menu frame, the test case can be aborted.
+- A test case is aborted with an INCONCLUSIVE verdict.
+- The abort button is only displayed when a test case is running.
 
 image:images/GUI_TcExecOperatorRequest.PNG[SuT View]
 
