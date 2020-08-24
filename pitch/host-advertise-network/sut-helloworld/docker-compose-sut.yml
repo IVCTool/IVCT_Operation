@@ -11,15 +11,13 @@ services:
   helloworld:
     image: ivct/helloworld:pi-skeleton-${TS_HW_VERSION}
     environment:
-    # Advertise the LRC port range on which max 10 federates can connect
-    # via TCP and UDP.
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6100:5100
     - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
     ports:
-    - "6200-6209:6200-6209/tcp"
-    - "6210-6219:6210-6219/udp"
+    - "6100:6100/tcp"
+    - "5100:5100/udp"
     volumes:
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
