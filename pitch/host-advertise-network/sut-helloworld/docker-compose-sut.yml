@@ -13,8 +13,9 @@ services:
     environment:
     # Advertise the LRC port range on which max 10 federates can connect
     # via TCP and UDP.
+    # - PITCH_CRCADDRESS=${RTIHOST}
     - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6200-6209:6210-6219
-    - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
+    - SETTINGS_DESIGNATOR=crcAddress=${RTIHOST}:8989
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
