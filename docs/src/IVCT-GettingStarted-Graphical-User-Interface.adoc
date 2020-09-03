@@ -36,75 +36,91 @@ If you select a special test case, the assigned interoperability requirements ar
 
 image:images/GUI_TestsuiteEncoding.PNG[TS Encoding View]
 
-== The SuT View
-
-The System under Test (SuT) view, shows the configure systems to be tested. New systems for testing can be added with the menu <SUT Settings - New SuT> and existing configurations can be edited, after selecting them. The selection of a SuT shows the details view for that system under test.
+== The System under Test (SuT) View
 
 image:images/GUI_SutView.PNG[SuT View]
 
-The details view shows general information about the system under test, such as its name, vender and version, a short description of its purpose, as well as information for the IVCT on how to connect to the `HLA RTI`. This connection information is called the `Local Settings Designator` (LSD) and the value is passed as-is to the `RTI Connection` call. For more information about the LSD, see <<IVCT-Local-Settings-Designator#,The Local Settings Designator>>. Furthermore, the federate name and the federation name can be specified.
-
-Below the general information the capability status shows the selected capabilities with the badge id, the badge name and a conformance status after testing the interoperability requirements of the selected badge.
-
-Below the capability status section is the test report section.
-A test report can be generated if the selected SuT has already been tested.
-The created test reports are listed below the capability status field.
-A test report can be downloaded by double-clicking and opened with a PDF viewer.
+- The System under Test (SuT) view, shows the configure systems to be tested.
+- New systems for testing can be added with the menu <SUT Settings - New SuT> and existing configurations can be edited, after selecting them.
+- The selection of a SuT shows the details view for that system under test.
 
 image:images/GUI_SutHw.PNG[SuT View]
 
-When selecting a SuT in the navigation frame, the underlying badges are shown.
-These are the badges which are named in the conformance statement when creating a SuT description.
-Selecting a badge will show all contained test suites.
+- The details view shows general information about the system under test, such as its name, vender and version, a short description of its purpose, as well as information for the IVCT on how to connect to the `HLA RTI`. This connection information is called the `Local Settings Designator` (LSD) and the value is passed as-is to the `RTI Connection` call. For more information about the LSD, see <<IVCT-Local-Settings-Designator#,The Local Settings Designator>>.
+- The LSD is an RTI-implementation specific string that the TC Engine (Runner) uses for connecting to the RTI. The LSD refers to a set of LRC settings that override the default settings for the LRC. If no value is provided then the LSD defaults to an empty string, meaning that default LRC settings are used.
+- Furthermore, the federate name and the federation name can be specified.
+* The name of the federate can be defined in the <Federate Name> field. This is the name, the system under test federate shall use to connect to the federation.
+* The name of the federation can be defined in the <Federation Name> field. This is the federation name, to connect with the system under test.
+- Below the general information the capability status shows the selected capabilities with the badge id, the badge name and a conformance status after testing the interoperability requirements of the selected badge.
+- Below the capability status section is the test report section. The test report section shows all generated test reports. A test report can only be generated after the selected SuT has been tested. A test report can be downloaded by double-clicking or with the download button and opened with a PDF viewer.
 
 image:images/GUI_SutHwHLA.PNG[SuT View]
 
-Selecting a test suite will show the included test case tiles and the details to be used for testing.
-These are test case parameters, optionally some extra parameters as required by some test cases.
+- When selecting a SuT in the navigation frame, the underlying badges are shown. These are the badges which are named in the conformance statement when creating a SuT description.
+- Selecting a badge will show all contained test suites.
 
 image:images/GUI_SutHwEncoding.PNG[SuT View]
 
-When selecting a test case tile the list of interoperability requirements are shown in the requirement table.
+- Selecting a test suite will show the included test cases (test case tiles) and the details to be used for testing.
+- All test cases within a test suite are sharing the same set of parameters.
+- These are parameters, optionally some extra parameters as required by some test cases.
+- The IVCT user interface provides options to set the parameter values and delivers these values to the test case.
+- Existing parameters can be edited via this interface (Section: TS Parameters).
+- To add and delete parameters, the 'TcParam.json' file in the test suite directory of the respective system under test must be edited.
+- Additional parameter files can be uploaded in the <TS Parameter Files> section.
+- The uploaded parameter files are usually integrated via the parameter settings in the <TS Parameters> section.
 
-Depending on the status of the test execution, the test case tiles are displayed in different colors:
+- Depending on the status of the test execution, the test case tiles are displayed in different colors:
+* **PASSED**: green color
+* **INCONCLUSIVE**: purple color
+* **FAILED**: red color
+* **UNKNOWN**: white color
 
-- **PASSED**: green color
-- **INCONCLUSIVE**: purple color
-- **FAILED**: red color
+image:images/GUI_SutHwEncodingTcSelection.PNG[SuT View]
+
+- When selecting a test case tile the test case view is opened.
 
 image:images/GUI_SutHwEncodingTC.PNG[SuT View]
 
-In order to execute a test case, it must be selected in the navigation frame (double click on the test case tile).
-That opens a detail view in the content frame, with a short description and a list of reports with existing protocol files.
-With the button <TC execute> in the menu frame, the test case assigned to this interoperability requirement can be started.
-
-Depending on the status of the test execution, the test result name in <TC Status> and <TC Execution History> are displayed in different colors:
-
-- **PASSED**: green color
-- **INCONCLUSIVE**: purple color
-- **FAILED**: red color
-
-The <TC Execution Log> table displays the log message selected in the <TC Execution History> table.
-Log messages with the log level error are colored red.
-Log messages with the log level warning colored yellow.
-
-image:images/GUI_TcExecHistory.PNG[SuT View]
-
-After the start of a test case, the current status of the running test case is displayed in a progress bar.
-The messages in the status table are created by the test case and will give insights on the current test activity.
-A detailed protocol log shows the current output of the running test case.
+- That opens a detail view in the content frame, with a status field and the short description of the selected test case.
+- The test case view shows a list of interoperability requirements in the requirement table. These requirements are tested when the test case is executed.
+- In addition, a list of existing protocol files are also displayed (Section: Execution History). A new protocol file is created for each test case execution.
+- With the button <TC execute> in the menu frame, the test case can be started.
 
 image:images/GUI_TcExec.PNG[SuT View]
 
-Some testcases do have specific instructions to the IVCT operator.
-The test case makes a request to the SuT operator and waits until the SuT operator confirms that the required action or configuration has been performed.
-An optional comment for traceability can be added.
+- After the start of a test case, the current status of the running test case is displayed in a progress bar (in percent).
+- The status field displays the current status description of the test case activity.
+- The execution log table shows all log messages of the current test case, which provide information about the current test activity.
+- All test case messages are stored in a log file.
+- With the button <Abort> in the menu frame, the test case can be aborted.
+- A test case is aborted with an INCONCLUSIVE verdict.
+- The abort button is only displayed when a test case is running.
 
 image:images/GUI_TcExecOperatorRequest.PNG[SuT View]
 
-At the end of the test case execution, the  test verdict is displayed in form of a popup window.
+- Some test cases have specific instructions to the IVCT operator. These statements can be sent to the operator via message boxes.
+- The test case makes a request to the SuT operator and waits until the SuT operator confirms that the required action or configuration has been performed.
+- An optional comment for traceability can be added.
+- For more information about the operator request, see https://github.com/IVCTool/IVCT_TestSuiteDevelopment/blob/development/docs/src/Operator-Request.adoc[Operator Request].
 
 image:images/GUI_TcExecStatus.PNG[SuT View]
+
+- At the end of the test case execution, the test verdict is displayed in form of a popup window.
+
+image:images/GUI_TcExecHistory.PNG[SuT View]
+
+- Depending on the status of the test execution, the status of the test result in the execution history table are displayed in different colors:
+* **PASSED**: green color
+* **INCONCLUSIVE**: purple color
+* **FAILED**: red color
+* **UNKNOWN**: white color
+
+- A log file can be downloaded after selecting a log file in the execution history table with the download button.
+
+- The execution log section displays the protocol message selected in the <Execution History> table.
+* Log messages with the log level error are colored red.
+* Log messages with the log level warning colored yellow.
 
 == SuT Capability Status / Conformance Status
 
@@ -158,10 +174,10 @@ image:images/GUI_ConformanceStatus_UNKNOWN.PNG[Conformance Status UNKNOWN]
 
 **The IVCT system enables the creation of a test report for the test inspector.**
 
-In the test report section (third section) the test report for the SuT can be generated by clicking the button <Create Test Report>.
-A test report can be generated if the selected SuT has already been tested.
-The created test reports are listed below the capability status field.
-A test report can be downloaded by double-clicking and opened with a PDF viewer.
+- In the test report section (third section) the test report for the SuT can be generated by clicking the button <Create Test Report>.
+- The test report section shows all generated test reports.
+- A test report can only be generated after the selected SuT has been tested.
+- A test report can be downloaded by double-clicking or with the download button and opened with a PDF viewer.
 
 image:images/GUI_CreateReport.PNG[Create Report]
 
