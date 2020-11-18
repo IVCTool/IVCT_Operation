@@ -228,6 +228,17 @@ image:images/GUI_DeleteSuT.PNG[Delete SuT]
 
 == Additional information
 
+=== TestEngine Settings
+
+The IVCT system allows the user to select a TestEngine. 
+For this purpose, all available TestEngines are displayed in the system's settings. Then the user can select any TestEngine. After selecting a specific TestEngine, the status of the TestEngine is displayed in the status field.
+
+image:images/GUI_SelectTestEngine.PNG[TestEngine Settings]
+
+The TestEngine settings are saved under the following path:
+- Windows: C:\Users\<USER>\nato.ivct.gui.nato.ivct.gui.html.ui.dev.settings\org.eclipse.scout.rt.client-<USER>.prefs
+- Unix: /root/nato.ivct.gui.nato.ivct.gui.html.ui/.settings/org.eclipse.scout.rt.client-<USER>.prefs
+
 === Language and Log Level Settings
 
 The system allows the user to change the language settings and log level settings. You can select either English or German as language. The default language is English.
@@ -241,6 +252,10 @@ As log level you can decide between the following levels:
 - ERROR: Events which are considered as faulty behaviour are reported as errors.
 
 The default log level is INFO.
+
+The language and log level settings are saved under the following path:
+- Windows: C:\Users\<USER>\nato.ivct.gui.nato.ivct.gui.html.ui.dev.settings\org.eclipse.scout.rt.client-<USER>.prefs
+- Unix: /root/nato.ivct.gui.nato.ivct.gui.html.ui/.settings/org.eclipse.scout.rt.client-<USER>.prefs
 
 image:images/GUI_Options.PNG[Options]
 
