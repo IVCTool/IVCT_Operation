@@ -236,8 +236,10 @@ For this purpose, all available TestEngines are displayed in the system's settin
 image:images/GUI_SelectTestEngine.PNG[TestEngine Settings]
 
 The TestEngine settings are saved under the following path:
-- Windows: C:\Users\<USER>\nato.ivct.gui.nato.ivct.gui.html.ui.dev.settings\org.eclipse.scout.rt.client-<USER>.prefs
-- Unix: /root/nato.ivct.gui.nato.ivct.gui.html.ui/.settings/org.eclipse.scout.rt.client-<USER>.prefs
+ 
+ Windows: C:\Users\<USER>\nato.ivct.gui.nato.ivct.gui.html.ui.dev.settings\org.eclipse.scout.rt.client-<USER>.prefs
+ 
+ Unix: /root/nato.ivct.gui.nato.ivct.gui.html.ui/.settings/org.eclipse.scout.rt.client-<USER>.prefs
 
 === Language and Log Level Settings
 
@@ -254,8 +256,10 @@ As log level you can decide between the following levels:
 The default log level is INFO.
 
 The language and log level settings are saved under the following path:
-- Windows: C:\Users\<USER>\nato.ivct.gui.nato.ivct.gui.html.ui.dev.settings\org.eclipse.scout.rt.client-<USER>.prefs
-- Unix: /root/nato.ivct.gui.nato.ivct.gui.html.ui/.settings/org.eclipse.scout.rt.client-<USER>.prefs
+ 
+ Windows: C:\Users\<USER>\nato.ivct.gui.nato.ivct.gui.html.ui.dev.settings\org.eclipse.scout.rt.client-<USER>.prefs
+ 
+ Unix: /root/nato.ivct.gui.nato.ivct.gui.html.ui/.settings/org.eclipse.scout.rt.client-<USER>.prefs
 
 image:images/GUI_Options.PNG[Options]
 
