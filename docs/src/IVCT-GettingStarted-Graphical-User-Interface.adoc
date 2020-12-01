@@ -86,6 +86,7 @@ image:images/GUI_SutHwEncodingTC.PNG[SuT View]
 - The test case view shows a list of interoperability requirements in the requirement table. These requirements are tested when the test case is executed.
 - In addition, a list of existing protocol files are also displayed (Section: Execution History). A new protocol file is created for each test case execution.
 - With the button <TC execute> in the menu frame, the test case can be started.
+- Before a Testcase can be started, a TestEngine must be selected - see https://github.com/IVCTool/IVCT_Operation/blob/develop/docs/src/IVCT-GettingStarted-Graphical-User-Interface.adoc#testengine-settings[TestEngine Settings].
 
 image:images/GUI_TcExec.PNG[SuT View]
 
