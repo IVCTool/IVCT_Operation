@@ -28,7 +28,7 @@ Attention: +
 As mentioned above  the value of the "Local Settings Designator" is a  RTI-implementation specific string. +
 MAK  only accepts lisp expressions (x x x) as  parameter. +
 If a TestCase connect to  MAK RTI  with parameter formated in other formats eg. "crcAddress=localhost:8989" +
-the connection with the RTI fails, the RTI terminate throws an c Exception which the TestEngine can't proceed and the JVM crash.
+the connection with the RTI fails, the RTI terminate throws an c Exception which the TestEngine can't process and the JVM crash.
 
 
 
