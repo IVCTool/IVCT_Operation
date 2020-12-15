@@ -19,6 +19,8 @@ The most relevant ones for the Operator are:
 
 | `SETTINGS_DESIGNATOR` | Value to use for the RTI connection string if no value is provided in the SuT conformance statement. | The default is an empty string
 | `FEDERATION_NAME`     | Value to use for the federation name if no value is provided in SuT conformance statement.  | `TheWorld`
+| `TESTENGINE_LABEL`    | Value to indicate with which RTI a Testengine is linked with  eg.: 
+TESTENGINE_LABEL=pitch_v5.3.2.1_runner1 TESTENGINE_LABEL=makRti4.6_runner1| Broadcast (Factory.TESTENGINE_LABEL_DEFLT)
 |===
 
 If the `SETTINGS_DESIGNATOR` is an empty string then the LRC Base image defaults to what is set in the RID file.
