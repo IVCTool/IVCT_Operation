@@ -1,2 +1,5 @@
 # User settings (be careful to follow changes in git)
 .env
+
+# Ignore eclpise project settings
+.project
