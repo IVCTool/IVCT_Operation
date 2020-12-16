@@ -23,6 +23,15 @@ To set the MaK RTI Exec address to `rtiexec` and port `4000`, use the following 
 
 If no MaK RTI Exec address is provided in the LSD, the default address is used. The default address can be set via the MAK LRC environment variables.
 
+
+Attention: +
+As mentioned above  the value of the "Local Settings Designator" is a  RTI-implementation specific string. +
+MAK  only accepts lisp expressions (x x x) as  parameter. +
+If a TestCase connect to  MAK RTI  with parameter formated in other formats eg. "crcAddress=localhost:8989" +
+the connection with the RTI fails, the RTI terminate throws an c Exception which the TestEngine can't process and the JVM crash.
+
+
+
 === With RTI_RID_FILE token
 When the token `RTI_RID_FILE` is used the text following the token up to the "# delimiter character is taken as the RID file name. If the # is omitted, then the remainder of the string text is used as the RID file name.
 
