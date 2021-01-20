@@ -10,6 +10,10 @@ Federated simulations use communication environments to communicate and synchron
 
 Further information about the IVCT deployment and the operation concepts can be found in the [documentation](docs/src/home.adoc) section of this repository.
 
+| Digital Object Identification |            |
+| ----------------------------- | ---------- |
+| [![DOI](https://zenodo.org/badge/133946276.svg)](https://zenodo.org/badge/latestdoi/133946276) |  Release 1.0.0 |
+
 
 ## LICENCE
 
