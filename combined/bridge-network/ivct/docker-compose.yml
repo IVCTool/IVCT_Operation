@@ -21,7 +21,7 @@ services:
 # Test suite data is mounted as docker volume.
 # Also the LRC is mounted into the TC Runner container.
 # ==============================================================================
-  tc-runner:
+  tc-runner-pi:
     image: ivct/tc-runner:pi-skeleton-${IVCT_VERSION}
     depends_on:
     - activemq
@@ -46,8 +46,60 @@ services:
     - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
     - ACTIVEMQ_HOST=activemq
+    - TESTENGINE_LABEL=pi-skeleton
     networks:
     - ivctnet
+
+  tc-runner-po:
+    image: ivct/tc-runner:po-${IVCT_VERSION}
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    - TESTENGINE_LABEL=portico
+    networks:
+    - ivctnet
+
+  tc-runner-ma:
+    image: ivct/tc-runner:ma-${IVCT_VERSION}
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    - TESTENGINE_LABEL=mak
+    networks:
+    - ivctnet
+
 
 # ==============================================================================
 # IVCT Logsink component

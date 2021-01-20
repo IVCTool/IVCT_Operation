@@ -1,10 +1,12 @@
 == IVCT TC Runner Application image
 
-The Test Case (TC) Runner Application executes test cases. The TC Runner Application image is based on a Local RTI Component (LRC) Base image.
+The Test Case (TC) Runner Application executes test cases. The TC Runner Application image is based on a Local RTI Component (LRC) Base image, see link:https://github.com/hlacontainers[HLA containers project].
 
-The LRC Base image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC Base images are available for different RTI implementations (Pitch, VTMaK, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC Base image supports a number of environment variables to provide initial settings for the RID file, such as the address of the Pitch CRC, the address of the VTMaK RTI Executive, the network adapter to use, and the logging level. Some of the settings in the RID file can be overridden by the settings provided via the Local Settings Designator.
+The LRC Base image is a minimal image and provides basic functionality to launch an HLA federate application. Several LRC Base images are available from the link:https://github.com/hlacontainers[HLA containers project] for different RTI implementations (Pitch, VTMaK, Portico) and Linux distributions (Alpine, Debian, CentOS). Each LRC Base image supports a number of environment variables to provide initial settings for the RID file, such as the address of the Pitch CRC, the address of the VTMaK RTI Executive, the network adapter to use, and the logging level. Some of the settings in the RID file can be overridden by the settings provided via the Local Settings Designator.
 
-At run-time, Test Case execution results are reported via the Active MQ.
+Important to note is that for the **Pitch RTI** the IVCT TC Runner Application image on the Docker Hub is a **skeleton** container image. I.e. the image does not include the actual Pitch LRC files due to license restrictions. These files can only exist in the file system of the end-user and need to be mounted into the TC Runner Application container at run-time. Instructions on how to do this are provided in this repository.
+
+image:../../docs/src/images/info.png[Info] An alternative is to create a fully functioning TC Runner Application container image for the Pitch RTI. That is, an image that does include the Pitch LRC files. Such an image cannot be provided from the Docker Hub and can only be created in the container run-time environment of the end-user. Instructions on how to do this can be found at link:https://github.com/IVCTool/IVCT_Operation/tree/develop/pitch/create-runner-image[Create a functioning IVCT TC Runner Application image].
 
 === Environment Variables
 
@@ -17,6 +19,8 @@ The most relevant ones for the Operator are:
 
 | `SETTINGS_DESIGNATOR` | Value to use for the RTI connection string if no value is provided in the SuT conformance statement. | The default is an empty string
 | `FEDERATION_NAME`     | Value to use for the federation name if no value is provided in SuT conformance statement.  | `TheWorld`
+| `TESTENGINE_LABEL`    | Value to indicate with which RTI a Testengine is linked with  eg.: 
+TESTENGINE_LABEL=pitch_v5.3.2.1_runner1 TESTENGINE_LABEL=makRti4.6_runner1| Broadcast (Factory.TESTENGINE_LABEL_DEFLT)
 |===
 
 If the `SETTINGS_DESIGNATOR` is an empty string then the LRC Base image defaults to what is set in the RID file.

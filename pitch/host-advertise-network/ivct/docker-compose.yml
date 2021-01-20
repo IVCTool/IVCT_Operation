@@ -29,6 +29,7 @@ services:
     - ts-hla-services
     - ts-hla-object
     - ts-hla-declaration
+    - ts-rpr-designator
     volumes:
     - runtime-config:/root/conf:nocopy
     - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
@@ -37,17 +38,16 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    - ts-rpr-designator:/root/conf/TestSuites/TS_Designator-${TS_RPR_DESIGNATOR}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
-    - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
     - ACTIVEMQ_HOST=activemq
-    - PITCH_CRCADDRESS=${RTIHOST}
-    # Advertise the LRC port range on which max 10 federates can connect
-    # via TCP and UDP.
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6500-6509:6510-6519
+    - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6000:5000
+    - TESTENGINE_LABEL=pi-skeleton
     ports:
-    - "6500-6509:6500-6509/tcp"
-    - "6510-6519:6510-6519/udp"
+    - "6000:6000/tcp"
+    - "5000:5000/udp"
 
 # ==============================================================================
 # IVCT Logsink component
@@ -80,6 +80,7 @@ services:
     - ts-hla-services
     - ts-hla-object
     - ts-hla-declaration
+    - ts-rpr-designator
     volumes:
     - runtime-config:/root/conf:nocopy
     - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
@@ -88,6 +89,7 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    - ts-rpr-designator:/root/conf/TestSuites/TS_Designator-${TS_RPR_DESIGNATOR}:nocopy
     environment:
     - ACTIVEMQ_HOST=activemq
     ports:
@@ -150,6 +152,14 @@ services:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}
 
 # ==============================================================================
+# IVCT Test Suite data for HLA Designator
+# ==============================================================================
+  ts-rpr-designator:
+    image: ivct/ts-designator:${TS_RPR_DESIGNATOR}
+    volumes:
+    - ts-rpr-designator:/root/conf/TestSuites/TS_Designator-${TS_RPR_DESIGNATOR}
+
+# ==============================================================================
 # Data volumes for IVCT Runtime Config data and Test Suite data
 # ==============================================================================
 volumes:
@@ -160,3 +170,4 @@ volumes:
   ts-hla-services:
   ts-hla-object:
   ts-hla-declaration:
+  ts-rpr-designator:

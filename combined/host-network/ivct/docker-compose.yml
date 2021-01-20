@@ -1,6 +1,6 @@
-version: '3.7'
+version: '3'
 # ==============================================================================
-# IVCT composition for the Pitch RTI
+# IVCT composition for the Pitch RTI using HOST NETWORK MODE
 # ==============================================================================
 
 services:
@@ -10,19 +10,17 @@ services:
 # ==============================================================================
   activemq:
     image: rmohr/activemq:5.14.5-alpine
-    ports:
-    - "61616:61616/tcp"
-    networks:
-    - ivctnet
+    network_mode: host
 
 # ==============================================================================
 # IVCT Test Case Runner
-# The TC Runner executes the test cases. Test cases are included in test suites.
+# The TC Runner executes the test cases. Test cases are included in test suites. 
 # Test suite data is mounted as docker volume.
 # Also the LRC is mounted into the TC Runner container.
 # ==============================================================================
-  tc-runner:
+  tc-runner-pi:
     image: ivct/tc-runner:pi-skeleton-${IVCT_VERSION}
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
@@ -32,7 +30,6 @@ services:
     - ts-hla-services
     - ts-hla-object
     - ts-hla-declaration
-    - ts-designator
     volumes:
     - runtime-config:/root/conf:nocopy
     - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
@@ -41,38 +38,78 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
-    - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
-    - ${LRC_SETTINGSDIR}:/root/prti1516e
     environment:
-    - ACTIVEMQ_HOST=activemq
-    networks:
-    - ivctnet
+    - TESTENGINE_LABEL=pi-skeleton
+
+  tc-runner-po:
+    image: ivct/tc-runner:po-${IVCT_VERSION}
+    network_mode: host
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    environment:
+    - TESTENGINE_LABEL=portico
+
+  tc-runner-ma:
+    image: ivct/tc-runner:ma-${IVCT_VERSION}
+    network_mode: host
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    environment:
+    - TESTENGINE_LABEL=mak
 
 # ==============================================================================
 # IVCT Logsink component
 # ==============================================================================
   logsink:
     image: ivct/logsink:${IVCT_VERSION}
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
     volumes:
     - runtime-config:/root/conf:nocopy
-    environment:
-    - ACTIVEMQ_HOST=activemq
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT GUI component
 # The UI of the IVCT. Test suite data is mounted as docker volume.
 #
-# URL: http://${IVCT_HOST}:${IVCT_UIPORT}
+# URL: http://${IVCT_HOST}:8080
 # Login: admin / admin
 # ==============================================================================
   gui:
     image: ivct/ivct-gui:${IVCT_VERSION}
+    network_mode: host
     depends_on:
     - activemq
     - runtime-config
@@ -82,7 +119,6 @@ services:
     - ts-hla-services
     - ts-hla-object
     - ts-hla-declaration
-    - ts-designator
     volumes:
     - runtime-config:/root/conf:nocopy
     - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
@@ -91,13 +127,6 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
-    - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
-    environment:
-    - ACTIVEMQ_HOST=activemq
-    ports:
-    - "${IVCT_UIPORT}:8080"
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT runtime configuration data
@@ -106,8 +135,6 @@ services:
     image: ivct/runtime-config:${IVCT_VERSION}
     volumes:
     - runtime-config:/root/conf
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT Test Suite data for Helloworld
@@ -116,8 +143,6 @@ services:
     image: ivct/ts-helloworld:${TS_HW_VERSION}
     volumes:
     - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT Test Suite data for Encoding Rules
@@ -126,8 +151,6 @@ services:
     image: ivct/ts-hla-encoding-rules:${TS_HLA_VERSION}
     volumes:
     - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT Test Suite data for HLA CS Verification
@@ -136,8 +159,6 @@ services:
     image: ivct/ts-hla-cs-verification:${TS_HLA_VERSION}
     volumes:
     - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Services
@@ -146,8 +167,6 @@ services:
     image: ivct/ts-hla-services:${TS_HLA_VERSION}
     volumes:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Object
@@ -156,8 +175,6 @@ services:
     image: ivct/ts-hla-object:${TS_HLA_VERSION}
     volumes:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # IVCT Test Suite data for HLA Declaration
@@ -166,18 +183,6 @@ services:
     image: ivct/ts-hla-declaration:${TS_HLA_VERSION}
     volumes:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}
-    networks:
-    - ivctnet
-
-# ==============================================================================
-# IVCT Test Suite data for RPR Designator
-# ==============================================================================
-  ts-designator:
-    image: ivct/ts-designator:${TS_DESIGNATOR_VERSION}
-    volumes:
-    - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}
-    networks:
-    - ivctnet
 
 # ==============================================================================
 # Data volumes for IVCT Runtime Config data and Test Suite data
@@ -190,9 +195,3 @@ volumes:
   ts-hla-services:
   ts-hla-object:
   ts-hla-declaration:
-  ts-designator:
-
-networks:
-  ivctnet:
-    driver: bridge
-    name: mysimnetwork

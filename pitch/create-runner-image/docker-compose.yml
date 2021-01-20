@@ -1,0 +1,13 @@
+﻿version: '3'
+
+services:
+  ivct-pitch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IVCT_VERSION: ${IVCT_VERSION}
+        PITCH_VERSION: ${PITCH_VERSION}
+        PITCH_VERSION_STRING: hlacontainers/lrc:pitch-${PITCH_VERSION}-alpine
+    image: ivct/tc-runner:pi-${IVCT_VERSION}
+  
