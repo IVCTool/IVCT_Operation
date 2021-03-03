@@ -68,6 +68,7 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    - ts-rpr-designator:/root/conf/TestSuites/TS_Designator-${TS_RPR_DESIGNATOR}:nocopy
     environment:
     - ACTIVEMQ_HOST=activemq
     - TESTENGINE_LABEL=portico
@@ -91,6 +92,7 @@ services:
     - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    - ts-rpr-designator:/root/conf/TestSuites/TS_Designator-${TS_RPR_DESIGNATOR}:nocopy
     environment:
     - ACTIVEMQ_HOST=activemq
     - TESTENGINE_LABEL=mak
