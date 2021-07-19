@@ -1,0 +1,68 @@
+version: '3.7'
+# ==============================================================================
+# IVCT composition for the Pitch RTI
+# ==============================================================================
+
+services:
+# ==============================================================================
+# Apache Active Message Queue
+# Active MQ is used for communication between the IVCT components.
+# ==============================================================================
+  activemq:
+    image: rmohr/activemq:5.14.5-alpine
+    ports:
+    - "61616:61616/tcp"
+    networks:
+    - ivctnet
+
+
+# ==============================================================================
+# IVCT Logsink component
+# ==============================================================================
+  logsink:
+    image: ivct/logsink:${IVCT_VERSION}
+    depends_on:
+    - activemq
+    volumes:
+    - ${IVCT_RUNTIME}:/root/conf
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
+    - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_BADGE_HOME_ID=/root/conf/Badges
+    - IVCT_BADGE_ICONS=/root/conf/Badges
+
+    networks:
+    - ivctnet
+
+# ==============================================================================
+# IVCT GUI component
+# The UI of the IVCT. Test suite data is mounted as docker volume.
+#
+# URL: http://${IVCT_HOST}:${IVCT_UIPORT}
+# Login: admin / admin
+# ==============================================================================
+  gui:
+    image: ivct/ivct-gui:${IVCT_VERSION}
+    depends_on:
+    - activemq
+    volumes:
+    - ${IVCT_RUNTIME}:/root/conf
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
+    - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_BADGE_HOME_ID=/root/conf/Badges
+    - IVCT_BADGE_ICONS=/root/conf/Badges
+    ports:
+    - "${IVCT_UIPORT}:8080"
+    networks:
+    - ivctnet
+
+
+networks:
+  ivctnet:
+    driver: bridge
+    name: mysimnetwork
