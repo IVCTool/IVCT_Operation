@@ -1,2 +1,5 @@
 # Ignore eclipise project settings
 .project
+
+# visual studio settings
+.vscode
