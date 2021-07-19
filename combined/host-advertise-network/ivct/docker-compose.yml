@@ -40,11 +40,13 @@ services:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
     - ts-rpr-designator:/root/conf/TestSuites/TS_Designator-${TS_RPR_DESIGNATOR}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
+    - ${PITCH_RTI_SETTINGS}:/usr/local/lrc/settings
     environment:
     - ACTIVEMQ_HOST=activemq
     - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
     - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6000:5000
     - TESTENGINE_LABEL=pi-skeleton
+    - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/prti1516eLRC.settings
     ports:
     - "6000:6000/tcp"
     - "5000:5000/udp"

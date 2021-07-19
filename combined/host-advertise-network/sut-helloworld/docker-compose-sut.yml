@@ -13,11 +13,14 @@ services:
     environment:
     - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6100:5100
     - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
+    - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/sut-helloworld/prti1516eLRC.settings
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
+    - LRC_DEBUG=true
     ports:
     - "6100:6100/tcp"
     - "5100:5100/udp"
     volumes:
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
+    - ${PITCH_RTI_SETTINGS}:/usr/local/lrc/settings
