@@ -43,8 +43,9 @@ services:
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
     - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
-    - ${LRC_SETTINGSDIR}:/root/prti1516e
+    - ${PITCH_RTI_SETTINGS}:/usr/local/lrc/settings
     environment:
+    - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/prti1516eLRC.settings
     - ACTIVEMQ_HOST=activemq
     - TESTENGINE_LABEL=pi-skeleton
     networks:
