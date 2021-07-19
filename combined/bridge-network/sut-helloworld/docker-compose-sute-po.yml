@@ -1,0 +1,20 @@
+version: '3.7'
+# ==============================================================================
+# The HelloWorld SUT.
+# ==============================================================================
+
+services:
+  helloworld-poe:
+    image: ivct/helloworld:po-${HW_VERSION}
+    environment:
+    - SETTINGS_DESIGNATOR=
+    - FEDERATE_NAME=B
+    - POPULATION_SIZE=100
+    - CYCLES=1000000
+    networks:
+    - sutnet
+
+networks:
+  sutnet:
+    driver: bridge
+    name: mysimnetwork

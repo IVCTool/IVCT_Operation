@@ -1,0 +1,21 @@
+version: '3.7'
+# ==============================================================================
+# The HelloWorld SUT
+# ==============================================================================
+
+services:
+# The HW application.
+  helloworld:
+    image: ivct/helloworld:ma-${HW_VERSION}
+    environment:
+    - SETTINGS_DESIGNATOR=(setqb RTI_tcpPort 4001) (setqb RTI_tcpForwarderAddr "10.56.74.208")
+    - FEDERATE_NAME=A
+    - POPULATION=100
+    - CYCLES=1000000
+    networks:
+    - sutnet
+
+networks:
+  sutnet:
+    driver: bridge
+    name: mysimnetwork
