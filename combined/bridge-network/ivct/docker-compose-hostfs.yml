@@ -15,6 +15,75 @@ services:
     networks:
     - ivctnet
 
+# ==============================================================================
+# IVCT Test Case Runner
+# The TC Runner executes the test cases. Test cases are included in test suites.
+# Test suite data is mounted as docker volume.
+# Also the LRC is mounted into the TC Runner container.
+# ==============================================================================
+
+  tc-runner-pi:
+    image: ivct/tc-runner:pi-skeleton-${IVCT_VERSION}
+    depends_on:
+    - activemq
+    volumes:
+    - ${IVCT_RUNTIME}:/root/conf
+    - ${PITCH_RTI_HOME}:/usr/local/lrc/code
+    - ${PITCH_RTI_SETTINGS}:/usr/local/lrc/settings
+    environment:
+    - TESTENGINE_LABEL=pi-skeleton
+    - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6000:5000
+    - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/prti1516eLRC.settings
+    - ACTIVEMQ_HOST=activemq
+    - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
+    - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_BADGE_HOME_ID=/root/conf/Badges
+    - IVCT_BADGE_ICONS=/root/conf/Badges
+    ports:
+    - "6000:6000/tcp"
+    - "5000:5000/udp"
+    networks:
+    - ivctnet
+
+  tc-runner-po:
+    image: ivct/tc-runner:po-${IVCT_VERSION}
+    depends_on:
+    - activemq
+    volumes:
+    - ${IVCT_RUNTIME}:/root/conf
+    environment:
+    - TESTENGINE_LABEL=portico
+    - ACTIVEMQ_HOST=activemq
+    - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
+    - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_BADGE_HOME_ID=/root/conf/Badges
+    - IVCT_BADGE_ICONS=/root/conf/Badges
+    networks:
+    - ivctnet
+
+  tc-runner-ma:
+    image: ivct/tc-runner:ma-${IVCT_VERSION}
+    depends_on:
+    - activemq
+    volumes:
+    - ${IVCT_RUNTIME}:/root/conf
+    environment:
+    - TESTENGINE_LABEL=mak
+    - ACTIVEMQ_HOST=activemq
+    - MAK_LRCADAPTER=10.56.74.68:4009
+    - MAK_RTIEXECADDRESS=10.56.74.68:4000
+    - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
+    - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_BADGE_HOME_ID=/root/conf/Badges
+    - IVCT_BADGE_ICONS=/root/conf/Badges
+    ports:
+    - "4009:4009/tcp"
+    networks:
+    - ivctnet
 
 # ==============================================================================
 # IVCT Logsink component
