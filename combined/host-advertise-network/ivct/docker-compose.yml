@@ -121,7 +121,7 @@ services:
 # Login: admin / admin
 # ==============================================================================
   gui:
-    image: ivct/ivct-gui:${IVCT_VERSION}
+    image: ivct/gui:${IVCT_VERSION}
     depends_on:
     - activemq
     - runtime-config
