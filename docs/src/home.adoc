@@ -47,6 +47,7 @@ This topic summarizes the main options for deploying the IVCT using Docker.
 
 * <<IVCT-Hosting#,IVCT Hosting>>
 * <<IVCT-Deployment-Options#,Deployment options>>
+* <<IVCT-running-engines-on-host#,Test Case Engine in non-Container Mode>>
 
 == Test Suite Container images
 

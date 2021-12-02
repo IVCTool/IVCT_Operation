@@ -1,0 +1,116 @@
+= Running Test Case Engines on Host System
+
+In cases where the network configuration of a test engine becomes to complex to be mapped between docker networks and external networks, running test cases engines outside a container might be the better option. There are several options for such a configuration. 
+
+== Mapping container volumes to host file system
+
+The first option is to map all volumes inside the containers to a volume on the host system. This can be archive by mapping the _/root/conf_ volume to a folder on your host system. In such a configuration, you can run the test case engine as a native application on the host engine, and all IVCT components may still run inside their containers. 
+
+The example below shows how the IVCT components which are still running as containers, need to be configured. The only configured volume will be the _/root/conf_ volume.
+
+[source]
+.compose file
+----
+# ==============================================================================
+# IVCT GUI component
+# The UI of the IVCT. Test suite data is mounted as docker volume.
+#
+# URL: http://${IVCT_HOST}:${IVCT_UIPORT}
+# Login: admin / admin
+# ==============================================================================
+  gui:
+    image: ivct/gui:${IVCT_VERSION}
+    depends_on:
+    - activemq
+    volumes:
+    - ${IVCT_RUNTIME}:/root/conf
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
+    - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_BADGE_HOME_ID=/root/conf/Badges
+    - IVCT_BADGE_ICONS=/root/conf/Badges
+    ports:
+    - "${IVCT_UIPORT}:8080"
+    networks:
+    - ivctnet
+----
+
+The host file system must be complete in the sense that all require configuration files, including the test suite libraries, must be present on this host file system. This option is recommended for framework and test case developers.
+
+See docker-compose-hostfs.yml for details.
+
+== Mirror docker volumes to host file system
+
+The other option is to run the IVCT components in standard container mode with their pre-configured internal volumes and mirror the runtime folder to the host file system. The advantage of this option is, you do not need to assemble the runtime folder by yourself. Especially compiling all test suites and providing the distributions may require some preparation efforts. 
+
+To mirror the runtime folder, it is recommended to use the _ivct/runtime_mirror_ container within your compose file.
+
+
+[source]
+.compose file
+----
+# ==============================================================================
+# Runtime Mirror Service
+# Creates a copy of the container runtime volume into the host file system 
+# ==============================================================================
+  mirror:
+    image: ivct/runtime_mirror:${IVCT_VERSION}
+    depends_on:
+    - runtime-config
+    - ts-helloworld
+    - ts-hla-encoding-rules
+    - ts-hla-cs-verification
+    - ts-hla-services
+    - ts-hla-object
+    - ts-hla-declaration
+    - ts-designator
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-helloworld:/root/conf/TestSuites/TS_HelloWorld-${TS_HW_VERSION}:nocopy
+    - ts-hla-encoding-rules:/root/conf/TestSuites/TS_HLA_EncodingRulesTester-${TS_HLA_VERSION}:nocopy
+    - ts-hla-cs-verification:/root/conf/TestSuites/TS_CS_Verification-${TS_HLA_VERSION}:nocopy
+    - ts-hla-services:/root/conf/TestSuites/TS_HLA_Services-${TS_HLA_VERSION}:nocopy
+    - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
+    - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
+    - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
+    - ${RUNTIME_MIRROR}:/mirror
+----
+
+The path to the folder to hold the mirror file system, should be defined in the _.env_ file.
+
+[source]
+..env file
+----
+RUNTIME_MIRROR='C:\Projekte\IVCT\Runtime_4_0_1_Mirror'
+----
+
+
+== Configuration of the test engine to run on native host
+
+Compile the IVCT_Framework repository to create a TC.exec installation archive. Extract the archive to a convenient location and test engine label and a pointer to the runtime folder into the bat file.
+
+[source]
+..bat File
+----
+@rem ************************************************************************************************
+@rem ** special Settings to use settings from mirror file system                                   **
+@rem **                                                                                            **
+set TESTENGINE_LABEL=TC.exec.host
+set IVCT_CONF=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/HostFsIVCT.properties
+@rem **                                                                                            **
+@rem ************************************************************************************************
+----
+
+The IVCT_CONF file must specific the path names to the runtime folders, which may created by one of the options above.
+
+[source]
+.IVCT.properties File
+----
+IVCT_SUT_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/IVCTsut
+IVCT_TS_DEF_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/TestSuites
+IVCT_TS_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/TestSuitesDist
+IVCT_BADGE_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/Badges
+IVCT_BADGE_ICONS=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/Badges
+----
