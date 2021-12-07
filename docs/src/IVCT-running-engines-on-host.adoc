@@ -89,7 +89,7 @@ RUNTIME_MIRROR='C:\Projekte\IVCT\Runtime_4_0_1_Mirror'
 
 == Configuration of the test engine to run on native host
 
-Compile the IVCT_Framework repository to create a TC.exec installation archive. Extract the archive to a convenient location and test engine label and a pointer to the runtime folder into the bat file.
+Compile the IVCT_Framework repository to create a TC.exec installation archive. You can do this with the _gradle :TC.exec:assembleDist_ command, which creates the distribution archives in the _TC.exec/build/distributions_ folder. Extract the archive to a convenient location and test engine label and a pointer to the runtime folder into the bat file.
 
 [source]
 ..bat File
