@@ -76,7 +76,6 @@ services:
     - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
     - ${PITCH_RTI_SETTINGS}:/usr/local/lrc/settings
-    - C:\Users\hzg:/usr/local/hzg
     environment:
     - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/prti1516eLRC.settings
     - ACTIVEMQ_HOST=activemq
