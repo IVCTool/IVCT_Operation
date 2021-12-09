@@ -86,31 +86,39 @@ The path to the folder to hold the mirror file system, should be defined in the 
 RUNTIME_MIRROR='C:\Projekte\IVCT\Runtime_4_0_1_Mirror'
 ----
 
+Please note that the _IVCT.properties_ file in the ${RUNTIME_MIRROR} folder, describes the file names used by the container running inside the docker engine. If you like this runtime folder by a native application, you need to use a copy of this properties file (changing file will not help, as it will be overwritten by the mirror service). See example below.
 
 == Configuration of the test engine to run on native host
 
-Compile the IVCT_Framework repository to create a TC.exec installation archive. You can do this with the _gradle :TC.exec:assembleDist_ command, which creates the distribution archives in the _TC.exec/build/distributions_ folder. Extract the archive to a convenient location and test engine label and a pointer to the runtime folder into the bat file.
+Compile the IVCT_Framework repository to create a TC.exec installation archive. You can do this with the _.\gradlew :TC.exec:assembleDist_ command, which creates the distribution archives in the _TC.exec/build/distributions_ folder. Extract the archive to a convenient location and adjust the test engine label, as well as the link to a properties file for your mirror file system. You can do this by editing the bat file in the TC.exec distribution, which is located in the _TC.exec_<VERSION>/bin_ folder. The following code sniped must be added:
 
 [source]
-..bat File
+.TC.exec.bat File
 ----
 @rem ************************************************************************************************
 @rem ** special Settings to use settings from mirror file system                                   **
 @rem **                                                                                            **
 set TESTENGINE_LABEL=TC.exec.host
-set IVCT_CONF=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/HostFsIVCT.properties
+set IVCT_CONF=C:/IVCT/Runtime_4_0_1_Mirror/HostFsIVCT.properties
 @rem **                                                                                            **
 @rem ************************************************************************************************
 ----
 
 The IVCT_CONF file must specific the path names to the runtime folders, which may created by one of the options above.
 
+The classpath for the engine needs a reference to the run time infrastructure. This can be done by defining the environment variable _LRC_CLASSPATH_. This can be done either in our user environment, or also inside the bat file
+
+`set LRC_CLASSPATH=<path_to_you_hla.lib>`
+
+You also need to define the IVCT properties. This is done inside the file assigned to your _IVCT_CONF_ environment variable. The example below show the configuration for the mirrored file system. Please note that you can not use the mirrored _IVCT.properties_, as this will be overwritten by the mirror service. You need to create a copy, like the example below:
+
 [source]
-.IVCT.properties File
+.HostFsIVCT.properties File
 ----
-IVCT_SUT_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/IVCTsut
-IVCT_TS_DEF_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/TestSuites
-IVCT_TS_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/TestSuitesDist
-IVCT_BADGE_HOME_ID=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/Badges
-IVCT_BADGE_ICONS=C:/Projekte/IVCT/Runtime_4_0_1_Mirror/Badges
+IVCT_SUT_HOME_ID=C:/Runtime_4_0_1_Mirror/IVCTsut
+IVCT_TS_DEF_HOME_ID=C:/Runtime_4_0_1_Mirror/TestSuites
+IVCT_TS_HOME_ID=C:/Runtime_4_0_1_Mirror/TestSuites
+IVCT_BADGE_HOME_ID=C:/Runtime_4_0_1_Mirror/Badges
+IVCT_BADGE_ICONS=C:/Runtime_4_0_1_Mirror/Badges
 ----
+
