@@ -108,7 +108,7 @@ The IVCT_CONF file must specific the path names to the runtime folders, which ma
 
 The classpath for the engine needs a reference to the run time infrastructure. This can be done by defining the environment variable _LRC_CLASSPATH_. This can be done either in our user environment, or also inside the bat file
 
-`set LRC_CLASSPATH=<path_to_you_hla.lib>`
+`set LRC_CLASSPATH=<path_to_your_rti.lib>`
 
 You also need to define the IVCT properties. This is done inside the file assigned to your _IVCT_CONF_ environment variable. The example below show the configuration for the mirrored file system. Please note that you can not use the mirrored _IVCT.properties_, as this will be overwritten by the mirror service. You need to create a copy, like the example below:
 
