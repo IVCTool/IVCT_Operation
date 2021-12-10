@@ -83,14 +83,14 @@ The path to the folder to hold the mirror file system, should be defined in the 
 [source]
 ..env file
 ----
-RUNTIME_MIRROR='C:\Projekte\IVCT\Runtime_4_0_1_Mirror'
+RUNTIME_MIRROR='C:\Runtime_4_0_1_Mirror'
 ----
 
 Please note that the _IVCT.properties_ file in the ${RUNTIME_MIRROR} folder, describes the file names used by the container running inside the docker engine. If you like this runtime folder by a native application, you need to use a copy of this properties file (changing file will not help, as it will be overwritten by the mirror service). See example below.
 
 == Configuration of the test engine to run on native host
 
-Compile the IVCT_Framework repository to create a TC.exec installation archive. You can do this with the _.\gradlew :TC.exec:assembleDist_ command, which creates the distribution archives in the _TC.exec/build/distributions_ folder. Extract the archive to a convenient location and adjust the test engine label, as well as the link to a properties file for your mirror file system. You can do this by editing the bat file in the TC.exec distribution, which is located in the _TC.exec_<VERSION>/bin_ folder. The following code sniped must be added:
+Compile the IVCT_Framework repository to create a TC.exec installation archive. You can do this with the _.\gradlew :TC.exec:assembleDist_ command, which creates the distribution archives in the _TC.exec/build/distributions_ folder. Extract the archive to a convenient location and adjust the test engine label, as well as the link to a properties file for your mirror file system. You can do this by adding the following code snippet into the bat file in the TC.exec distribution, which is located in the _TC.exec_<VERSION>/bin_ folder:
 
 [source]
 .TC.exec.bat File
@@ -99,7 +99,7 @@ Compile the IVCT_Framework repository to create a TC.exec installation archive. 
 @rem ** special Settings to use settings from mirror file system                                   **
 @rem **                                                                                            **
 set TESTENGINE_LABEL=TC.exec.host
-set IVCT_CONF=C:/IVCT/Runtime_4_0_1_Mirror/HostFsIVCT.properties
+set IVCT_CONF=C:/Runtime_4_0_1_Mirror/HostFsIVCT.properties
 @rem **                                                                                            **
 @rem ************************************************************************************************
 ----
