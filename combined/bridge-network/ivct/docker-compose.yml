@@ -42,6 +42,7 @@ services:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
     - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
+    - ts-dis:/root/conf/TestSuites/TS_DISTest-${TS_DIS_VERSION}:nocopy
     - ${RUNTIME_MIRROR}:/mirror
 
 
@@ -139,6 +140,23 @@ services:
     networks:
     - ivctnet
 
+  tc-runner-dis:
+    image: ivct/tc-runner:ma-${IVCT_VERSION}
+    profiles:
+      - mak
+    depends_on:
+    - activemq
+    - runtime-config
+    - ts-dis
+    volumes:
+    - runtime-config:/root/conf:nocopy
+    - ts-dis:/root/conf/TestSuites/TS_DISTest-${TS_DIS_VERSION}:nocopy
+    environment:
+    - ACTIVEMQ_HOST=activemq
+    - TESTENGINE_LABEL=dis
+    networks:
+    - ivctnet
+
 
 # ==============================================================================
 # IVCT Logsink component
@@ -184,6 +202,7 @@ services:
     - ts-hla-object:/root/conf/TestSuites/TS_HLA_Object-${TS_HLA_VERSION}:nocopy
     - ts-hla-declaration:/root/conf/TestSuites/TS_HLA_Declaration-${TS_HLA_VERSION}:nocopy
     - ts-designator:/root/conf/TestSuites/TS_Designator-${TS_DESIGNATOR_VERSION}:nocopy
+    - ts-dis:/root/conf/TestSuites/TS_DISTest-${TS_DIS_VERSION}:nocopy
     environment:
     - ACTIVEMQ_HOST=activemq
     ports:
@@ -272,6 +291,16 @@ services:
     - ivctnet
 
 # ==============================================================================
+# IVCT Test Suite data for DIS Test Cases
+# ==============================================================================
+  ts-dis:
+    image: ivct/ts-distest:${TS_DIS_VERSION}
+    volumes:
+    - ts-dis:/root/conf/TestSuites/TS_DISTest-${TS_DIS_VERSION}
+    networks:
+    - ivctnet
+
+# ==============================================================================
 # Data volumes for IVCT Runtime Config data and Test Suite data
 # ==============================================================================
 volumes:
@@ -283,6 +312,7 @@ volumes:
   ts-hla-object:
   ts-hla-declaration:
   ts-designator:
+  ts-dis:
 
 networks:
   ivctnet:
