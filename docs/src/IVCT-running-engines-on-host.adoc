@@ -2,7 +2,7 @@
 
 In cases where the network configuration of a test engine becomes to complex to be mapped between docker networks and external networks, running test cases engines outside a container might be the better option. There are several options for such a configuration. 
 
-== Mapping container volumes to host file system
+== Option A: Mapping container volumes to host file system
 
 The first option is to map all volumes inside the containers to a volume on the host system. This can be archive by mapping the _/root/conf_ volume to a folder on your host system. In such a configuration, you can run the test case engine as a native application on the host engine, and all IVCT components may still run inside their containers. 
 
@@ -41,7 +41,7 @@ The host file system must be complete in the sense that all require configuratio
 
 See docker-compose-hostfs.yml for details.
 
-== Mirror docker volumes to host file system
+== Option B: Mirror docker volumes to host file system
 
 The other option is to run the IVCT components in standard container mode with their pre-configured internal volumes and mirror the runtime folder to the host file system. The advantage of this option is, you do not need to assemble the runtime folder by yourself. Especially compiling all test suites and providing the distributions may require some preparation efforts. 
 
@@ -88,7 +88,7 @@ RUNTIME_MIRROR='C:\Runtime_4_0_1_Mirror'
 
 Please note that the _IVCT.properties_ file in the ${RUNTIME_MIRROR} folder, describes the file names used by the container running inside the docker engine. If you like this runtime folder by a native application, you need to use a copy of this properties file (changing file will not help, as it will be overwritten by the mirror service). See example below.
 
-== Configuration of the test engine to run on native host
+= Configuration of the test engine to run on native host
 
 Compile the IVCT_Framework repository to create a TC.exec installation archive. You can do this with the _.\gradlew :TC.exec:assembleDist_ command, which creates the distribution archives in the _TC.exec/build/distributions_ folder. Extract the archive to a convenient location and adjust the test engine label, as well as the link to a properties file for your mirror file system. You can do this by adding the following code snippet into the bat file in the TC.exec distribution, which is located in the _TC.exec_<VERSION>/bin_ folder:
 
