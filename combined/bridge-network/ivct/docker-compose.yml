@@ -80,6 +80,11 @@ services:
     - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/prti1516eLRC.settings
     - ACTIVEMQ_HOST=activemq
     - TESTENGINE_LABEL=pi-skeleton
+    - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
+    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6000:5000
+    ports:
+    - "6000:6000/tcp"
+    - "5000:5000/udp"
     networks:
     - ivctnet
 
