@@ -9,7 +9,7 @@ services:
   helloworld_a:
     image: ivct/helloworld:pi-skeleton-${HW_VERSION}
     environment:
-    - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
+    - SETTINGS_DESIGNATOR=crcAddress=${CRC_HOST}:${CRC_PORT}
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
