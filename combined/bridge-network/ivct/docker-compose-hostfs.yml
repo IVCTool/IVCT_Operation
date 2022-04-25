@@ -33,7 +33,7 @@ services:
     environment:
     - TESTENGINE_LABEL=pi-skeleton
     - PITCH_CRCADDRESS=${PITCH_CRCADDRESS}
-    - PITCH_ADVERTISE_ADDRESS=${DOCKERHOST}:6000:5000
+    - PITCH_ADVERTISE_ADDRESS=${PITCH_ADVERTISE_ADDRESS}
     - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/prti1516eLRC.settings
     - ACTIVEMQ_HOST=activemq
     - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
@@ -42,8 +42,9 @@ services:
     - IVCT_BADGE_HOME_ID=/root/conf/Badges
     - IVCT_BADGE_ICONS=/root/conf/Badges
     ports:
-    - "6000:6000/tcp"
-    - "5000:5000/udp"
+    - "${PITCH_ADVERTISE_TCP}:${PITCH_ADVERTISE_TCP}/tcp"
+    - "${PITCH_ADVERTISE_UDP}:${PITCH_ADVERTISE_UDP}/udp"
+
     networks:
     - ivctnet
 

@@ -3,13 +3,16 @@ version: '3.7'
 # The HelloWorld SUT
 # ==============================================================================
 
+#    - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
+#    - SETTINGS_DESIGNATOR=${SETTINGS_DESIGNATOR}
+#    - SETTINGS_DESIGNATOR=crcAddress=${PITCH_CRCADDRESS}
 services:
 # The HW application.
 # The LRC is mounted from the host file system.
   helloworld_a:
     image: ivct/helloworld:pi-skeleton-${HW_VERSION}
     environment:
-    - SETTINGS_DESIGNATOR=crcAddress=${CRC_HOST}:${CRC_PORT}
+    - SETTINGS_DESIGNATOR=${SETTINGS_DESIGNATOR}
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
