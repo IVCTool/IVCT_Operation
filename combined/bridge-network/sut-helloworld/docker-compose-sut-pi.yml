@@ -3,9 +3,6 @@ version: '3.7'
 # The HelloWorld SUT
 # ==============================================================================
 
-#    - SETTINGS_DESIGNATOR=crcAddress=${DOCKERHOST}:8989
-#    - SETTINGS_DESIGNATOR=${SETTINGS_DESIGNATOR}
-#    - SETTINGS_DESIGNATOR=crcAddress=${PITCH_CRCADDRESS}
 services:
 # The HW application.
 # The LRC is mounted from the host file system.
@@ -16,8 +13,15 @@ services:
     - FEDERATE_NAME=A
     - POPULATION=100
     - CYCLES=1000000
+    - PITCH_ADVERTISE_ADDRESS=${PITCH_ADVERTISE_ADDRESS}
+    - PITCH_LRC_SETTINGS_FILE=/usr/local/lrc/settings/sut-helloworld/prti1516eLRC.settings
+    - LRC_DEBUG=true
+    ports:
+    - "${PITCH_ADVERTISE_TCP}:${PITCH_ADVERTISE_TCP}/tcp"
+    - "${PITCH_ADVERTISE_UDP}:${PITCH_ADVERTISE_UDP}/udp"
     volumes:
     - ${PITCH_RTI_HOME}:/usr/local/lrc/code
+    - ${PITCH_RTI_SETTINGS}:/usr/local/lrc/settings
     networks:
     - sutnet
 
