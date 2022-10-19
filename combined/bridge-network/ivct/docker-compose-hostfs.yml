@@ -38,6 +38,7 @@ services:
     - ACTIVEMQ_HOST=activemq
     - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
     - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
+    - IVCT_TS_HOME_ID=/root/conf/TestSuites
     - IVCT_BADGE_HOME_ID=/root/conf/Badges
     - IVCT_BADGE_ICONS=/root/conf/Badges
     ports:
@@ -58,7 +59,7 @@ services:
     - ACTIVEMQ_HOST=activemq
     - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
     - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
-    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_TS_HOME_ID=/root/conf/TestSuites
     - IVCT_BADGE_HOME_ID=/root/conf/Badges
     - IVCT_BADGE_ICONS=/root/conf/Badges
     networks:
@@ -77,7 +78,7 @@ services:
     - MAK_RTIEXECADDRESS=10.56.74.68:4000
     - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
     - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
-    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_TS_HOME_ID=/root/conf/TestSuites
     - IVCT_BADGE_HOME_ID=/root/conf/Badges
     - IVCT_BADGE_ICONS=/root/conf/Badges
     ports:
@@ -98,7 +99,7 @@ services:
     - ACTIVEMQ_HOST=activemq
     - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
     - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
-    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_TS_HOME_ID=/root/conf/TestSuites
     - IVCT_BADGE_HOME_ID=/root/conf/Badges
     - IVCT_BADGE_ICONS=/root/conf/Badges
     networks:
@@ -121,7 +122,7 @@ services:
     - ACTIVEMQ_HOST=activemq
     - IVCT_SUT_HOME_ID=/root/conf/IVCTsut
     - IVCT_TS_DEF_HOME_ID=/root/conf/TestSuites
-    - IVCT_TS_HOME_ID=/root/conf/TestSuitesDist
+    - IVCT_TS_HOME_ID=/root/conf/TestSuites
     - IVCT_BADGE_HOME_ID=/root/conf/Badges
     - IVCT_BADGE_ICONS=/root/conf/Badges
     ports:
