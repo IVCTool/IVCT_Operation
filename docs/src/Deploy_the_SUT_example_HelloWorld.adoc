@@ -1,0 +1,80 @@
+
+
+
+
+= Deploy the "System Under Test" example Hello World 
+
+== Introduction
+
+To execute e.g. a interoperability requirement test, a System Under Test is needed. 
+
+The HelloWorld application is a simple Java application that can used as a System under Test.
+It is a good starting point to explore and understand the IVCT and test suites.
+
+In the steps below we use the HelloWorld application with the previously described docker environment,
+by using the Pitch RTI.
+
+
+== Prerequisite
+
+( <<Deploy_the_IVCT_and_start, "See Deploy_the_IVCT_and_start.adoc" for explanations>> )
+
+A Docker Engine and Docker Compose have been installed.
+
+Pitch RTI is installed on this machine.
+
+This repository is cloned to your Docker Host to get the example compositions.
+
+ 
+
+== Adapt the HelloWorld environment settings
+
+Navigate to the directory `deployment/sut-helloworld`. +
+Open the `.env` file in a text editor and verify the settings.
+Different values need to be adapted to the system which is used:
+
+The host where the TC Runner is running: +
+ `DOCKERHOST=192.168.1.1`
+
+Set the following to the installation directory of the Pitch RTI on the host +
+ `PITCH_RTI_HOME='C:\Program Files\prti1516e` +
+ `PITCH_RTI_SETTINGS='C:\Users\*****\prti1516e`
+
+change the ip to the address where the Pitch CRC is running,
+ the PORT may be fine. +
+ `CRC_HOST=192.168.1.2`
+ `CRC_PORT=8989`
+
+verify if this variable for the portico RTI is activated
+ `SETTINGS_DESIGNATOR="crcAddress=${CRC_HOST}:${CRC_PORT}"`
+
+
+If you are experienced IVCT user you can change some variables in the docker-compose file. +
+ `docker-compose-sut-pi.yml`
+ 
+The provided values are already fine to run the application:
+
+|===
+| Environment Variable Name  | Description | Default if not set
+| FEDERATE_NAME              | Name of the SUT. In the default parameter settings the federate name `A` is used. This setting must match the actual test case parameters.  | `A`
+| POPULATION                 | Size of the starting population for the HelloWorld Country object.   | `10`
+| CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
+|===
+
+== Start the HelloWorld application
+
+Start the application with
+
+ docker-compose up
+
+The SUT Docker container images will be pulled from the Docker Hub and the SUT will be deployed.
+
+== Run a test
+
+Once the IVCT and the SUT are up and running, you are able to run a test against HelloWorld.
+
+Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
+
+In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make sure the value is empty in the SuT view.
+
+The SuT view lists the test cases for the HelloWord SuT. Select a test case and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.

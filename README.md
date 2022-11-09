@@ -6,9 +6,9 @@ Following the principles of the **Modelling and Simulation as a Service (MSaaS)*
 
 Federated simulations use communication environments to communicate and synchronize in virtual environments. The current IVCT implementation uses the **High Level Architecture (HLA)** standard for that purpose. There are several implementations for the HLA standard available, so called **Run-Time Infrastructures (RTI)**. This repository provides several launch template examples for the most commonly used RTIs, which are also the top level entries for this repository.
 
-## Further information
+## Getting started
 
-Further information about the IVCT deployment and the operation concepts can be found in the [documentation](docs/src/home.adoc) section of this repository.
+Informations how to get and deploy the IVCT can be found here [Deploy the IVCT and start Testing](docs/src/ Deploy_the_IVCT_and_start.adoc)
 
 
 ## LICENCE
