@@ -8,12 +8,18 @@
 
 To execute e.g. a interoperability requirement test, a System Under Test is needed. 
 
-The HelloWorld application is a simple Java application that can used as a System under Test.
+The HelloWorld application TS_HelloWorld is a simple Java application that can used as a System under Test.
+
+TS_HelloWorld is a sample test suite to explain the concepts for writing test cases for the IVCTool.
+It includes a small two simple test cases, combined into the TS_HelloWorld test suite,
+and a simple helloworld federate to run against the test cases.
+
 It is a good starting point to explore and understand the IVCT and test suites.
 
 In the steps below we use the HelloWorld application with the previously described docker environment,
 by using the Pitch RTI.
 
+###############################
 
 == Prerequisite
 
@@ -45,7 +51,7 @@ change the ip to the address where the Pitch CRC is running,
  `CRC_HOST=192.168.1.2`
  `CRC_PORT=8989`
 
-verify if this variable for the portico RTI is activated
+verify if this variable for the pitch RTI is activated
  `SETTINGS_DESIGNATOR="crcAddress=${CRC_HOST}:${CRC_PORT}"`
 
 
@@ -60,6 +66,10 @@ The provided values are already fine to run the application:
 | POPULATION                 | Size of the starting population for the HelloWorld Country object.   | `10`
 | CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
 |===
+
+
+
+###  ################  ############
 
 == Start the HelloWorld application
 

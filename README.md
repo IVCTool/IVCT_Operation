@@ -8,7 +8,7 @@ Federated simulations use communication environments to communicate and synchron
 
 ## Getting started
 
-Informations how to get and deploy the IVCT can be found here [Deploy the IVCT and start Testing](docs/src/ Deploy_the_IVCT_and_start.adoc)
+Informations how to get and deploy the IVCT can be found here [Deploy the IVCT and start Testing](docs/src/Deploy_the_IVCT_and_start.adoc)
 
 
 ## LICENCE
