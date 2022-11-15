@@ -1,25 +1,26 @@
 
 
-
-
 = Deploy the "System Under Test" example Hello World 
 
 == Introduction
 
-To execute e.g. a interoperability requirement test, a System Under Test is needed. 
+To execute e.g. a interoperability requirement test, a System Under Test is needed. +
+The HelloWorld application is a simple Java application that can used as a System under Test. +
+It represents a federation against which sample test of the testsuite TS_HelloWorld could be run.
 
-The HelloWorld application TS_HelloWorld is a simple Java application that can used as a System under Test.
-
-TS_HelloWorld is a sample test suite to explain the concepts for writing test cases for the IVCTool.
-It includes a small two simple test cases, combined into the TS_HelloWorld test suite,
-and a simple helloworld federate to run against the test cases.
-
+----
+The testsuite TS_HelloWorld is integrated into the IVCT - container Image, 
+which you might have startet before.
 It is a good starting point to explore and understand the IVCT and test suites.
+https://github.com/IVCTool/IVCT_TestSuiteDevelopment[Learn more about the TS_Helloworld]
+----
+#oberen Link anpassen# +  
 
-In the steps below we use the HelloWorld application with the previously described docker environment,
+
+In the steps below we start the HelloWorld application with the previously described docker environment,
 by using the Pitch RTI.
 
-###############################
+
 
 == Prerequisite
 
@@ -30,35 +31,43 @@ A Docker Engine and Docker Compose have been installed.
 Pitch RTI is installed on this machine.
 
 This repository is cloned to your Docker Host to get the example compositions.
-
  
 
 == Adapt the HelloWorld environment settings
+
+  deployment/ivct
+  deployment/sut-hellowworld
 
 Navigate to the directory `deployment/sut-helloworld`. +
 Open the `.env` file in a text editor and verify the settings.
 Different values need to be adapted to the system which is used:
 
-The host where the TC Runner is running: +
- `DOCKERHOST=192.168.1.1`
-
-Set the following to the installation directory of the Pitch RTI on the host +
+Set the following to the installation directory of the local Pitch RTI on the host +
  `PITCH_RTI_HOME='C:\Program Files\prti1516e` +
  `PITCH_RTI_SETTINGS='C:\Users\*****\prti1516e`
 
+The host where your docker Installation (with the later started IVCT Components) is at: +
+ `DOCKERHOST=192.168.1.1`
+
+
 change the ip to the address where the Pitch CRC is running,
  the PORT may be fine. +
- `CRC_HOST=192.168.1.2`
- `CRC_PORT=8989`
+ `CRC_HOST=192.168.1.1` +
+ `CRC_PORT=8989` +
+ (if you want to connect with a remote pitch CRC this address differs from "DOCKERHOST".)
 
 verify if this variable for the pitch RTI is activated
  `SETTINGS_DESIGNATOR="crcAddress=${CRC_HOST}:${CRC_PORT}"`
-
-
-If you are experienced IVCT user you can change some variables in the docker-compose file. +
- `docker-compose-sut-pi.yml`
+   +
  
-The provided values are already fine to run the application:
+ 
+The settings in the docker-compose-sut-pi.yml file are fine to run the application.
+  
+'''
+
+If you are experienced IVCT user you can change some variables your used  the docker-compose file. +
+#Link auf ein dokument, das die Variablen entweder getrennt fuer ivct/docker-compose.yml
+ und sut-hellorld/docker-compose-sut-*.yml erklaert oder gemeinsam in einem dokument#
 
 |===
 | Environment Variable Name  | Description | Default if not set
@@ -67,21 +76,31 @@ The provided values are already fine to run the application:
 | CYCLES                     | Number if iterations before resigning the federate. The federate iterates every second, so this also determines the lifetime the helloworld federate.    | `1000000`
 |===
 
+'''
 
-
-###  ################  ############
 
 == Start the HelloWorld application
 
 Start the application with
-
- docker-compose up
+ 
+ docker-compose -f docker-compose-sut-pi.yml up
+ 
 
 The SUT Docker container images will be pulled from the Docker Hub and the SUT will be deployed.
+Afterwards it is connected to the specified RTI. (CRC_HOST )
 
-== Run a test
+
+
+== Further steps
+
+=== Running HW_Testcases against the HelloWorld application  #ueberarbeiten neue Seite verlinken#
+
+Start a federate to demonstrate the usage of IVCT with a example test-suite
+
 
 Once the IVCT and the SUT are up and running, you are able to run a test against HelloWorld.
+
+
 
 Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
 

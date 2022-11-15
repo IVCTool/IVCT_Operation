@@ -104,7 +104,7 @@ as described in more detail at:
  #verify this page#
   
 
-=== Work with the IVCT
+=== Start a federate to demonstrate the usage of IVCT with a example test-suite
 
 However, for executing a test a System Under Test (SUT) is required.
 
@@ -112,5 +112,5 @@ A sample "System Under Test"  can be build and started with the components
 of this repository similar to the procedure written obove.
 
 This is explained at: +
-<<Deploy_the_SUT_example_HelloWorld#,Run a test against the HelloWorld SUT>>
+<<Deploy_the_SUT_example_HelloWorld#start the sample HelloWorld SUT>>
 
