@@ -1,0 +1,55 @@
+= Running TS_Helloworld-testsuite-tests against HelloWorld application +
+
+Once the IVCT and the SUT are up and running, you are able to run tests 
+of the example testsuite TS_HelloWorld against the sample HelloWorld application.
+
+
+== Prerequisite
+
+You have cloned and deployed the IVCT- Software as described in:
+link:Deploy_the_IVCT_and_start.adoc[]
+
+You have cloned and deployed the HelloWorld SUT as described in:
+link:Deploy_the_SUT_example_HelloWorld.adoc[]
+
+
+== Login to the IVCT UI  to test the installation
+
+The IVCT provides a webinterface based on tomcat. This IVCT GUI can be reached 
+with a webbrowser at: `http://${DOCKERHOST}:${IVCT_UIPORT}`. +
+(You have to replace `DOCKERHOST` and `IVCT_UIPORT` by the values set in the `.env` file.)
+
+ e.g. http://192.168.1.1:8080
+
+Login as user `admin` with password `admin.`
+
+
+
+== Adjust the settings in the GUI for your environment
+
+in the first Step you have to choose the RTI you want to work with: +
+  in the Menue klick on the little gearwheel obove. +
+  under "TestEngine"  pick the RTI  pi-skeleton  [ok]
+
+In the pullDown Menue SuT  choose "Edit SuT" 
+
+----------------  hier weiter
+
+select the > hw_iosb  sector
+###################################
+
+Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
+
+In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make sure the value is empty in the SuT view.
+
+The SuT view lists the test cases for the HelloWord SuT. Select a test case and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
+
+####################################
+
+
+
+== Further steps
+=== More Informations to work with the GUI
+Once you are logged in you can explore the UI, 
+as described in more detail at: 
+link:IVCT-GettingStarted-Graphical-User-Interface.adoc[]  #verify this page#

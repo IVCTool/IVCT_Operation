@@ -93,10 +93,13 @@ Afterwards it is connected to the specified RTI. (CRC_HOST )
 
 == Further steps
 
-=== Running HW_Testcases against the HelloWorld application  #ueberarbeiten neue Seite verlinken#
+=== Running HW_Testcases against the HelloWorld application
 
-Start a federate to demonstrate the usage of IVCT with a example test-suite
+When the federate ist started, you can demonstrate the usage of IVCt with the example testsuite TS_HelloWorld.
 
+link:Running_TS_Helloworld-testsuite-tests_against_HelloWorld-application.adoc[]
+
+#rest kommt weg#  ##############
 
 Once the IVCT and the SUT are up and running, you are able to run a test against HelloWorld.
 
