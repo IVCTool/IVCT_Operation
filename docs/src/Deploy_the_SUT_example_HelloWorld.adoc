@@ -24,7 +24,7 @@ by using the Pitch RTI.
 
 == Prerequisite
 
-( <<Deploy_the_IVCT_and_start, "See Deploy_the_IVCT_and_start.adoc" for explanations>> )
+link:Deploy_the_IVCT_and_start.adoc[See "Deploy_the_IVCT_and_start.adoc" for explanations]
 
 A Docker Engine and Docker Compose have been installed.
 

@@ -99,10 +99,8 @@ The final step is to log into the IVCT UI. +
 Login as user `admin` with password `admin.`
 
 Once you are logged in you can explore the UI, 
-as described in more detail at:
- <<IVCT-GettingStarted-Graphical-User-Interface,Explore the Grapical User Interface>> 
- #verify this page#
-  
+as described in more detail at: 
+link:IVCT-GettingStarted-Graphical-User-Interface.adoc[]  #verify this page#
 
 === Start a federate to demonstrate the usage of IVCT with a example test-suite
 
@@ -111,6 +109,6 @@ However, for executing a test a System Under Test (SUT) is required.
 A sample "System Under Test"  can be build and started with the components 
 of this repository similar to the procedure written obove.
 
-This is explained at: +
-<<Deploy_the_SUT_example_HelloWorld#start the sample HelloWorld SUT>>
+This is explained at: 
+link:Deploy_the_SUT_example_HelloWorld.adoc[]
 
