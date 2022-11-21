@@ -28,28 +28,38 @@ Login as user `admin` with password `admin.`
 == Adjust the settings in the GUI for your environment
 
 in the first Step you have to choose the RTI you want to work with: +
-  in the Menue klick on the little gearwheel obove. +
-  under "TestEngine"  pick the RTI  pi-skeleton  [ok]
+In the Menue klick on the little gearwheel in the top right corner. +
+Under "TestEngine"  pick the RTI  pi-skeleton  [ok]
 
-In the pullDown Menue SuT  choose "Edit SuT" 
 
-----------------  hier weiter
+Now you need to declare how to reach the "Run-Time-Infrastructure" you are working with: +
+ In the navigation frame on the left side with a blue background +
+ chose the "System under Test (SuT) View" and activate "hw_iosb"  +
+ In the pullDown Menue [SuT] of the top Menu Bar  choose "Edit SuT"  +
+ Insert in the field "RTI Connection" for connecting with the Pitch RTI you have started: 
 
-select the > hw_iosb  sector
-###################################
+ crcAddress=192.168.1.1:8989   ( adapt to your IP)
 
-Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
+== Run example Tests
 
-In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make sure the value is empty in the SuT view.
+The SuT view lists the test cases for the HelloWord SuT. +
+e.g.:    > hw_iosb |  HelloWorld-2019
 
-The SuT view lists the test cases for the HelloWord SuT. Select a test case and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
+Select a test case and press the `Execute TC` button. +
+This will open a new tab in the graphical user interface, 
+showing the status and the output from the running test case. 
+The output will also be collected in log files after running test cases.
+#to be rewiewed#
 
-####################################
+
 
 
 
 == Further steps
+
 === More Informations to work with the GUI
+
 Once you are logged in you can explore the UI, 
 as described in more detail at: 
 link:IVCT-GettingStarted-Graphical-User-Interface.adoc[]  #verify this page#
+
