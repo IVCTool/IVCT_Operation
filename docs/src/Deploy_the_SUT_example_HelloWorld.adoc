@@ -14,7 +14,7 @@ which you might have startet before.
 It is a good starting point to explore and understand the IVCT and test suites.
 https://github.com/IVCTool/IVCT_TestSuiteDevelopment[Learn more about the TS_Helloworld]
 ----
-#oberen Link anpassen# +  
+##test the link obove# +  
 
 
 In the steps below we start the HelloWorld application with the previously described docker environment,
@@ -66,8 +66,8 @@ The settings in the docker-compose-sut-pi.yml file are fine to run the applicati
 '''
 
 If you are experienced IVCT user you can change some variables your used  the docker-compose file. +
-#Link auf ein dokument, das die Variablen entweder getrennt fuer ivct/docker-compose.yml
- und sut-hellorld/docker-compose-sut-*.yml erklaert oder gemeinsam in einem dokument#
+##to create one ore more new documents, which explains variables ivct/.env, sut-helloworld/.env, ivct/*.compose.yml, sut-hellorld/docker-compose-sut-.yml#
+
 
 |===
 | Environment Variable Name  | Description | Default if not set
@@ -99,14 +99,3 @@ When the federate ist started, you can demonstrate the usage of IVCt with the ex
 
 link:Running_TS_Helloworld-testsuite-tests_against_HelloWorld-application.adoc[]
 
-#rest kommt weg#  ##############
-
-Once the IVCT and the SUT are up and running, you are able to run a test against HelloWorld.
-
-
-
-Login to the IVCT and navigate to the hw_iosb entry in the SuT view.
-
-In the conformance statement of the hw_iosb you need to provide the local settings designator. This value is RTI specific. For the Portico RTI you can leave this empty. So, make sure the value is empty in the SuT view.
-
-The SuT view lists the test cases for the HelloWord SuT. Select a test case and press the `Execute TC` button. This will open a new tab in the graphical user interface, showing the status and the output from the running test case. The output will also be collected in log files after running test cases.
