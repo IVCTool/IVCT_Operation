@@ -71,9 +71,9 @@ https://github.com/IVCTool/TS_HLA_BASE/tree/development/ETC_FRA_Common
 === More Informations to work with the GUI
 
 Once you are logged in you can explore the UI, 
-as described in more detail at: 
-link:IVCT-GettingStarted-Graphical-User-Interface.adoc[]
-#toDo IVCT-GettingStarted-Graphical-User-Interface.adoc has to be reviewed
+as described in more detail at: +
+link:IVCT-GettingStarted-Graphical-User-Interface.adoc[] +
+#toDo: IVCT-GettingStarted-Graphical-User-Interface.adoc has to be reviewed
 
 === Learn more about the HelloWorld Testsuite
 

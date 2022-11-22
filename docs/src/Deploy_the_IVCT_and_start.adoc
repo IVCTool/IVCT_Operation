@@ -28,7 +28,7 @@ You may get a trial Version at https://pitchtechnologies.com/
 See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
 
 
-##Todo Link to RTI Information    to be added here#
+##ToDo: Link to RTI Information    to be added here#
 
 
 == Clone this repository to your local environment
@@ -103,7 +103,7 @@ Login as user `admin` with password `admin.`
 Once you are logged in you can explore the UI, 
 as described in more detail at: 
 link:IVCT-GettingStarted-Graphical-User-Interface.adoc[] +
- ##toDo   IVCT-GettingStarted-Graphical-User-Interface.adoc has to be reviewed#
+ ##toDo:   IVCT-GettingStarted-Graphical-User-Interface.adoc has to be reviewed#
 
 === Start a federate to demonstrate the usage of IVCT with a example test-suite
 

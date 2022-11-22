@@ -10,6 +10,12 @@ Federated simulations use communication environments to communicate and synchron
 
 Informations how to get and deploy the IVCT can be found here [Deploy the IVCT and start Testing](docs/src/Deploy_the_IVCT_and_start.adoc)
 
+## Further information
+
+Further information about the IVCT deployment and the operation concepts can be found in the 
+ [documentation section](docs/src/home.adoc)   of this repository.
+ 
+(ToDo: all Files has to be checked if up to Date and relevant in this section)
 
 ## LICENCE
 
