@@ -14,7 +14,7 @@ We describe here an example how to do this with the container software docker an
 
 A Docker Engine and Docker Compose have been installed.
 
-You may need a version of java installed on your System and set a proper path to it  #to be checked#
+You may need a version of java installed on your System and set a proper path to it.
 
 The IVCT and example SUT (System under Test) are prepared to work with a HLA federate application.
 There are different implementations (Pitch, VTMaK, Portico) for this central component, called "Run-Time-Infrastructure" (RTI) +
@@ -24,9 +24,11 @@ to provide the IVCT a "local RTI Component"  +
 You may get a trial Version at https://pitchtechnologies.com/
 
 
-#Link to docker Information   to be added here#
+'''
+See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
 
-#Link to RTI Information    to be added here#
+
+##Todo Link to RTI Information    to be added here#
 
 
 == Clone this repository to your local environment
@@ -100,7 +102,8 @@ Login as user `admin` with password `admin.`
 
 Once you are logged in you can explore the UI, 
 as described in more detail at: 
-link:IVCT-GettingStarted-Graphical-User-Interface.adoc[]  #verify this page#
+link:IVCT-GettingStarted-Graphical-User-Interface.adoc[] +
+ ##toDo   IVCT-GettingStarted-Graphical-User-Interface.adoc has to be reviewed#
 
 === Start a federate to demonstrate the usage of IVCT with a example test-suite
 

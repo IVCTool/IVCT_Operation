@@ -8,13 +8,12 @@ To execute e.g. a interoperability requirement test, a System Under Test is need
 The HelloWorld application is a simple Java application that can used as a System under Test. +
 It represents a federation against which sample test of the testsuite TS_HelloWorld could be run.
 
-----
-The testsuite TS_HelloWorld is integrated into the IVCT - container Image, 
-which you might have startet before.
-It is a good starting point to explore and understand the IVCT and test suites.
-https://github.com/IVCTool/IVCT_TestSuiteDevelopment[Learn more about the TS_Helloworld]
-----
-##test the link obove# +  
+
+ The testsuite TS_HelloWorld is integrated into the IVCT - container Image, 
+ which you might have startet before.
+ It is a good starting point to explore and understand the IVCT and test suites.
+ Learn more about the TS_Helloworld at: https://github.com/IVCTool/IVCT_TestSuiteDevelopment
+
 
 
 In the steps below we start the HelloWorld application with the previously described docker environment,
@@ -50,13 +49,13 @@ The host where your docker Installation (with the later started IVCT Components)
  `DOCKERHOST=192.168.1.1`
 
 
-change the ip to the address where the Pitch CRC is running,
+Change the ip to the address where the Pitch CRC is running,
  the PORT may be fine. +
  `CRC_HOST=192.168.1.1` +
  `CRC_PORT=8989` +
  (if you want to connect with a remote pitch CRC this address differs from "DOCKERHOST".)
 
-verify if this variable for the pitch RTI is activated
+Verify if this variable for the pitch RTI is activated
  `SETTINGS_DESIGNATOR="crcAddress=${CRC_HOST}:${CRC_PORT}"`
    +
  
@@ -66,7 +65,8 @@ The settings in the docker-compose-sut-pi.yml file are fine to run the applicati
 '''
 
 If you are experienced IVCT user you can change some variables your used  the docker-compose file. +
-##to create one ore more new documents, which explains variables ivct/.env, sut-helloworld/.env, ivct/*.compose.yml, sut-hellorld/docker-compose-sut-.yml#
+
+##ToDo: create one ore more new documents, which explains variables ivct/.env, sut-helloworld/.env, ivct/*.compose.yml, sut-hellorld/docker-compose-sut-.yml#
 
 
 |===
@@ -97,5 +97,5 @@ Afterwards it is connected to the specified RTI. (CRC_HOST )
 
 When the federate ist started, you can demonstrate the usage of IVCt with the example testsuite TS_HelloWorld.
 
-link:Running_TS_Helloworld-testsuite-tests_against_HelloWorld-application.adoc[]
+link:Running_TS_Helloworld-tests_against_HelloWorld-application.adoc[]
 
