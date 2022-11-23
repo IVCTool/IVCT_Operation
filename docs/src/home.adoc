@@ -28,9 +28,14 @@ The remainder of this page lists several topics related to IVCT deployment and o
 
 This topic demonstrates the basic steps to deploy the IVCT for the Portico RTI and run a test against the HelloWorld SUT.
 
-* <<IVCT-GettingStarted-Deployment#,Deploy the IVCT>>
+* <<Deploy_the_IVCT_and_start#,Deploy the IVCT>>
+
+* <<Deploy_the_SUT_example_HelloWorld#,Start the example System under Test HelloWorld>>
+
+* <<Running_TS_Helloworld-tests_against_HelloWorld-application#,Run a test against the HelloWorld SUT>>
+
 * <<IVCT-GettingStarted-Graphical-User-Interface#,Explore the Grapical User Interface>>
-* <<IVCT-GettingStarted-HelloWorld#,Run a test against the HelloWorld SUT>>
+
 
 == IVCT Container images
 

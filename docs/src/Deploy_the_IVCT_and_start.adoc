@@ -1,0 +1,118 @@
+= Deploy the IVCT +
+
+== Introduction
+
+
+As mentioned in the IVCT_Operation Readme this repository provides environment (.env) and compose
+files (*.yml) to  get and launch the IVCT Software in a virtual container System.
+
+We describe here an example how to do this with the container software docker and docker-compose.
+
+
+
+== Prerequisite
+
+A Docker Engine and Docker Compose have been installed.
+
+You may need a version of java installed on your System and set a proper path to it.
+
+The IVCT and example SUT (System under Test) are prepared to work with a HLA federate application.
+There are different implementations (Pitch, VTMaK, Portico) for this central component, called "Run-Time-Infrastructure" (RTI) +
+In this Example we use the HLA-RTI implementation Pitch.
+This has to be installed in your environment even if you want to work with a remote "Central RTI Component" 
+to provide the IVCT a "local RTI Component"  +
+You may get a trial Version at https://pitchtechnologies.com/
+
+
+'''
+See https://docs.docker.com/install[Docker Engine] for instructions on installing a Docker Engine.
+
+
+##ToDo: Link to RTI Information    to be added here#
+
+
+== Clone this repository to your local environment
+
+The first step is to clone this repository to your Docker Host to get the example compositions.
+
+In the repository there are IVCT and SUT example compositions which work with different HLA-RTI implementations (Pitch, VTMaK, and Portico), organized in the following directories:
+
+  deployment/ivct
+  deployment/sut-hellowworld
+
+
+Each `ivct` and `sut-helloworld` directory contains a `.env` file to tailor the composition in that directory to the local infrastructure.
+And one or more `docker-compose*.yml`  Files.
+
+
+
+== Adapt the IVCT environment settings
+
+In the following steps we will prepare the IVCT Start for the Pitch RTI.
+
+Navigate to the directory `deployment/ivct`. Open the `.env` file in a text editor and verify the settings.
+Different values need to be adapted to the system which is used:
+
+The host where your docker Installation (with the later started IVCT Components) is at: +
+ `DOCKERHOST=192.168.1.1`
+
+The address where the Pitch "Central RTI Component" is running you want to work with. +
+ `PITCH_CRCADDRESS=192.168.1.1:8989` +
+(if you want to connect with a remote pitch CRC this address differs from "DOCKERHOST".)
+
+Set the following to the installation directory of the local Pitch RTI on the host +
+ `PITCH_RTI_HOME='C:\Program Files\prti1516e` +
+ `PITCH_RTI_SETTINGS='C:\Users\*****\prti1516e`
+ 
+The port of the IVCT web-based UI should be changed if another service already uses this port. +
+ `IVCT_UIPORT=8080`
+ 
+Other settings should be fine, explanations for the settings are given in the .env-files. +
+##ToDo: create one ore more new documents, which explains variables ivct/.env, sut-helloworld/.env#
+
+
+You may change settings directly in the `.env` file, 
+however you should be aware that this creates a modification in your cloned repository.
+You can do this, but it may cause problems to stay in sync with future updates. +
+Another option to adjust your settings, may be to define the variables to be modified in your system environment. The environment variables will overwrite anything inside the `.env` file.
+
+== Start the IVCT
+
+From the `ivct` directory  (e.g.deployment/ivct) start the IVCT using the following command:
+
+ docker-compose -f docker-compose.yml up
+
+The IVCT Docker container images will be pulled from the Docker Hub and the IVCT will be deployed.
+
+At this point the IVCT is running in a docker container. +
+
+'''
+
+== Further steps
+
+=== Login to the IVCT UI  to test the installation
+
+The IVCT provides a webinterface based on tomcat. This IVCT GUI can be reached 
+with a webbrowser at: `http://${DOCKERHOST}:${IVCT_UIPORT}`. +
+You have to replace `DOCKERHOST` and `IVCT_UIPORT` by the values set in the `.env` file. 
+
+ http://192.168.1.1:8080
+
+The final step is to log into the IVCT UI. +
+Login as user `admin` with password `admin.`
+
+Once you are logged in you can explore the UI, 
+as described in more detail at: 
+link:IVCT-GettingStarted-Graphical-User-Interface.adoc[] +
+ ##toDo:   IVCT-GettingStarted-Graphical-User-Interface.adoc has to be reviewed#
+
+=== Start a federate to demonstrate the usage of IVCT with a example test-suite
+
+However, for executing a test a System Under Test (SUT) is required.
+
+A sample "System Under Test"  can be build and started with the components 
+of this repository similar to the procedure written obove.
+
+This is explained at: 
+link:Deploy_the_SUT_example_HelloWorld.adoc[]
+
