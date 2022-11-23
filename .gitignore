@@ -3,3 +3,5 @@
 
 # visual studio settings
 .vscode
+
+.asciidoctorconfig.adoc
