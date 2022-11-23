@@ -67,7 +67,8 @@ Set the following to the installation directory of the local Pitch RTI on the ho
 The port of the IVCT web-based UI should be changed if another service already uses this port. +
  `IVCT_UIPORT=8080`
  
-Other settings should be fine,
+Other settings should be fine, explanations for the settings are given in the .env-files. +
+##ToDo: create one ore more new documents, which explains variables ivct/.env, sut-helloworld/.env#
 
 
 You may change settings directly in the `.env` file, 

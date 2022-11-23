@@ -15,7 +15,7 @@ Informations how to get and deploy the IVCT can be found here [Deploy the IVCT a
 Further information about the IVCT deployment and the operation concepts can be found in the 
  [documentation section](docs/src/home.adoc)   of this repository.
  
-(ToDo: all Files has to be checked if up to Date and relevant in this section)
+(ToDo: all Files in this section has to be checked if up to Date and relevant)
 
 ## LICENCE
 
