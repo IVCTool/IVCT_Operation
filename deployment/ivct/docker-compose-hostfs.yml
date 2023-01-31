@@ -24,6 +24,8 @@ services:
 
   tc-runner-pi:
     image: ivct/tc-runner:pi-skeleton-${IVCT_VERSION}
+    profiles:
+      - pitch
     depends_on:
     - activemq
     volumes:
@@ -50,6 +52,8 @@ services:
 
   tc-runner-po:
     image: ivct/tc-runner:po-${IVCT_VERSION}
+    profiles:
+      - portico
     depends_on:
     - activemq
     volumes:
@@ -67,6 +71,8 @@ services:
 
   tc-runner-ma:
     image: ivct/tc-runner:ma-${IVCT_VERSION}
+    profiles:
+      - mak
     depends_on:
     - activemq
     volumes:
