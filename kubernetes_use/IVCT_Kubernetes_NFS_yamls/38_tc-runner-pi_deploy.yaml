@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tc-runner-pi
+  # namespace: brf-test-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tc-runner
+  template:
+    metadata:
+      labels:
+        app: tc-runner
+    spec:
+      containers:
+        - name: tcrunn
+          image: ivct/tc-runner:pi-skeleton-4.1.0-SNAPSHOT
+          imagePullPolicy: Always
+          env:
+            - name: ACTIVEMQ_HOST
+              value: activemq
+              # value: "10.244.0.77"
+            - name: ACTIVEMQ_PORT
+              value: "61616"
+            - name: IVCT_HOME
+              value: /root/conf
+            - name: IVCT_CONF
+              value: /root/conf/IVCT.properties
+            - name: TESTENGINE_LABEL
+              value: pitch-4.1.0-SNAPSHOT
+
+            - name: PITCH_RTI_HOME
+              value: /root/conf/prti1516e
+            - name: RTI_HOME
+              value: /root/conf/prti1516e
+
+            - name: PITCH_ADVERTISE_ADDRESS
+              value: "10.56.11.19:6000:5000"
+            - name: PITCH_CRCADDRESS
+              value: "10.56.11.19:8989"
+
+            #- name: LRC_HOME
+            #  value: /root/conf/prti1516e
+            - name: LRC_CLASSPATH
+              value: '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
+            - name: CLASSPATH
+              value: '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
+
+          ports:
+            - containerPort: 6000
+              # name: PITCH-ADV-TCP
+              protocol: TCP
+            - containerPort: 5000
+              # name: PITCH-ADV-UDP
+              protocol: UDP
+
+          volumeMounts:
+            - mountPath: /root/conf
+              name: runtime-config
+      restartPolicy: Always
+      volumes:
+        - name: runtime-config
+          persistentVolumeClaim:
+            claimName: nfs-pv-claim
