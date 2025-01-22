@@ -152,6 +152,41 @@ ports:   "gui-port" &nbsp;    port: 8080
 selector: &nbsp; &nbsp; app: gui  
 
 
+#### 38_tc-runner-pi_deploy.yaml
+Name:  tc-runner-pi &emsp; -- &emsp; image: ivct/tc-runner:pi-skeleton-4.1.0-SNAPSHOT  
+
+Pitch RTI Libraries: Since the container does not simply access the directories on the hard disk,  
+the necessary RTI libraries must be accessible via our mounted (NFS) directories.
+
+
+Variables:  
+&emsp; ACTIVEMQ_HOST:  &nbsp;   activemq    ( or IP of activemq deployment)  
+&emsp; ACTIVEMQ_PORT:   &nbsp;  "61616"  
+&emsp; IVCT_HOME:   &nbsp;   /root/conf  
+&emsp; IVCT_CONF:   &nbsp;    /root/conf/IVCT.properties  
+&emsp; TESTENGINE_LABEL:         &emsp;: pitch-4.1.0-SNAPSHOT  
+&emsp; PITCH_RTI_HOME:              &emsp; /root/conf/prti1516e  
+&emsp; RTI_HOME:                 &emsp; /root/conf/prti1516e  
+&emsp; PITCH_ADVERTISE_ADDRESS:   &emsp; "10.56.11.19:6000:5000"    &emsp; (change to your Sytem)  
+&emsp; PITCH_CRCADDRESS:          &emsp; "10.56.11.19:8989"  &emsp; (change to your Sytem)  
+&emsp; LRC_CLASSPATH:    &emsp; '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'  
+&emsp; CLASSPATH:  &emsp;'/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
+
+ports:  
+            - containerPort:  6000     protocol: TCP  
+            - containerPort: 5000      protocol: UDP  
+MountPoint:  /root/conf 
+
+#### 39_tc-runner-pi-service.yaml
+
+Name:   tc-runner-pi-srvc   
+type: NodePort  
+ports:
+    - name: "6000"         port: 6000          protocol: TCP  
+ &emsp; &emsp; - name: "5000"         port: 5000          protocol: UDP   
+selector:        app: tc-runner-pi
+
+
 ### Launch all necessary pods 
 If all necessary *.yaml files are in one folder, all pods can be started at once by:  
 kubectl  apply -f  ./dirname
