@@ -4,9 +4,9 @@ kind: Service
 metadata:
   #name: activemqsrvc
   name: activemq
-  #labels:
-  #  #app: activemqsrvc
-  #  app: activemq
+  labels:
+    #app: activemqsrvc
+    app: activemq
 spec:
   type: NodePort
   ports:

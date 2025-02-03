@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guisrvc
+  # namespace: brf-test-namespace
+spec:
+  selector:
+    app: gui
+  ports:
+    - port: 8080
+      targetPort: 8080
+      #nodePort: 30333
+  # type: NodePort
+  type: LoadBalancer

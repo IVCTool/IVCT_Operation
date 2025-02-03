@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: sut-helloworld-pi
   # namespace: brf-test-namespace
-  #labels:
-  #  app: sut-helloworld-pi
 spec:
   replicas: 1
   selector:
@@ -17,11 +15,10 @@ spec:
         app: sut-helloworld-pi
     spec:
       containers:
-        - name: sut-helloworld-pi
+        - name: sut-helloworld
           image: ivct/helloworld:pi-skeleton-2.1.3-SNAPSHOT
           # image: ivct/helloworld:pi-skeleton-2.1.2-SNAPSHOT
           imagePullPolicy: Always
-          #command: ["/usr/local/lrc/launch.sh"]
           command: ["/bin/sleep"]
           args: ["30m"]
           #args:
@@ -41,10 +38,42 @@ spec:
             - name: IVCT_CONF
               value: /root/conf/IVCT.properties
 
+            - name: CRC_HOST
+              value: "10.56.11.19"
+              # value: "192.168.49.1"
+            - name: CRC_PORT
+              value: "8989"
+            - name: crcAddress
+              value: "10.56.11.19:8989"
+              #value: "192.168.49.1:8989"
+
+            - name: SETTINGS_DESIGNATOR
+              value: "crcAddress=10.56.11.19:8989"
+              #value: "192.168.49.1:8989"
+            - name: FEDERATE_NAME
+              value: A
+            - name: POPULATION
+              value: "100"
+            - name: CYCLES
+              value: "1000000"
+
+
+            - name: PITCH_ADVERTISE_ADDRESS
+              value: "10.56.11.19:6100:5100"
+              #value: "192.168.49.1:6100:5100"
+            # - name: PITCH_LRC_SETTINGS_FILE  # , wird erstellt ?
+            #   value: /ursr/local/lrc/settings/sut-helloworld
+            - name: LRC_DEBUG
+              value: "true"
+            - name: PITCH_RTI_HOME
+              value: /root/conf/prti1516e
+             # - name: PITCH_RTI_SETTINGS
+             #  value: /root/conf/prti1516e_settings           ###????
+
             - name: RTI_HOME_FROM
               value: /root/conf/prti1516e
-            #- name: LRC_HOME
-            #  value: /root/conf/prti1516e
+            - name: LRC_HOME
+              value: /root/conf/prti1516e
             - name: RTI_HOME
               value: /root/conf/prti1516e
 
@@ -60,29 +89,6 @@ spec:
             - name: LD_LIBRARYPATH
               value: '/root/conf/prti1516e/lib/gcc41_64:/usr/lib/jvm/java-1.8-openjdk/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/lib/amd64/server:'
 
-            - name: PITCH_RTI_HOME
-              value: /root/conf/prti1516e
-            #- name: PITCH_RTI_SETTINGS
-            #  value: /root/conf/prti1516e_settings           ###????
-            - name: SETTINGS_DESIGNATOR
-              value: "crcAddress=10.56.11.19:8989"
-              #value: "192.168.49.1:8989"
-
-            - name: FEDERATE_NAME
-              value: A
-            - name: POPULATION
-              value: "100"
-            - name: CYCLES
-              value: "1000000"
-
-            - name: PITCH_ADVERTISE_ADDRESS
-              value: "10.56.11.19:6100:5100"
-              #value: "192.168.49.1:6100:5100"
-            # - name: PITCH_LRC_SETTINGS_FILE  # , wird erstellt ?
-            #   value: /ursr/local/lrc/settings/sut-helloworld
-            - name: LRC_DEBUG
-              value: "true"
-                       
           ports:
             - containerPort: 6100
               protocol: TCP

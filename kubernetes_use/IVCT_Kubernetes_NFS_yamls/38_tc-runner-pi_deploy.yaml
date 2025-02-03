@@ -4,15 +4,17 @@ kind: Deployment
 metadata:
   name: tc-runner-pi
   # namespace: brf-test-namespace
+  #labels:
+  #  app: tc-runner-pi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tc-runner
+      app: tc-runner-pi
   template:
     metadata:
       labels:
-        app: tc-runner
+        app: tc-runner-pi
     spec:
       containers:
         - name: tcrunn
@@ -40,6 +42,8 @@ spec:
               value: "10.56.11.19:6000:5000"
             - name: PITCH_CRCADDRESS
               value: "10.56.11.19:8989"
+            - name: SETTINGS_DESIGNATOR
+              value: "crcAddress=10.56.11.19:8989"
 
             #- name: LRC_HOME
             #  value: /root/conf/prti1516e

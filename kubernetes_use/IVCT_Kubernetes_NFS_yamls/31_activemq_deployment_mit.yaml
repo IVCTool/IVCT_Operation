@@ -4,8 +4,8 @@ kind: Deployment
 metadata:
   name: activemq
   # namespace: brf-test-namespace
-  #labels:
-  #  app: activemq
+  labels:
+    app: activemq
 spec:
   replicas: 1
   selector:

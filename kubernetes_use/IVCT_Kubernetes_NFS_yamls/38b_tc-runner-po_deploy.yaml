@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tc-runner-po
+  # namespace: brf-test-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tc-runnerpo
+  template:
+    metadata:
+      labels:
+        app: tc-runnerpo
+    spec:
+      containers:
+        - name: tcrunnpo
+          image: ivct/tc-runner:po-4.1.0
+          imagePullPolicy: Always
+          env:
+            - name: ACTIVEMQ_HOST
+              value: activemq
+              # value: 10.97.143.240
+              # value: "10.244.0.34"
+            - name: ACTIVEMQ_PORT
+              value: "61616"
+            - name: IVCT_HOME
+              value: /root/conf
+            - name: IVCT_CONF
+              value: /root/conf/IVCT.properties
+            - name: TESTENGINE_LABEL
+              value: portico-4.1.0
+
+          volumeMounts:
+            - mountPath: /root/conf
+              name: runtime-config
+      restartPolicy: Always
+      volumes:
+        - name: runtime-config
+          persistentVolumeClaim:
+            claimName: nfs-pv-claim
