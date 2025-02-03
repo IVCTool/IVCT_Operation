@@ -187,6 +187,10 @@ ports:
 selector:        app: tc-runner-pi
 
 
+
+
+
+
 ### Launch all necessary pods 
 If all necessary *.yaml files are in one folder, all pods can be started at once by:  
 kubectl  apply -f  ./dirname
