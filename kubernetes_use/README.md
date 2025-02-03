@@ -114,7 +114,7 @@ Ports:  "activemq"  61616  ,  "activemq-web" 8161     TCP
 MountPoint:  /root/conf  ( not  necessary but for  test purposes /root/conf to the NFS-Volume ) 
 
 #### 32_activemq_service.yaml
-Name:  activemqsrvc  
+Name:  activemq  
 Ports:   &nbsp;  &nbsp; "61616" &nbsp;    61616  &nbsp;  &nbsp;   "8161"   8161  
 selector: &nbsp; &nbsp; app: activemq  
 
@@ -169,6 +169,7 @@ Variables:
 &emsp; RTI_HOME:                 &emsp; /root/conf/prti1516e  
 &emsp; PITCH_ADVERTISE_ADDRESS:   &emsp; "10.56.11.19:6000:5000"    &emsp; (change to your Sytem)  
 &emsp; PITCH_CRCADDRESS:          &emsp; "10.56.11.19:8989"  &emsp; (change to your Sytem)  
+&emsp; SETTINGS_DESIGNATOR      &emsp "crc-Address=10.56.11.19:8989" # maybe to set later  
 &emsp; LRC_CLASSPATH:    &emsp; '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'  
 &emsp; CLASSPATH:  &emsp;'/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
 
@@ -179,16 +180,12 @@ MountPoint:  /root/conf
 
 #### 39_tc-runner-pi-service.yaml
 
-Name:   tc-runner-pi-srvc   
+Name:   tc-runner-pi   
 type: NodePort  
 ports:
     - name: "6000"         port: 6000          protocol: TCP  
  &emsp; &emsp; - name: "5000"         port: 5000          protocol: UDP   
 selector:        app: tc-runner-pi
-
-
-
-
 
 
 ### Launch all necessary pods 
@@ -214,12 +211,64 @@ To get the dashboard URL:  minikube dashboard  --url     gives the URL
 Rancher: Via the menu item Services you can see the services started for each namespace, and can read out the URL to reach this service in the browser.   
 minikube:  “minikube service list”     shows the services provided.
 
+###  Example for  Applications to be tested
+
+
+
+#### 41_sut-hellowordl-pi_deployment.yaml
+
+
+Name:  sut-helloworld-pi &emsp; -- &emsp; image: ivct/helloworld:pi-skeleton-2.1.3-SNAPSHOT
+
+Pitch RTI Libraries: Since the container does not simply access the directories on the hard disk,  
+the necessary RTI libraries must be accessible via our mounted (NFS) directories.
+
+The command within the image “23 ENTRYPOINT [”/bin/sh” ‘./launch.sh’] ” is apparently not executed.  
+&emsp; command: ["/bin/sleep"]          ##  you can start a dummy application,  
+&emsp;  args: ["30m"]                 ##  and later execute launch.sh within the container
+
+
+Variables:  
+&emsp; ACTIVEMQ_HOST:  &nbsp;   activemq    ( or IP of activemq deployment)  
+&emsp; ACTIVEMQ_PORT:   &nbsp;  "61616"  
+&emsp; IVCT_HOME:   &nbsp;   /root/conf  
+&emsp; IVCT_CONF:   &nbsp;    /root/conf/IVCT.properties  
+&emsp; RTI_HOME_FROM:     &emsp; /root/conf/prti1516e  
+&emsp; RTI_HOME:                 &emsp; /root/conf/prti1516e
+
+&emsp; LRC_CLASSPATH:    &emsp;  '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'  
+&emsp; CLASSPATH:           &emsp; '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'  
+&emsp; LRC_LIBRARYPATH  &emsp;  
+'/root/conf/prti1516e/lib/gcc41_64:/usr/lib/jvm/java-1.8-openjdk/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/lib/amd64/server:'  
+&emsp; LD_LIBRARYPATH  &emsp;  
+'/root/conf/prti1516e/lib/gcc41_64:/usr/lib/jvm/java-1.8-openjdk/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/lib/amd64/server:'  
+
+&emsp;  PITCH_RTI_HOME   &emsp;  /root/conf/prti1516e  
+&emsp;  SETTINGS_DESIGNATOR   &emsp;  "crcAddress=10.56.11.19:8989"  &emsp; (change to your Sytem)  
+&emsp;  FEDERATE_NAME:  &emsp;  A  
+&emsp;  POPULATION:  &emsp;          "100"  
+&emsp;  CYCLES:   &emsp;                  "1000000"   
+&emsp; PITCH_ADVERTISE_ADDRESS:  &emsp; "10.56.11.19:6100:5100"    &emsp; (change to your Sytem)  
+&emsp;  LRC_DEBUG:   &emsp;   "true"
+
+ports:  
+            - containerPort:  6100     protocol: TCP  
+            - containerPort: 5100      protocol: UDP  
+MountPoint:  /root/conf  
+
+After the container has been started,  connect "in"  the container   and  either  launch.sh or /root/application/start  to start the sut-helloworld
 
 
 
 
+#### 42_sut-helloworld-pi-service.yaml
 
-
+Name:   sut-helloworld-pi   
+type: NodePort  
+ports:
+    - name: "6100"         port: 6100          protocol: TCP  
+ &emsp; &emsp; - name: "5100"         port: 5100          protocol: UDP   
+selector:        app: sut-helloworld-pi
 
 
 
