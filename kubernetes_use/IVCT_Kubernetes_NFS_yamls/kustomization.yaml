@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+#namespace: brf-test-namespace
+
+resources:
+  - ./31_activemq_deployment.yaml
+  - ./32_activemq_service.yaml
+  - ./33_logsink_deployment.yaml
+  - ./36_gui_deployment.yaml
+  - ./37_gui_service.yaml
+  - ./38_tc-runner-pi_deploy.yaml
+  - ./39_tc-runner-pi_service.yaml
+  # - ./41_sut-hellowordl-pi_deployment.yaml
+  # - ./42_sut-helloworld-pi_service.yaml
