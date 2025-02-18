@@ -201,6 +201,16 @@ aaa_start_all_2.sh   &emsp;   starts our  deployments and services
 Nevertheless, it may be that one or the other deployment has to be restarted in order to start up cleanly.  
 Now you should have access to the IVCT-Gui  with a Web-Browser 
 
+_kubectl kustomization_  
+Another way to start several deployments etc. at once is a Kustomization directory.  
+kubectl contains this mechanism in its own way.  
+In the simplest form, the deployments / services to be started are listed as resources in a kustomization.yaml file.
+
+kubectl apply -k /path/to/Directory    &emsp;  &emsp;  &emsp;   calls the start of the listed objects
+  
+
+
+
 ### In Case of using    minikube  &emsp; &emsp;  Reach the dashboard
 minikube has a web-based user interface,  
 To get the dashboard URL:  minikube dashboard  --url     gives the URL  
