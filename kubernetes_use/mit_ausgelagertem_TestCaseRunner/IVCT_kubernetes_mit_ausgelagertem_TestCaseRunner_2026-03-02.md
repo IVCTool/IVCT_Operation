@@ -52,7 +52,7 @@ Die Anwendungen (gui, Logsink, activMQ) laufen als Deployment/Pods und können i
 Eingerichtete  "Services" sorgen dafür, das die Anwendungen z.T. über bestimmte Ports von ausserhalb des Clusters erreichbar sind.  
 So ist ActiveMQ von Anwendungen die ausserhalb des Clusters laufen erreichbar,
 und die Gui als Webapplikation ist auf einem (externen) Browser darstellbar.  
-Ausserhalb des Clusters werden ein IVCT-Test-Case-Runner (tc-runner-pi) und als SUT  eine HelloWorld-Anwendung  in konventioneller Form als java-Anwendung gestartet.  
+Ausserhalb des Clusters werden ein IVCT-Test-Case-Runner (tc-runner-pi) und als SUT  eine HelloWorld-Anwendung  in konventioneller Form als java-Anwendung gestartet. (Dazu wird in der, von diesen verwendeten IVCT.properties, der durch den Cluster nach aussen bereitgestellte ActiveMQ-Port eingetragen.)  
 Ausserdem wird (in diesem Fall auf dem gleichen Host)  eine Pitch RTI  ausgeführt.  
 Die GUI-Webapplikation ist über den aus dem Cluster bereitgestellten Port verwendbar,  die TestEngine kann ausgewählt werden, die TestSuites sind in dieser  Webapplikation sichtbar.  
 Nach Eintragung der Verbindung zu der RTI  (RTI Connection) im  Tab  'Systems under Tests'   für die  Test-SUT HelloWorld,  konnten TestCases erfolgreich gestartet werden.
