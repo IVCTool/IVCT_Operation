@@ -1,0 +1,93 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tc-runner-pi
+  # namespace: bbb-test-namespace
+  labels:
+    app: tc-runner-pi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tc-runner-pi
+  template:
+    metadata:
+      labels:
+        app: tc-runner-pi
+    spec:
+      containers:
+        - name: tcrunn
+          image: ivct/tc-runner:pi-skeleton-4.1.0-SNAPSHOT
+          imagePullPolicy: Always
+
+          envFrom:
+            - configMapRef:
+                name: ivct-config          
+
+          #env:
+          #  - name: ACTIVEMQ_HOST
+          #    value: activemq
+          #    # value: "10.244.0.77"
+          #  - name: ACTIVEMQ_PORT
+          #    value: "61616"
+          #  - name: IVCT_HOME
+          #    value: /root/conf
+          #  - name: IVCT_CONF
+          #    value: /root/conf/IVCT.properties
+          #  - name: TESTENGINE_LABEL
+          #    value: pitch-4.1.0-SNAPSHOT
+
+          #  - name: PITCH_RTI_HOME
+          #    value: /root/conf/prti1516e
+          #  - name: RTI_HOME
+          #    value: /root/conf/prti1516e
+
+          env:
+            - name: PITCH_ADVERTISE_TCP
+              #value: "6000"
+              value: "30600"
+            - name: PITCH_ADVERTISE_UDP
+              #value: "5000"
+              value: "30500"
+            - name: PITCH_ADVERTISE_ADDRESS
+              #value: "10.56.11.20:6000:5000"
+              value: "192.168.49.2:30600:30500"
+          #    value: "192.168.49.2:6000:5000"
+          #    #value: "10.244.0.18:6000:5000"
+          #    #value: "10.56.11.20:30600:30500"
+          #  - name: PITCH_CRCADDRESS
+          #    value: "10.56.11.20:8989"
+          #  - name: SETTINGS_DESIGNATOR
+          #    value: "crcAddress=10.56.11.20:8989"
+
+          #  #- name: LRC_HOME
+          #  #  value: /root/conf/prti1516e
+          #  - name: LRC_CLASSPATH
+          #    value: '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
+          #  - name: CLASSPATH
+          #    value: '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
+
+            - name: PITCH_LRC_SETTINGS_FILE
+              #value: /usr/local/lrc/settings/prti1516eLRC.settings  ######  anpassen !!!!!!!!!
+              value:  /root/conf/prti1516e/prti1516eLRC_tcrunner.settings
+
+
+          ports:
+            - name:  pitch-adv-tcp
+              #containerPort: 6000
+              containerPort: 30600
+              protocol: TCP
+            - name: pitch-adv-upp
+              #containerPort: 5000
+              containerPort: 30500
+              protocol: UDP
+
+          volumeMounts:
+            - mountPath: /root/conf
+              name: runtime-config
+      restartPolicy: Always
+      volumes:
+        - name: runtime-config
+          persistentVolumeClaim:
+            claimName: nfs-pv-claim

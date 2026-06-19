@@ -1,0 +1,33 @@
+TESTVARIABLE: ABCDEFG
+ACTIVEMQ_HOST: activemq
+#ACTIVEMQ_PORT: "61616"
+ACTIVEMQ_PORT: 61616
+IVCT_HOME: /root/conf
+IVCT_CONF: /root/conf/IVCT.properties
+NFS_SERVER: ivct-docker2.iosb.fraunhofer.de
+NFS_PATH: /opt/nfs-freigabe
+NFS_OPTIONS: nfsvers=4.2
+
+PRTI1516E_HOME: /root/conf/prti1516e
+LRC_HOME: /root/conf/prti1516e
+#LRC_CLASSPATH: /root/conf/prti1516e/lib/prti1516e.jar
+
+TESTENGINE_LABEL: pitch-4.1.0-SNAPSHOT
+PITCH_RTI_HOME: /root/conf/prti1516e
+RTI_HOME: /root/conf/prti1516e
+
+#PITCH_ADVERTISE_TCP: 6000
+#PITCH_ADVERTISE_UDP: 5000
+# PITCH_ADVERTISE_UDP: 30500
+#PITCH_ADVERTISE_ADDRESS: 192.168.49.2:6000:5000
+#PITCH_ADVERTISE_ADDRESS: 10.56.11.20:6000:5000
+
+#TC_RUNNER_PI_SRVC_PORT: tcp://10.56.11.20:6000
+#TC_RUNNER_PI_SRVC_PORT_6000: tcp://10.56.11.20:6000
+#TC_RUNNER_PI_SRVC_PORT_5000: tcp://10.56.11.20:5000
+
+
+PITCH_CRCADDRESS: 10.56.11.20:8989
+SETTINGS_DESIGNATOR: crcAddress=10.56.11.20:8989
+LRC_CLASSPATH: '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
+CLASSPATH: '/root/conf/prti1516e/lib/prti1516e.jar:/root/conf/prti1516e/lib/prticore.jar:/root/conf/prti1516e/lib/booster1516.jar'
